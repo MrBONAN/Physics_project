@@ -9,10 +9,18 @@ public:
 
 	void setPosition(float x, float y) override { btn.setPosition(sf::Vector2f(x, y));}
 	void setScale(float d) override { btn.setScale(d, d); }
+	void setSprite1() override {btn.setTextureRect(sf::IntRect(0, 0, dx, dy));}
+	void setSprite2() override {btn.setTextureRect(sf::IntRect(0, dy, dx, dy));}
+
+	void checkFocus(const sf::Vector2i& msCord) override;
+	bool Event(const sf::Vector2i& msCord) override;
+
 
 	void show() { window.draw(btn); }
 private:
-
+	// визуальные эффекты
+	bool active = false;
+	bool isAlreadyUpdate = false; // чтобы постоянно не менять спрайт
 
 	// координаты текстуры на исходном изображении
 	int x1 = 0, x2 = 0;

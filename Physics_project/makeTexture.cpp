@@ -89,7 +89,6 @@ void makeTexture(float Y, float dx, float dy, sf::RenderTexture& renderTexture, 
 
 	sf::Sprite sp;
 	sp.setTexture(texture);
-	renderTexture.clear(sf::Color(0,0,0,0));
 
 	// corners
 	sp.setTextureRect({ x, y, xyCorner, xyCorner });

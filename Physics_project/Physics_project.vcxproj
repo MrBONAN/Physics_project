@@ -146,11 +146,15 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="makeTexture.cpp" />
     <ClCompile Include="OBJ.cpp" />
+    <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="Test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Button.h" />
     <ClInclude Include="Headers.h" />
     <ClInclude Include="OBJ.h" />
+    <ClInclude Include="Scene.h" />
+    <ClInclude Include="Test.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

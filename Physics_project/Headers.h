@@ -11,6 +11,7 @@
 
 #include "OBJ.h"
 #include "Button.h"
+#include "Test.h"
 
 using namespace std;
 
