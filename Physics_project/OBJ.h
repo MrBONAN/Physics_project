@@ -27,6 +27,7 @@ public:
 	OBJ(sf::RenderWindow& window);
 
 	virtual void setPosition(float x, float y) = 0;
+	virtual void setScale(float d) = 0;
 
 	virtual void show() = 0;
 

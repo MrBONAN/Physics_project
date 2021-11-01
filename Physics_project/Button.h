@@ -8,6 +8,7 @@ public:
 	Button(sf::RenderWindow& window);
 
 	void setPosition(float x, float y) override { btn.setPosition(sf::Vector2f(x, y));}
+	void setScale(float d) override { btn.setScale(d, d); }
 
 	void show() { window.draw(btn); }
 private:

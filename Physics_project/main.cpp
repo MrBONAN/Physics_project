@@ -2,7 +2,7 @@
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(1000, 700), "SFML works!");
+    sf::RenderWindow window(sf::VideoMode(1045, 650), "SFML works!");
     
     window.setFramerateLimit(60);
 
@@ -10,7 +10,18 @@ int main()
 
     OBJ::Init(path);
 
-    Button btn(window);
+    Button btn1(window);
+    btn1.setPosition(10, 400);
+    Button btn2(window);
+    btn2.setPosition(535, 400);
+    Button btn3(window);
+    btn3.setPosition(10, 525);
+    Button btn4(window);
+    btn4.setPosition(535, 525);
+
+    Button ex(window, {17, 49, 1, 1, 512, 190, 5, 5, 5});
+    ex.setPosition(10, 10);
+
 
     /*sf::Texture tx;
     tx.loadFromFile("Icons_2.png");
@@ -39,7 +50,11 @@ int main()
         }
 
         window.clear(sf::Color(200, 200, 200, 255));
-        btn.show();
+        btn1.show();
+        btn2.show();
+        btn3.show();
+        btn4.show();
+        ex.show();
         window.display();
     }
 
