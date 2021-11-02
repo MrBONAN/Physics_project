@@ -6,6 +6,9 @@ class Scene
 {
 public:
 	Scene(sf::RenderWindow& window);
+
+	void setTeacherMod(bool tf) { teacherMode = tf;}
+
 	virtual void checkALlInteraction(const sf::Event& event) = 0;
 protected:
 	virtual void checkAllActive(const sf::Vector2i& msCord) = 0;
@@ -14,5 +17,7 @@ protected:
 
 	sf::RenderWindow& window;
 	Button exerciseRect;
+
+	bool teacherMode = true;
 };
 #endif

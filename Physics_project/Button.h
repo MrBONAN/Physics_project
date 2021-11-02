@@ -12,15 +12,21 @@ public:
 	void setSprite1() override {btn.setTextureRect(sf::IntRect(0, 0, dx, dy));}
 	void setSprite2() override {btn.setTextureRect(sf::IntRect(0, dy, dx, dy));}
 
-
+	void setString(string str);
 
 	void checkActive(const sf::Vector2i& msCord) override;
 	void checkFocus(const sf::Vector2i& msCord) override;
 	bool Event(const sf::Vector2i& msCord) override;
 
 
-	void show() { window.draw(btn); }
+	void show() { window.draw(btn); window.draw(text); }
 private:
+	// текст и его настройки
+	string str;
+	sf::Font font;
+	sf::Text text;
+	void setTextSettings();
+
 	// визуальные эффекты нажатия
 	bool active = false;
 	bool isAlreadyUpdate = false; // чтобы постоянно не менять спрайт

@@ -12,18 +12,23 @@ Test::Test(sf::RenderWindow& window) : Scene(window)
 
 	for (int i = 0; i < 4; ++i)
 		indicators.push_back(new Indicator(window,
-			{17, 49, 17, 17, 15, 15, 5, 5, 5}));
-	indicators[0]->setPosition(508, 412);
+			/*{17, 49, 17, 17, 15, 15, 5, 5, 5}));*/
+			{ 17, 49, 17, 17, 255, 55, 5, 5, 5 }));
+	/*indicators[0]->setPosition(508, 412);
 	indicators[1]->setPosition(508, 454);
 	indicators[2]->setPosition(508, 537);
-	indicators[3]->setPosition(508, 579);
+	indicators[3]->setPosition(508, 579);*/
+	indicators[0]->setPosition(5, 395);
+	indicators[1]->setPosition(529, 395);
+	indicators[2]->setPosition(5, 520);
+	indicators[3]->setPosition(529, 520);
 }
 
 void Test::show()
 {
-	for (auto& it : btns)
-		it->show();
 	for (auto& it : indicators)
+		it->show();
+	for (auto& it : btns)
 		it->show();
 	exerciseRect.show();
 }

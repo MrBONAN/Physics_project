@@ -32,6 +32,10 @@ int main()
         {
             if (event.type == sf::Event::Closed)
                 window.close();
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+                std::cout << event.key.code << std::endl;
+            if (event.type == sf::Event::KeyPressed)
+                cout << event.key.code << endl;
             test.checkALlInteraction(event);
         }
         

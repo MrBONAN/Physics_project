@@ -11,6 +11,8 @@ Button::Button(sf::RenderWindow& window, vector<float> sizes) : OBJ(window)
 	btn.setTexture(texture);
 	setSprite1();
 	setScale(2);
+
+	setTextSettings();
 }
 
 Button::Button(sf::RenderWindow& window) : OBJ(window)
@@ -25,6 +27,15 @@ Button::Button(sf::RenderWindow& window) : OBJ(window)
 	btn.setTexture(texture);
 	setSprite1();
 	setScale(2);
+
+	setTextSettings();
+}
+
+void Button::setString(string str)
+{
+	this->str = str;
+	text.setString(str);
+	
 }
 
 void Button::checkActive(const sf::Vector2i& msCord)
@@ -39,14 +50,12 @@ void Button::checkFocus(const sf::Vector2i& msCord)
 		if (isAlreadyUpdate) return;
 		isAlreadyUpdate = true;
 		active = true;
-		cout << 2 << endl;
 		setSprite2();
 	}
 	else if (active)
 	{
 		if (isAlreadyUpdate) {
 			isAlreadyUpdate = false;
-			cout << 1 << endl;
 			setSprite1();
 		}
 	}
@@ -63,4 +72,13 @@ bool Button::Event(const sf::Vector2i& msCord)
 		return true;
 	}
 	return false;
+}
+
+void Button::setTextSettings()
+{
+	font.loadFromFile("pragmatica.ttf");
+	text.setFont(font);
+	text.setCharacterSize(24);
+	text.setFillColor(sf::Color::Black);
+	setString("Тестовый запуск\ntest run");
 }
