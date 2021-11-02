@@ -2,7 +2,6 @@
 
 sf::RenderTexture OBJ::renderTex;
 sf::Texture OBJ::defTexture;
-bool OBJ::mouseJustPressed = true;
 
 void OBJ::Init(string TexPath)
 {

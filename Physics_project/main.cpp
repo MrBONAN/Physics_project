@@ -32,6 +32,7 @@ int main()
         {
             if (event.type == sf::Event::Closed)
                 window.close();
+            test.checkALlInteraction(event);
         }
         
        /* if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)) {
@@ -48,7 +49,7 @@ int main()
             btn3.Event(sf::Mouse::getPosition(window));
             btn4.Event(sf::Mouse::getPosition(window));
             OBJ::mouseJustPressed = true;
-        }*/
+        }*//*
         if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)) {
             msPress = true;
             test.checkAllFocus(sf::Mouse::getPosition(window));
@@ -56,7 +57,7 @@ int main()
         else if (msPress) {
             msPress = false;
             test.checkAllEvents(sf::Mouse::getPosition(window));
-        }
+        }*/
 
         window.clear(sf::Color(200, 200, 200, 255));
       /*  btn1.show();

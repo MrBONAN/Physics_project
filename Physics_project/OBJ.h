@@ -31,6 +31,7 @@ public:
 	virtual void setSprite1() = 0;
 	virtual void setSprite2() = 0;
 
+	virtual void checkActive(const sf::Vector2i& msCord) = 0;
 	virtual void checkFocus(const sf::Vector2i& msCord) = 0;
 	virtual bool Event(const sf::Vector2i& msCord) = 0;
 
@@ -40,7 +41,6 @@ public:
 	sf::Texture texture; // текстура объекта
 	static sf::RenderTexture renderTex; // вспомогательная текстура
 	static sf::Texture defTexture; // текстура по умолчанию
-	static bool mouseJustPressed;
 };
 
 #endif

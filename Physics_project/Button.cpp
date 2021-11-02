@@ -1,36 +1,41 @@
 #include "Button.h"
-Button::Button(sf::RenderWindow& window, vector<int> sizes) : OBJ(window)
+Button::Button(sf::RenderWindow& window, vector<float> sizes) : OBJ(window)
 {
 	x1 = sizes[0], y1 = sizes[1];
 	x2 = sizes[2], y2 = sizes[3];
 	dx = sizes[4], dy = sizes[5];
-	float xyCorner = sizes[6];
-	float yLeftRight = sizes[7];
-	float xTopButtom = sizes[8];
-	makeTexture(0, dx, dy, renderTex, defTexture, { float(x1), float(y1), xyCorner, yLeftRight, xTopButtom });
-	texture = renderTex.getTexture();
-	btn.setTexture(texture);
-	btn.setTextureRect(sf::IntRect(0, 0, dx, dy));
-	setScale(2);
-}
-
-Button::Button(sf::RenderWindow& window) : OBJ(window)
-{
-	this->x1 = 17, this->y1 = 49;
-	this->x2 = 17, this->y2 = 17;
-	this->dx = 250, this->dy = 50;
 	renderTex.clear(sf::Color(0, 0, 0, 0));
-	makeTexture(0, dx, dy, renderTex, defTexture, { float(x1), float(y1), 5, 5, 5 });
-	makeTexture(dy, dx, dy, renderTex, defTexture, { float(x2), float(y2), 4, 7, 7 });
+	makeTexture(0, dx, dy, renderTex, defTexture, { x1, y1, sizes[6], sizes[7], sizes[8] });
+	makeTexture(dy, dx, dy, renderTex, defTexture, { x2, y2, sizes[6], sizes[7], sizes[8] });
 	texture = renderTex.getTexture();
 	btn.setTexture(texture);
 	setSprite1();
 	setScale(2);
 }
 
+Button::Button(sf::RenderWindow& window) : OBJ(window)
+{
+	x1 = 17,  y1 = 49;
+	x2 = 17,  y2 = 17;
+	dx = 250, dy = 50;
+	renderTex.clear(sf::Color(0, 0, 0, 0));
+	makeTexture(0, dx, dy, renderTex, defTexture, { x1, y1, 5, 5, 5 });
+	makeTexture(dy, dx, dy, renderTex, defTexture, {x2, y2, 4, 7, 7 });
+	texture = renderTex.getTexture();
+	btn.setTexture(texture);
+	setSprite1();
+	setScale(2);
+}
+
+void Button::checkActive(const sf::Vector2i& msCord)
+{
+	if (btn.getGlobalBounds().contains(msCord.x, msCord.y))
+		active = true;
+}
+
 void Button::checkFocus(const sf::Vector2i& msCord)
 {
-	if ((mouseJustPressed || active) && btn.getGlobalBounds().contains(msCord.x, msCord.y)) {
+	if (/*mouseJustPressed || */active && btn.getGlobalBounds().contains(msCord.x, msCord.y)) {
 		if (isAlreadyUpdate) return;
 		isAlreadyUpdate = true;
 		active = true;

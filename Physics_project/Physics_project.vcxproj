@@ -143,6 +143,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="Indicator.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="makeTexture.cpp" />
     <ClCompile Include="OBJ.cpp" />
@@ -152,6 +153,7 @@
   <ItemGroup>
     <ClInclude Include="Button.h" />
     <ClInclude Include="Headers.h" />
+    <ClInclude Include="Indicator.h" />
     <ClInclude Include="OBJ.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="Test.h" />
