@@ -12,17 +12,25 @@ public:
 	void setSprite1() override {btn.setTextureRect(sf::IntRect(0, 0, dx, dy));}
 	void setSprite2() override {btn.setTextureRect(sf::IntRect(0, dy, dx, dy));}
 
-	void setString(string str);
+	int getCurPos() { return posCur; }
+	void curLeft() { posCur = max(0, posCur - 1); }
+	void curRight() { posCur = min(getStrSize(), posCur + 1); }
+
+	void addChar(char c, int id);
+	void deleteChar(int id);
+	int  getStrSize() { return str.size(); }
 	void setIndentText(int ind);
 
 	void checkActive(const sf::Vector2i& msCord) override;
 	void checkFocus(const sf::Vector2i& msCord) override;
 	bool Event(const sf::Vector2i& msCord) override;
 
-
 	void show() { window.draw(btn); window.draw(text); }
 private:
 	// текст и его настройки
+	void updateText() { text.setString(str); }
+	int posCur = 0;
+	
 	string str;		// хранение строки
 	sf::Font font;	// хранение шрифта
 	sf::Text text;	// объект типа Text

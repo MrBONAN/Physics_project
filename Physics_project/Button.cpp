@@ -39,11 +39,21 @@ void Button::setPosition(float x, float y) {
 	sf::Vector2f(indent, indent / 1.3));
 }
 
-void Button::setString(string str)
+void Button::addChar(char c, int id)
 {
-	this->str = str;
-	text.setString(str);
-	
+	posCur++;
+	auto it = str.begin();
+	advance(it, id);
+	str.insert(it, c);
+	updateText();
+}
+
+void Button::deleteChar(int id)
+{
+	if (id < 1) return;
+	str.erase(id - 1, 1);
+	updateText();
+	curLeft();
 }
 
 void Button::setIndentText(int ind)
@@ -95,6 +105,5 @@ void Button::setTextSettings()
 	text.setFillColor(sf::Color::Black);
 	text.setPosition(btn.getPosition() +
 		sf::Vector2f(indent, indent / 1.3));
-
-	setString("Тестовый запуск\ntest run");
+	text.setString(str);
 }

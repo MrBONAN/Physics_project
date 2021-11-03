@@ -4,6 +4,7 @@ Test::Test(sf::RenderWindow& window) : Scene(window)
 {
 	for(int i = 0; i < 4; ++i)
 		btns.push_back(new Button(window));
+	btns.push_back(&exerciseRect);
 	exerciseRect.setPosition(10, 10);
 	btns[0]->setPosition(10, 400);
 	btns[1]->setPosition(535, 400);

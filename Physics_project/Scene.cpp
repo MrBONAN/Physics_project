@@ -46,8 +46,6 @@ Scene::Scene(sf::RenderWindow& window):
 	enSymbKey.emplace(150, '>');
 	enSymbKey.emplace(152, '?');
 
-	enSymbKey.emplace(58, '\n');
-	enSymbKey.emplace(60, '\t');
 	//enNumKey.emplace(0, 'a');	// A Ф
 	//enNumKey.emplace(1, 'b');		// B И
 	//enNumKey.emplace(2, 'c');	// C С
@@ -126,25 +124,77 @@ Scene::Scene(sf::RenderWindow& window):
 
 	ruSymbKey.emplace(56, '-');
 	ruSymbKey.emplace(55, '=');
-	ruSymbKey.emplace(152,'.');
+	ruSymbKey.emplace(52,'.');
 
 	ruSymbKey.emplace(156, '_');
 	ruSymbKey.emplace(155, '+');
 	ruSymbKey.emplace(152,',');
 
-	ruSymbKey.emplace(58, '\n');
-	ruSymbKey.emplace(60, '\t');
+
+	specChar.emplace(57, ' ');
+	specChar.emplace(58, '\n');
+	specChar.emplace(59, -1);
+	specChar.emplace(60, '\t');
+	specChar.emplace(71, -2);
+	specChar.emplace(72, -3);
 	
 }
 void Scene::setText(Button& btn, const sf::Event& event)
 {
 	if (event.type == sf::Event::KeyPressed) {
-		cout << event.key.code << endl;
+		//cout << event.key.code << endl;
 		int code = int(GetKeyboardLayout(GetWindowThreadProcessId(GetForegroundWindow(), NULL)));
+		int key = event.key.code;
+		int comand;
 		if (code == enCode)
 		{
-			int key = event.key.code;
-
+			comand = selSymbol(key, enKey, enSymbKey);
+		}
+		else {
+			comand = selSymbol(key, ruKey, ruSymbKey);
+		}
+		if (comand == char(0)) return;
+		switch (comand)
+		{
+		case -1:
+			btn.deleteChar(btn.getCurPos());
+			break;
+		case -2:
+			btn.curLeft();
+			break;
+		case -3:
+			btn.curRight();
+			break;
+		default:
+			btn.addChar(comand, btn.getCurPos());
+			break;
 		}
 	}
+		
+}
+
+int Scene::selSymbol(int key, const map<int, int>& langKey,
+	const map<int, int>& langSymbKey)
+{
+	if (specChar.find(key) != specChar.end()) {
+		return (*specChar.find(key)).second;
+	}
+	if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Key::LShift))
+	{ // не нажат shft
+		if (langKey.find(key) != langKey.end()) {
+			return (*langKey.find(key)).second;
+		}
+		else if (langSymbKey.find(key) != langSymbKey.end()) {
+			return (*langSymbKey.find(key)).second;
+		}
+	}
+	else {
+		if (langKey.find(key) != langKey.end()) {
+			return char((*langKey.find(key)).second - 32);
+		}
+		else if (langSymbKey.find(key + 100) != langSymbKey.end()) {
+			return (*langSymbKey.find(key + 100)).second;
+		}
+	}
+	return 0;
 }

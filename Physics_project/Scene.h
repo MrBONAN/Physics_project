@@ -24,9 +24,12 @@ protected:
 	bool teacherMode = true;
 	int enCode = 67699721;
 	int ruCode = 68748313;
-	map<int, char> enKey;
-	map<int, char> ruKey;
-	map<int, char> enSymbKey;
-	map<int, char> ruSymbKey;
+	map<int, int> enKey;
+	map<int, int> ruKey;
+	map<int, int> enSymbKey;
+	map<int, int> ruSymbKey;
+	map<int, int> specChar;
+	int selSymbol( int key, const map<int, int>& langKey,
+				   const map<int, int>& langSymbKey);
 };
 #endif

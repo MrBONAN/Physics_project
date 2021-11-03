@@ -25,6 +25,11 @@ int main ()
 
     Test test(window);
 
+    setlocale(LC_ALL, "RUS");
+    string s = "123456";
+    s.erase(0, 1);
+    cout << s << endl;
+
     bool msPress = false;
     while (window.isOpen())
     {
