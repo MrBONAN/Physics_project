@@ -2,6 +2,7 @@
 #define _SCENE_H_
 #include "Button.h"
 #include "Indicator.h"
+#include <windows.h>
 class Scene
 {
 public:
@@ -21,6 +22,11 @@ protected:
 	Button exerciseRect;
 
 	bool teacherMode = true;
-	map<int, int> numKey;
+	int enCode = 67699721;
+	int ruCode = 68748313;
+	map<int, char> enKey;
+	map<int, char> ruKey;
+	map<int, char> enSymbKey;
+	map<int, char> ruSymbKey;
 };
 #endif

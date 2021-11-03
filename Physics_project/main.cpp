@@ -1,7 +1,8 @@
 #include "Headers.h"
 
-int main()
+int main ()
 {
+
     sf::RenderWindow window(sf::VideoMode(1050, 700), "SFML works!");
     
     window.setFramerateLimit(60);
