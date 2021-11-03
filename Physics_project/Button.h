@@ -7,12 +7,13 @@ public:
 	Button(sf::RenderWindow& window, vector<float> sizes);
 	Button(sf::RenderWindow& window);
 
-	void setPosition(float x, float y) override { btn.setPosition(sf::Vector2f(x, y));}
+	void setPosition(float x, float y) override;
 	void setScale(float d) override { btn.setScale(d, d); }
 	void setSprite1() override {btn.setTextureRect(sf::IntRect(0, 0, dx, dy));}
 	void setSprite2() override {btn.setTextureRect(sf::IntRect(0, dy, dx, dy));}
 
 	void setString(string str);
+	void setIndentText(int ind);
 
 	void checkActive(const sf::Vector2i& msCord) override;
 	void checkFocus(const sf::Vector2i& msCord) override;
@@ -22,9 +23,11 @@ public:
 	void show() { window.draw(btn); window.draw(text); }
 private:
 	// текст и его настройки
-	string str;
-	sf::Font font;
-	sf::Text text;
+	string str;		// хранение строки
+	sf::Font font;	// хранение шрифта
+	sf::Text text;	// объект типа Text
+	int indent = 0;		// размеры отступа по краям
+
 	void setTextSettings();
 
 	// визуальные эффекты нажатия

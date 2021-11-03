@@ -12,12 +12,9 @@ Test::Test(sf::RenderWindow& window) : Scene(window)
 
 	for (int i = 0; i < 4; ++i)
 		indicators.push_back(new Indicator(window,
-			/*{17, 49, 17, 17, 15, 15, 5, 5, 5}));*/
-			{ 17, 49, 17, 17, 255, 55, 5, 5, 5 }));
-	/*indicators[0]->setPosition(508, 412);
-	indicators[1]->setPosition(508, 454);
-	indicators[2]->setPosition(508, 537);
-	indicators[3]->setPosition(508, 579);*/
+			{ 1, 1, 17, 17, 255, 55, 5, 5, 5 }));
+	/*(508, 412)(508, 454)(508, 537)(508, 579);*/
+	
 	indicators[0]->setPosition(5, 395);
 	indicators[1]->setPosition(529, 395);
 	indicators[2]->setPosition(5, 520);
@@ -56,6 +53,10 @@ void Test::checkALlInteraction(const sf::Event& event)
 	if (event.type == sf::Event::MouseButtonReleased) {
 		checkAllEvents(sf::Mouse::getPosition(window));
 	}
+	// включен режим учител
+	if (teacherMode && selNumber != -1){
+		setText(*btns[selNumber], event);
+	}
 }
 
 void Test::checkAllActive(const sf::Vector2i& msCord)
@@ -86,14 +87,12 @@ void Test::checkAllEvents(const sf::Vector2i& msCord)
 	for (int i = 0; i < btns.size(); ++i)
 	{
 		if (btns[i]->Event(msCord)) {
-			if (i == selNumber) // нажали на ту же кнопку
-			{
+			if (i == selNumber){ // нажали на ту же кнопку
 				indicators[i]->off();
 				selNumber = -1;
 			}
 			else { // нажали на новую кнопку
-				if (selNumber == -1) // если ещё не нажали на какую-либо кнопку
-				{
+				if (selNumber == -1){ // если ещё не нажали на какую-либо кнопку
 					indicators[i]->on();
 					selNumber = i;
 				}

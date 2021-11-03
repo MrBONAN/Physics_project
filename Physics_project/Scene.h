@@ -9,6 +9,8 @@ public:
 
 	void setTeacherMod(bool tf) { teacherMode = tf;}
 
+	void setText(Button& btn, const sf::Event& event);
+
 	virtual void checkALlInteraction(const sf::Event& event) = 0;
 protected:
 	virtual void checkAllActive(const sf::Vector2i& msCord) = 0;
@@ -19,5 +21,6 @@ protected:
 	Button exerciseRect;
 
 	bool teacherMode = true;
+	map<int, int> numKey;
 };
 #endif

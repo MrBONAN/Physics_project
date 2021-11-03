@@ -6,10 +6,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <thread>
-#include <algorithm>
-#include <functional>
-
+#include <map>
 
 using namespace std;
 

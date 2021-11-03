@@ -12,12 +12,14 @@ Button::Button(sf::RenderWindow& window, vector<float> sizes) : OBJ(window)
 	setSprite1();
 	setScale(2);
 
+	setIndentText(sizes[6] * 2);
 	setTextSettings();
 }
 
-Button::Button(sf::RenderWindow& window) : OBJ(window)
+Button::Button(sf::RenderWindow& window) : Button(window,
+	{17, 49, 17, 17, 250, 50, 5, 5, 5})
 {
-	x1 = 17,  y1 = 49;
+	/*x1 = 17,  y1 = 49;
 	x2 = 17,  y2 = 17;
 	dx = 250, dy = 50;
 	renderTex.clear(sf::Color(0, 0, 0, 0));
@@ -28,7 +30,13 @@ Button::Button(sf::RenderWindow& window) : OBJ(window)
 	setSprite1();
 	setScale(2);
 
-	setTextSettings();
+	setTextSettings();*/
+}
+
+void Button::setPosition(float x, float y) {
+	btn.setPosition(sf::Vector2f(x, y));
+	text.setPosition(btn.getPosition() +
+	sf::Vector2f(indent, indent / 1.3));
 }
 
 void Button::setString(string str)
@@ -36,6 +44,11 @@ void Button::setString(string str)
 	this->str = str;
 	text.setString(str);
 	
+}
+
+void Button::setIndentText(int ind)
+{
+	indent = ind * btn.getScale().x;
 }
 
 void Button::checkActive(const sf::Vector2i& msCord)
@@ -80,5 +93,8 @@ void Button::setTextSettings()
 	text.setFont(font);
 	text.setCharacterSize(24);
 	text.setFillColor(sf::Color::Black);
+	text.setPosition(btn.getPosition() +
+		sf::Vector2f(indent, indent / 1.3));
+
 	setString("Тестовый запуск\ntest run");
 }
