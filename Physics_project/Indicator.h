@@ -29,8 +29,8 @@ private:
 	bool active = false;
 
 	// координаты текстуры на исходном изображении
-	float x1 = 17, x2 = 49;
-	float y1 = 17, y2 = 17;
+	float x1 = 1, x2 = 1;
+	float y1 = 33, y2 = 1;
 	int dx = 15, dy = 15;
 
 	sf::Sprite ind;

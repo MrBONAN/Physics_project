@@ -48,7 +48,7 @@ private:
 	// координаты текстуры на исходном изображении
 	float x1 = 0, x2 = 0;
 	float y1 = 0, y2 = 0;
-	int dx = 70, dy = 15;
+	int dx = 0, dy = 0;
 
 	sf::Sprite btn;
 };
