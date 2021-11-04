@@ -10,7 +10,7 @@ public:
     void checkALlInteraction(const sf::Event& event) override;
     
     void show();
-
+    int selNumber = -1;
     ~Test();
 private:
     void checkAllActive(const sf::Vector2i& msCord) override;
@@ -20,7 +20,7 @@ private:
     
     vector<Button*> btns;
     vector<Indicator*> indicators;
-    int selNumber = -1;
+    
 
     sf::Vector2i pastMsCord;
 };

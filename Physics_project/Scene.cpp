@@ -47,33 +47,6 @@ Scene::Scene(sf::RenderWindow& window):
 	enSymbKey.emplace(150, '>');
 	enSymbKey.emplace(152, '?');
 
-	//enNumKey.emplace(0, 'a');	// A Ô
-	//enNumKey.emplace(1, 'b');		// B È
-	//enNumKey.emplace(2, 'c');	// C Ñ
-	//enNumKey.emplace(3, 'd');	// D Â
-	//enNumKey.emplace(4, 'e');	// E Ó
-	//enNumKey.emplace(5, 'f');		// F À
-	//enNumKey.emplace(6, 'g');	// G Ï
-	//enNumKey.emplace(7, 'h');	// H Ð
-	//enNumKey.emplace(8, 'i');	// I Ø
-	//enNumKey.emplace(9, 'j');	// J Î
-	//enNumKey.emplace(10, 'k');	// K Ë
-	//enNumKey.emplace(11, 'l');	// L Ä
-	//enNumKey.emplace(12, 'm');	// M Ü
-	//enNumKey.emplace(13, 'n');	// N Ò
-	//enNumKey.emplace(14, 'o');	// O Ù
-	//enNumKey.emplace(15, 'p');	// P Ç
-	//enNumKey.emplace(16, 'q');	// Q É
-	//enNumKey.emplace(17, 'r');	// R Ê
-	//enNumKey.emplace(18, 's');	// S Û
-	//enNumKey.emplace(19, 't');	// T Å
-	//enNumKey.emplace(20, 'u');	// U Ã
-	//enNumKey.emplace(21, 'v');	// V Ì
-	//enNumKey.emplace(22, 'w');	// W Ö
-	//enNumKey.emplace(23, 'x');	// X ×
-	//enNumKey.emplace(24, 'y');	// Y Í
-	//enNumKey.emplace(25, 'z');	// Z ß
-
 	ruKey.emplace(0, 'ô' + 256);
 	ruKey.emplace(1, 'è' + 256);
 	ruKey.emplace(2, 'ñ' + 256);

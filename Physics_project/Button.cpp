@@ -1,6 +1,6 @@
 #include "Button.h"
 Button::Button(sf::RenderWindow& window, vector<float> sizes) : OBJ(window),
-ind(window, { 1, 1, sizes[2], sizes[3], sizes[4]+5, sizes[5]+5, 
+ind(window, { 129, 65, sizes[2], sizes[3], sizes[4]+5, sizes[5]+5, 
 	sizes[6], sizes[7], sizes[8], })
 {
 	x1 = sizes[0], y1 = sizes[1];
@@ -60,7 +60,7 @@ void Button::checkActive(const sf::Vector2i& msCord)
 
 void Button::checkFocus(const sf::Vector2i& msCord)
 {
-	if (/*mouseJustPressed || */active && btn.getGlobalBounds().contains(msCord.x, msCord.y)) {
+	if (active && btn.getGlobalBounds().contains(msCord.x, msCord.y)) {
 		if (isAlreadyUpdate) return;
 		isAlreadyUpdate = true;
 		active = true;
