@@ -1,4 +1,5 @@
 #include "Scene.h"
+bool Scene::teacherMode = true;
 
 Scene::Scene(sf::RenderWindow& window):
 	window(window),
@@ -73,38 +74,38 @@ Scene::Scene(sf::RenderWindow& window):
 	//enNumKey.emplace(24, 'y');	// Y Í
 	//enNumKey.emplace(25, 'z');	// Z ß
 
-	ruKey.emplace(0, 'ô');
-	ruKey.emplace(1, 'è');
-	ruKey.emplace(2, 'ñ');
-	ruKey.emplace(3, 'â');
-	ruKey.emplace(4, 'ó');
-	ruKey.emplace(5, 'à');
-	ruKey.emplace(6, 'ï');
-	ruKey.emplace(7, 'ð');
-	ruKey.emplace(8, 'ø');
-	ruKey.emplace(9, 'î');
-	ruKey.emplace(10, 'ë');
-	ruKey.emplace(11, 'ä');
-	ruKey.emplace(12, 'ü');
-	ruKey.emplace(13, 'ò');
-	ruKey.emplace(14, 'ù');
-	ruKey.emplace(15, 'ç');
-	ruKey.emplace(16, 'é');
-	ruKey.emplace(17, 'ê');
-	ruKey.emplace(18, 'û');
-	ruKey.emplace(19, 'å');
-	ruKey.emplace(20, 'ã');
-	ruKey.emplace(21, 'ì');
-	ruKey.emplace(22, 'ö');
-	ruKey.emplace(23, '÷');
-	ruKey.emplace(24, 'í');
-	ruKey.emplace(25, 'ÿ');
-	ruKey.emplace(46, 'õ');
-	ruKey.emplace(47, 'ú');
-	ruKey.emplace(48, 'æ');
-	ruKey.emplace(51, 'ý');
-	ruKey.emplace(49, 'á');
-	ruKey.emplace(50, 'þ');
+	ruKey.emplace(0, 'ô' + 256);
+	ruKey.emplace(1, 'è' + 256);
+	ruKey.emplace(2, 'ñ' + 256);
+	ruKey.emplace(3, 'â' + 256);
+	ruKey.emplace(4, 'ó' + 256);
+	ruKey.emplace(5, 'à' + 256);
+	ruKey.emplace(6, 'ï' + 256);
+	ruKey.emplace(7, 'ð' + 256);
+	ruKey.emplace(8, 'ø' + 256);
+	ruKey.emplace(9, 'î' + 256);
+	ruKey.emplace(10, 'ë' + 256);
+	ruKey.emplace(11, 'ä' + 256);
+	ruKey.emplace(12, 'ü' + 256);
+	ruKey.emplace(13, 'ò' + 256);
+	ruKey.emplace(14, 'ù' + 256);
+	ruKey.emplace(15, 'ç' + 256);
+	ruKey.emplace(16, 'é' + 256);
+	ruKey.emplace(17, 'ê' + 256);
+	ruKey.emplace(18, 'û' + 256);
+	ruKey.emplace(19, 'å' + 256);
+	ruKey.emplace(20, 'ã' + 256);
+	ruKey.emplace(21, 'ì' + 256);
+	ruKey.emplace(22, 'ö' + 256);
+	ruKey.emplace(23, '÷' + 256);
+	ruKey.emplace(24, 'í' + 256);
+	ruKey.emplace(25, 'ÿ' + 256);
+	ruKey.emplace(46, 'õ' + 256);
+	ruKey.emplace(47, 'ú' + 256);
+	ruKey.emplace(48, 'æ' + 256);
+	ruKey.emplace(51, 'ý' + 256);
+	ruKey.emplace(49, 'á' + 256);
+	ruKey.emplace(50, 'þ' + 256);
 
 	for (int i = 0; i < 10; i++)
 	{
@@ -120,16 +121,17 @@ Scene::Scene(sf::RenderWindow& window):
 	ruSymbKey.emplace(133, '?');
 	ruSymbKey.emplace(134, '*');
 	ruSymbKey.emplace(135, '(');
-
+	
 
 	ruSymbKey.emplace(56, '-');
 	ruSymbKey.emplace(55, '=');
-	ruSymbKey.emplace(52,'.');
+	ruSymbKey.emplace(53, '\\');
+	ruSymbKey.emplace(52, '.');
 
 	ruSymbKey.emplace(156, '_');
 	ruSymbKey.emplace(155, '+');
-	ruSymbKey.emplace(152,',');
-
+	ruSymbKey.emplace(153, '/');
+	ruSymbKey.emplace(152, ',');
 
 	specChar.emplace(57, ' ');
 	specChar.emplace(58, '\n');
@@ -142,7 +144,7 @@ Scene::Scene(sf::RenderWindow& window):
 void Scene::setText(Button& btn, const sf::Event& event)
 {
 	if (event.type == sf::Event::KeyPressed) {
-		//cout << event.key.code << endl;
+		cout << event.key.code << endl;
 		int code = int(GetKeyboardLayout(GetWindowThreadProcessId(GetForegroundWindow(), NULL)));
 		int key = event.key.code;
 		int comand;
@@ -154,6 +156,7 @@ void Scene::setText(Button& btn, const sf::Event& event)
 			comand = selSymbol(key, ruKey, ruSymbKey);
 		}
 		if (comand == char(0)) return;
+		if (key == 25) cout << comand << endl;
 		switch (comand)
 		{
 		case -1:

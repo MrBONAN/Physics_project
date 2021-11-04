@@ -17,11 +17,13 @@ protected:
 	virtual void checkAllActive(const sf::Vector2i& msCord) = 0;
 	virtual void checkAllFocus(const sf::Vector2i& msCord, bool first = false)  = 0;
 	virtual void checkAllEvents(const sf::Vector2i& msCord) = 0;
+	
 
 	sf::RenderWindow& window;
 	Button exerciseRect;
 
-	bool teacherMode = true;
+	static bool teacherMode;
+
 	int enCode = 67699721;
 	int ruCode = 68748313;
 	map<int, int> enKey;

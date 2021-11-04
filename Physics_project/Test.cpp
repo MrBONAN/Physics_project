@@ -10,22 +10,10 @@ Test::Test(sf::RenderWindow& window) : Scene(window)
 	btns[1]->setPosition(535, 400);
 	btns[2]->setPosition(10, 525);
 	btns[3]->setPosition(535, 525);
-
-	for (int i = 0; i < 4; ++i)
-		indicators.push_back(new Indicator(window,
-			{ 1, 1, 17, 17, 255, 55, 5, 5, 5 }));
-	/*(508, 412)(508, 454)(508, 537)(508, 579);*/
-	
-	indicators[0]->setPosition(5, 395);
-	indicators[1]->setPosition(529, 395);
-	indicators[2]->setPosition(5, 520);
-	indicators[3]->setPosition(529, 520);
 }
 
 void Test::show()
 {
-	for (auto& it : indicators)
-		it->show();
 	for (auto& it : btns)
 		it->show();
 	exerciseRect.show();
@@ -33,10 +21,8 @@ void Test::show()
 
 Test::~Test()
 {
-	for (auto& it : btns)
-		delete it;
-	for (auto& it : indicators)
-		delete it;
+	for (int i = 0; i < btns.size()-1; i++)
+		delete btns[i];
 }
 
 void Test::checkALlInteraction(const sf::Event& event)
@@ -55,18 +41,23 @@ void Test::checkALlInteraction(const sf::Event& event)
 		checkAllEvents(sf::Mouse::getPosition(window));
 	}
 	// включен режим учител
-	if (teacherMode && selNumber != -1){
-		setText(*btns[selNumber], event);
+	if (teacherMode){
+		if (selNumber == 4) {
+			setText(exerciseRect, event) ;
+		} else if (selNumber != -1) {
+			setText(*btns[selNumber], event);
+		}
 	}
 }
 
 void Test::checkAllActive(const sf::Vector2i& msCord)
 {
-	for (auto it : btns)
+	for (int i = 0; i < btns.size() - 1; i++)
 	{
-		it->checkActive(msCord);
+		btns[i]->checkActive(msCord);
 	}
-	exerciseRect.checkActive(msCord);
+	if(teacherMode)
+		exerciseRect.checkActive(msCord);
 }
 
 void Test::checkAllFocus(const sf::Vector2i& msCord, bool first)
@@ -75,35 +66,44 @@ void Test::checkAllFocus(const sf::Vector2i& msCord, bool first)
 	{
 		//cout << "CHECKFOCUS" << endl;
 		pastMsCord = msCord;
-		for (auto& it : btns)
+		for (int i = 0; i < btns.size() - 1; i++)
 		{
-			it->checkFocus(msCord);
+			btns[i]->checkFocus(msCord);
 		}
-		exerciseRect.checkFocus(msCord);
+		if(teacherMode)
+			exerciseRect.checkFocus(msCord);
+	}
+}
+
+void Test::checkIndicator(const sf::Vector2i& msCord, vector<Button*>& btns,  int i)
+{
+	if (btns[i]->Event(msCord)) {
+		if (i == selNumber) { // нажали на ту же кнопку
+			btns[i]->ind.off();
+			selNumber = -1;
+		}
+		else { // нажали на новую кнопку
+			if (selNumber == -1) { // если ещё не нажали на какую-либо кнопку
+				btns[i]->ind.on();
+				selNumber = i;
+			}
+			else { // если была выбрана другая кнопка
+				btns[selNumber]->ind.off();
+				btns[i]->ind.on();
+				selNumber = i;
+			}
+		}
 	}
 }
 
 void Test::checkAllEvents(const sf::Vector2i& msCord)
 {
-	for (int i = 0; i < btns.size(); ++i)
+	for (int i = 0; i < btns.size() - 1; ++i)
 	{
-		if (btns[i]->Event(msCord)) {
-			if (i == selNumber){ // нажали на ту же кнопку
-				indicators[i]->off();
-				selNumber = -1;
-			}
-			else { // нажали на новую кнопку
-				if (selNumber == -1){ // если ещё не нажали на какую-либо кнопку
-					indicators[i]->on();
-					selNumber = i;
-				}
-				else { // если была выбрана другая кнопка
-					indicators[selNumber]->off();
-					indicators[i]->on();
-					selNumber = i;
-				}
-			}
-		}
+		checkIndicator(msCord, btns, i);
 	}
-	exerciseRect.Event(msCord);
+	if (teacherMode)
+	{
+		checkIndicator(msCord, btns, 4);
+	}
 }

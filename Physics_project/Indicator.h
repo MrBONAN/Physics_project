@@ -6,7 +6,7 @@ class Indicator :
 {
 public:
 	Indicator(sf::RenderWindow& window, vector<float> sizes);
-	Indicator(sf::RenderWindow& window);
+	//Indicator(sf::RenderWindow& window);
 
 	void setPosition(float x, float y) override { ind.setPosition(sf::Vector2f(x, y)); }
 	void setScale(float d) override { ind.setScale(d, d); }

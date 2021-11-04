@@ -1,5 +1,7 @@
 #include "Button.h"
-Button::Button(sf::RenderWindow& window, vector<float> sizes) : OBJ(window)
+Button::Button(sf::RenderWindow& window, vector<float> sizes) : OBJ(window),
+ind(window, { 1, 1, sizes[2], sizes[3], sizes[4]+5, sizes[5]+5, 
+	sizes[6], sizes[7], sizes[8], })
 {
 	x1 = sizes[0], y1 = sizes[1];
 	x2 = sizes[2], y2 = sizes[3];
@@ -12,29 +14,18 @@ Button::Button(sf::RenderWindow& window, vector<float> sizes) : OBJ(window)
 	setSprite1();
 	setScale(2);
 
-	setIndentText(sizes[6] * 2);
+	setIndentText(sizes[6] / 2);
 	setTextSettings();
 }
 
 Button::Button(sf::RenderWindow& window) : Button(window,
 	{17, 49, 17, 17, 250, 50, 5, 5, 5})
 {
-	/*x1 = 17,  y1 = 49;
-	x2 = 17,  y2 = 17;
-	dx = 250, dy = 50;
-	renderTex.clear(sf::Color(0, 0, 0, 0));
-	makeTexture(0, dx, dy, renderTex, defTexture, { x1, y1, 5, 5, 5 });
-	makeTexture(dy, dx, dy, renderTex, defTexture, {x2, y2, 4, 7, 7 });
-	texture = renderTex.getTexture();
-	btn.setTexture(texture);
-	setSprite1();
-	setScale(2);
-
-	setTextSettings();*/
 }
 
 void Button::setPosition(float x, float y) {
 	btn.setPosition(sf::Vector2f(x, y));
+	ind.setPosition(x-5, y-5);
 	text.setPosition(btn.getPosition() +
 	sf::Vector2f(indent, indent / 1.3));
 }
@@ -97,6 +88,13 @@ bool Button::Event(const sf::Vector2i& msCord)
 	return false;
 }
 
+void Button::show()
+{
+	ind.show();
+	window.draw(btn);
+	window.draw(text);
+}
+
 void Button::setTextSettings()
 {
 	font.loadFromFile("pragmatica.ttf");
@@ -104,6 +102,6 @@ void Button::setTextSettings()
 	text.setCharacterSize(24);
 	text.setFillColor(sf::Color::Black);
 	text.setPosition(btn.getPosition() +
-		sf::Vector2f(indent, indent / 1.3));
+		sf::Vector2f(indent, indent));
 	text.setString(str);
 }

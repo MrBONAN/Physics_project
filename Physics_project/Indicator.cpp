@@ -13,17 +13,17 @@ Indicator::Indicator(sf::RenderWindow& window, vector<float> sizes) : OBJ(window
 	off();
 	setScale(2);
 }
-
-Indicator::Indicator(sf::RenderWindow& window) : OBJ(window)
-{
-	x1 = 17, y1 = 49;
-	x2 = 17, y2 = 17;
-	dx = 250, dy = 50;
-	renderTex.clear(sf::Color(0, 0, 0, 0));
-	makeTexture(0, dx, dy, renderTex, defTexture, { x1, y1, 5, 5, 5 });
-	makeTexture(dy, dx, dy, renderTex, defTexture, { x2, y2, 4, 7, 7 });
-	texture = renderTex.getTexture();
-	ind.setTexture(texture);
-	off();
-	setScale(2);
-}
+//
+//Indicator::Indicator(sf::RenderWindow& window) : OBJ(window)
+//{
+//	x1 = 17, y1 = 49;
+//	x2 = 17, y2 = 17;
+//	dx = 250, dy = 50;
+//	renderTex.clear(sf::Color(0, 0, 0, 0));
+//	makeTexture(0, dx, dy, renderTex, defTexture, { x1, y1, 5, 5, 5 });
+//	makeTexture(dy, dx, dy, renderTex, defTexture, { x2, y2, 4, 7, 7 });
+//	texture = renderTex.getTexture();
+//	ind.setTexture(texture);
+//	off();
+//	setScale(2);
+//}

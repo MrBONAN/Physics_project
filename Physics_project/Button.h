@@ -1,6 +1,7 @@
 #ifndef _BUTTON_H_
 #define _BUTTON_H_
 #include "OBJ.h"
+#include "Indicator.h"
 class Button : public OBJ
 {
 public:
@@ -20,12 +21,14 @@ public:
 	void deleteChar(int id);
 	int  getStrSize() { return str.size(); }
 	void setIndentText(int ind);
+	
+	Indicator ind;
 
 	void checkActive(const sf::Vector2i& msCord) override;
 	void checkFocus(const sf::Vector2i& msCord) override;
 	bool Event(const sf::Vector2i& msCord) override;
 
-	void show() { window.draw(btn); window.draw(text); }
+	void show();
 private:
 	// текст и его настройки
 	void updateText() { text.setString(str); }
