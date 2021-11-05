@@ -1,27 +1,25 @@
-#ifndef _TEST_H_
-#define _TEST_H_
+#pragma once
 #include "Scene.h"
-class Test :
+#include "Test.h"
+class AddScene :
     public Scene
 {
 public:
-    Test(sf::RenderWindow& window);
+    AddScene(sf::RenderWindow& window, vector<Scene*>& allScene);
 
     void checkAllInteraction(const sf::Event& event) override;
-    
+
     void show() override;
-    int selNumber = -1;
-    ~Test();
 private:
     void checkAllActive(const sf::Vector2i& msCord) override;
     void checkAllFocus(const sf::Vector2i& msCord, bool first = false)  override;
     void checkAllEvents(const sf::Vector2i& msCord) override;
-    void checkIndicator(const sf::Vector2i& msCord, vector<Button*>& btns, int i);
     
-    vector<Button*> btns;
-    vector<Indicator*> indicators;
-    
-
     sf::Vector2i pastMsCord;
+
+    Button info;
+
+    vector<Button*> btns;
+    vector<Scene*>& allScene;
 };
-#endif
+

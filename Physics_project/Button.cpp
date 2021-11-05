@@ -19,7 +19,7 @@ ind(window, { 129, 65, sizes[2], sizes[3], sizes[4]+5, sizes[5]+5,
 }
 
 Button::Button(sf::RenderWindow& window) : Button(window,
-	{65, 1, 33, 1, 250, 50, 5, 5, 5})
+	{49, 1, 17, 1, 250, 50, 5, 5, 5}) // настройка кнопки по умолчанию
 {
 }
 

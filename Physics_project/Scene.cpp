@@ -3,7 +3,7 @@ bool Scene::teacherMode = true;
 
 Scene::Scene(sf::RenderWindow& window):
 	window(window),
-	exerciseRect(window, {65, 1, 33, 1, 512, 190, 5, 5, 5 })
+	exerciseRect(window, {145, 1, 145, 17, 512, 190, 5, 5, 5 })
 {
 	for (int i = 0; i < 26; i++)
 	{

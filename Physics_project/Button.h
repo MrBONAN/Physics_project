@@ -19,6 +19,7 @@ public:
 
 	void addChar(char c, int id);
 	void deleteChar(int id);
+	void setStr(string str) { this->str = str; updateText(); }
 	int  getStrSize() { return str.size(); }
 	void setIndentText(int ind);
 	

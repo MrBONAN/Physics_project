@@ -13,6 +13,8 @@
 #include "Button.h"
 #include "Test.h"
 
+#include "AddScene.h"
+
 using namespace std;
 
 using std::cout;

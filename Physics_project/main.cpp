@@ -8,14 +8,15 @@ int main ()
     string path = "Icons_2.png";
     OBJ::Init(path);
 
-    vector<Test*> tests;
-    for (int i = 0; i < 10; i++)
+    vector<Scene*> tests;
+    for (int i = 0; i < 0; i++)
     {
         tests.push_back(new Test(window));
     }
+    tests.push_back(new AddScene(window, tests));
     int id = 0;
     
-    Button left(window, { 81,33, 113,33, 31, 31, 0, 31, 31 });
+    Button left(window, {81, 33, 113,33, 31, 31, 0, 31, 31 }); 
     Button right(window, {81, 1, 113, 1, 31, 31, 0, 31, 31});
     right.ind.off();
     left.setPosition(10,630);
@@ -45,7 +46,7 @@ int main ()
                 if (right.Event(sf::Mouse::getPosition(window))) id = min(int(tests.size()) - 1, id + 1);
                 
             }
-            tests[id]->checkALlInteraction(event);
+            tests[id]->checkAllInteraction(event);
         }
 
         window.clear(sf::Color(200, 200, 200, 255));

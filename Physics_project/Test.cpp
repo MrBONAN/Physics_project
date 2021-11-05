@@ -25,7 +25,7 @@ Test::~Test()
 		delete btns[i];
 }
 
-void Test::checkALlInteraction(const sf::Event& event)
+void Test::checkAllInteraction(const sf::Event& event)
 {
 	//кнопка только что нажата
 	if (event.type == sf::Event::MouseButtonPressed) {
@@ -53,9 +53,7 @@ void Test::checkALlInteraction(const sf::Event& event)
 void Test::checkAllActive(const sf::Vector2i& msCord)
 {
 	for (int i = 0; i < btns.size() - 1; i++)
-	{
 		btns[i]->checkActive(msCord);
-	}
 	if(teacherMode)
 		exerciseRect.checkActive(msCord);
 }
