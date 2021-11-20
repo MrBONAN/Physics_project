@@ -16,38 +16,12 @@ void Test::show()
 {
 	for (auto& it : btns)
 		it->show();
-	exerciseRect.show();
 }
 
 Test::~Test()
 {
 	for (int i = 0; i < btns.size()-1; i++)
 		delete btns[i];
-}
-
-void Test::checkAllInteraction(const sf::Event& event)
-{
-	//кнопка только что нажата
-	if (event.type == sf::Event::MouseButtonPressed) {
-		checkAllActive(sf::Mouse::getPosition(window));
-		checkAllFocus(sf::Mouse::getPosition(window), true);
-	}
-	//кнока нажата в данный момент
-	if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)) {
-		checkAllFocus(sf::Mouse::getPosition(window));
-	}
-	//кнопка была отпущена
-	if (event.type == sf::Event::MouseButtonReleased) {
-		checkAllEvents(sf::Mouse::getPosition(window));
-	}
-	// включен режим учител
-	if (teacherMode){
-		if (selNumber == 4) {
-			setText(exerciseRect, event) ;
-		} else if (selNumber != -1) {
-			setText(*btns[selNumber], event);
-		}
-	}
 }
 
 void Test::checkAllActive(const sf::Vector2i& msCord)
@@ -105,3 +79,16 @@ void Test::checkAllEvents(const sf::Vector2i& msCord)
 		checkIndicator(msCord, btns, 4);
 	}
 }
+
+void Test::setAllText(const sf::Event& event)
+{
+	if (teacherMode) {
+		if (selNumber == 4) {
+			setText(exerciseRect, event);
+		}
+		else if (selNumber != -1) {
+			setText(*btns[selNumber], event);
+		}
+	}
+}
+

@@ -166,6 +166,9 @@
     <ClCompile Include="Test.cpp">
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MultiThreaded</RuntimeLibrary>
     </ClCompile>
+    <ClCompile Include="writeAns.cpp">
+      <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MultiThreaded</RuntimeLibrary>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AddScene.h" />
@@ -175,6 +178,7 @@
     <ClInclude Include="OBJ.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="Test.h" />
+    <ClInclude Include="writeAns.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

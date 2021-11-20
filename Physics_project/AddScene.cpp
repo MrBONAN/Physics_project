@@ -15,23 +15,6 @@ info(window, { 145, 1, 145, 17, 145, 20, 5, 5, 5 })
 	btns[2]->setStr("с сопоставлением вариантов");
 }
 
-void AddScene::checkAllInteraction(const sf::Event& event)
-{
-	//кнопка только что нажата
-	if (event.type == sf::Event::MouseButtonPressed) {
-		checkAllActive(sf::Mouse::getPosition(window));
-		checkAllFocus(sf::Mouse::getPosition(window), true);
-	}
-	//кнока нажата в данный момент
-	if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)) {
-		checkAllFocus(sf::Mouse::getPosition(window));
-	}
-	//кнопка была отпущена
-	if (event.type == sf::Event::MouseButtonReleased) {
-		checkAllEvents(sf::Mouse::getPosition(window));
-	}
-}
-
 void AddScene::show()
 {
 	info.show();
@@ -60,7 +43,7 @@ void AddScene::checkAllEvents(const sf::Vector2i& msCord)
 	auto it = allScene.begin();
 	advance(it, allScene.size() - 1);
 	if (btns[0]->Event(msCord)) allScene.insert(it, new Test(window));
-	if (btns[1]->Event(msCord));//allScene.insert(it, new Test(window));
+	if (btns[1]->Event(msCord)) allScene.insert(it, new writeAns(window));
 	if (btns[2]->Event(msCord));//allScene.insert(it, new Test(window));
 
 }

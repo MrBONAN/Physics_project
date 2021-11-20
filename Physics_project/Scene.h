@@ -12,13 +12,14 @@ public:
 
 	void setText(Button& btn, const sf::Event& event);
 
-	virtual void checkAllInteraction(const sf::Event& event) = 0;
+	void checkAllInteraction(const sf::Event& event);
 	
 	virtual void show() = 0;
 protected:
 	virtual void checkAllActive(const sf::Vector2i& msCord) = 0;
 	virtual void checkAllFocus(const sf::Vector2i& msCord, bool first = false)  = 0;
 	virtual void checkAllEvents(const sf::Vector2i& msCord) = 0;
+	virtual void setAllText(const sf::Event& event) = 0;
 	
 
 	sf::RenderWindow& window;

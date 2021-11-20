@@ -63,7 +63,7 @@ void Button::checkFocus(const sf::Vector2i& msCord)
 	if (active && btn.getGlobalBounds().contains(msCord.x, msCord.y)) {
 		if (isAlreadyUpdate) return;
 		isAlreadyUpdate = true;
-		active = true;
+		//active = true;
 		setSprite2();
 	}
 	else if (active)
