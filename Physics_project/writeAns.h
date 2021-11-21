@@ -1,5 +1,5 @@
 #ifndef _WRITE_ANS_H_
-#define _WIRTE_ANS_H_
+#define _WRITE_ANS_H_
 #include "Scene.h"
 class writeAns :
     public Scene
