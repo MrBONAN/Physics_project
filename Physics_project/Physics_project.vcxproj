@@ -151,6 +151,9 @@
     <ClCompile Include="Indicator.cpp">
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MultiThreaded</RuntimeLibrary>
     </ClCompile>
+    <ClCompile Include="Interface.cpp">
+      <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MultiThreaded</RuntimeLibrary>
+    </ClCompile>
     <ClCompile Include="main.cpp">
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MultiThreaded</RuntimeLibrary>
     </ClCompile>
@@ -175,6 +178,7 @@
     <ClInclude Include="Button.h" />
     <ClInclude Include="Headers.h" />
     <ClInclude Include="Indicator.h" />
+    <ClInclude Include="Interface.h" />
     <ClInclude Include="OBJ.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="Test.h" />

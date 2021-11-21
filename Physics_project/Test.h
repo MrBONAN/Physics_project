@@ -16,10 +16,6 @@ private:
     void checkAllEvents(const sf::Vector2i& msCord) override;
     void setAllText(const sf::Event& event) override;
     void checkIndicator(const sf::Vector2i& msCord, vector<Button*>& btns, int i);
-    
-    vector<Button*> btns;
-    
 
-    sf::Vector2i pastMsCord;
 };
 #endif

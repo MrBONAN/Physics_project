@@ -27,6 +27,9 @@ protected:
 
 	static bool teacherMode;
 
+	sf::Vector2i pastMsCord;
+	vector<Button*> btns;
+
 	int enCode = 67699721;
 	int ruCode = 68748313;
 	map<int, int> enKey;

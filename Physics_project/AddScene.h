@@ -3,6 +3,7 @@
 #include "Scene.h"
 #include "Test.h"
 #include "writeAns.h"
+//#include "Interface.h"
 class AddScene :
     public Scene
 {
@@ -15,12 +16,9 @@ private:
     void checkAllFocus(const sf::Vector2i& msCord, bool first = false)  override;
     void checkAllEvents(const sf::Vector2i& msCord) override;
     void setAllText(const sf::Event& event) override {}
-    
-    sf::Vector2i pastMsCord;
 
     Button info;
 
-    vector<Button*> btns;
     vector<Scene*>& allScene;
 };
 #endif

@@ -1,5 +1,5 @@
 #ifndef _WRITE_ANS_H_
-#define _WIRTE_AND_H_
+#define _WIRTE_ANS_H_
 #include "Scene.h"
 class writeAns :
     public Scene
@@ -17,9 +17,7 @@ private:
     void setAllText(const sf::Event& event) override;
     void checkIndicator(const sf::Vector2i& msCord, vector<Button*>& btns, int i);
 
-    vector<Button*> btns;
     Button answerBox;
 
-    sf::Vector2i pastMsCord;
 };
 #endif
