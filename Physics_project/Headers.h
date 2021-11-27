@@ -3,26 +3,24 @@
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <windows.h>
 #include <string>
 #include <vector>
-#include <thread>
-#include <algorithm>
-#include <functional>
+
+#include <boost/archive/text_oarchive.hpp>
+#include <boost/archive/text_iarchive.hpp>
+#include <boost/serialization/vector.hpp>
+#include <iomanip>
 
 #include "OBJ.h"
 #include "Button.h"
 #include "Test.h"
 #include "writeAns.h"
 #include "Interface.h"
-
+#include "Indicator.h"
 #include "AddScene.h"
+#include "Scene.h"
 
 using namespace std;
-
-using std::cout;
-using std::cin;
-using std::endl;
-
-void makeTexture(float Y, float dx, float dy, sf::RenderTexture& renderTexture, sf::Texture texture, vector<float> sizes);
 
 #endif

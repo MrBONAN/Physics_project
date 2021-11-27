@@ -2,9 +2,18 @@
 #define _BUTTON_H_
 #include "OBJ.h"
 #include "Indicator.h"
+//#include "Headers.h"
+
+void makeTexture(float Y, float dx, float dy, sf::RenderTexture& renderTexture, sf::Texture texture, vector<float> sizes);
+
 class Button : public OBJ
 {
 public:
+	/*friend class boost::serialization::access;
+	template <class Archive> void serialize(Archive& ar, unsigned) {
+		ar& itemID& itemCount;
+	}*/
+
 	Button(sf::RenderWindow& window, vector<float> sizes);
 	Button(sf::RenderWindow& window);
 
@@ -22,8 +31,8 @@ public:
 	void setStr(string str) { this->str = str; updateText(); }
 	int  getStrSize() { return str.size(); }
 	void setIndentText(int ind);
-	
-	Indicator ind;
+
+	Indicator ind;	// индикатор кнопки
 
 	void checkActive(const sf::Vector2i& msCord) override;
 	void checkFocus(const sf::Vector2i& msCord) override;
@@ -33,14 +42,15 @@ public:
 private:
 	// текст и его настройки
 	void updateText() { text.setString(str); }
+	void setTextSettings();
+
 	int posCur = 0;
 	
-	string str;		// хранение строки
+	string str = "";// хранение строки
 	sf::Font font;	// хранение шрифта
 	sf::Text text;	// объект типа Text
-	int indent = 0;		// размеры отступа по краям
 
-	void setTextSettings();
+	int indent = 0;	// размеры отступа по краям
 
 	// визуальные эффекты нажатия
 	bool active = false;

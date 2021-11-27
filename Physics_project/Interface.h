@@ -1,6 +1,7 @@
 #ifndef _INTERFACE_H_
 #define _INTERFACE_H_
 #include "Scene.h"
+
 class Interface :
     public Scene
 {
