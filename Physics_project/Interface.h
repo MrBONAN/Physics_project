@@ -22,5 +22,7 @@ private:
 
     vector<Scene*> scenes;
     int id;
+
+    friend ostream& operator<<(ostream& os, Interface& obj);
 };
 #endif

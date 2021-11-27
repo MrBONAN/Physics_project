@@ -18,6 +18,7 @@ private:
     void checkIndicator(const sf::Vector2i& msCord, vector<Button*>& btns, int i);
 
     Button answerBox;
-
+    //friend ostream& operator<<(ostream& os, writeAns& obj);
 };
+
 #endif

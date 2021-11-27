@@ -1,6 +1,14 @@
 #include "Interface.h"
 #include "AddScene.h"
 
+ostream& operator<<(ostream& os, Interface& obj)
+{
+	os << obj.scenes.size() - 1 << endl;
+	for (int i = 0; i < obj.scenes.size()-1; i++)
+		os << obj.scenes[i];
+	return os;
+}
+
 Interface::Interface(sf::RenderWindow& window) : Scene(window),
 left(window, { 81, 33, 113,33, 31, 31, 0, 31, 31 }),
 right(window, { 81, 1, 113, 1, 31, 31, 0, 31, 31 }),

@@ -1,6 +1,5 @@
 #include "Headers.h"
 
-#include <sstream>
 int main ()
 {
     sf::RenderWindow window(sf::VideoMode(1050, 700), "SFML works!");
@@ -10,35 +9,7 @@ int main ()
     OBJ::Init(path);
 
     Interface intface(window);
-
-    //std::stringstream ss;
-    //{
-    //    boost::archive::text_oarchive oa(ss);
-    //
-    //    player to_save;
-    //    to_save.username = "bla";
-    //    to_save.password = "blo";
-    //    to_save.inv = {
-    //            { 1, 17 },
-    //            { 2, 11 },
-    //            { 3, 8800 },
-    //            { 4, 0 },
-    //    };
-    //
-    //    oa << to_save;
-    //} // <-- destructor of text_oarchive
-    //std::cout << "Serialized stream: " << std::quoted(ss.str()) << std::endl;
-    //player loaded;
-    //{
-    //    boost::archive::text_iarchive ia(ss);
-    //    ia >> loaded;
-    //}
-    //std::cout << "Roundtrip username:" << std::quoted(loaded.username)
-    //    << " password:" << std::quoted(loaded.password) << std::endl;
-    //for (auto& it : loaded.inv) {
-    //    std::cout << " - item " << it.itemID << " count:" << it.itemCount << std::endl;
-    //}
-
+    cout << intface;
     while (window.isOpen())
     {
         sf::Event event;
