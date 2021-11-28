@@ -17,5 +17,6 @@ private:
     void setAllText(const sf::Event& event) override;
     void checkIndicator(const sf::Vector2i& msCord, vector<Button*>& btns, int i);
 
+    string outInfo() override;
 };
 #endif

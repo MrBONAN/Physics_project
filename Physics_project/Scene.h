@@ -23,6 +23,7 @@ protected:
 	virtual void checkAllEvents(const sf::Vector2i& msCord) = 0;
 	virtual void setAllText(const sf::Event& event) = 0;
 	
+	virtual string outInfo() = 0;
 
 	sf::RenderWindow& window;
 	Button exerciseRect;
@@ -41,5 +42,7 @@ protected:
 	map<int, int> specChar;
 	int selSymbol( int key, const map<int, int>& langKey,
 				   const map<int, int>& langSymbKey);
+
+	friend ostream& operator<<(ostream& os, Scene& obj);
 };
 #endif

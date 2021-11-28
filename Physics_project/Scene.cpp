@@ -117,7 +117,7 @@ Scene::Scene(sf::RenderWindow& window):
 void Scene::setText(Button& btn, const sf::Event& event)
 {
 	if (event.type == sf::Event::KeyPressed) {
-		cout << event.key.code << endl;
+		//cout << event.key.code << endl;
 		int code = int(GetKeyboardLayout(GetWindowThreadProcessId(GetForegroundWindow(), NULL)));
 		int key = event.key.code;
 		int comand;
@@ -129,7 +129,7 @@ void Scene::setText(Button& btn, const sf::Event& event)
 			comand = selSymbol(key, ruKey, ruSymbKey);
 		}
 		if (comand == char(0)) return;
-		if (key == 25) cout << comand << endl;
+		//if (key == 25) cout << comand << endl;
 		switch (comand)
 		{
 		case -1:

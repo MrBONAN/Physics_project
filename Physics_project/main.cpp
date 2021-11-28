@@ -2,6 +2,8 @@
 
 int main ()
 {
+    setlocale(LC_ALL, "RUS");
+
     sf::RenderWindow window(sf::VideoMode(1050, 700), "SFML works!");
     window.setFramerateLimit(60);
 
@@ -9,7 +11,7 @@ int main ()
     OBJ::Init(path);
 
     Interface intface(window);
-    cout << intface;
+
     while (window.isOpen())
     {
         sf::Event event;
@@ -26,28 +28,13 @@ int main ()
         window.display();
     }
 
+    fstream fout;
+    string pathSave("work.txt");
+    fout.open(pathSave, fstream::out);
+    if(fout.is_open())
+        fout << intface;
+    else { cout << "ERROR" << endl; }
+    fout.close();
+
     return 0;
 }
-
-class PlayerInventory {
-    friend class boost::serialization::access;
-    template <class Archive> void serialize(Archive& ar, unsigned) {
-        ar& itemID& itemCount;
-    }
-
-public:
-    int itemID;
-    int itemCount;
-};
-
-class player {
-    friend class boost::serialization::access;
-    template <class Archive> void serialize(Archive& ar, unsigned) {
-        ar& username& password& inv;
-    }
-
-public:
-    std::string                  username;
-    std::string                  password;
-    std::vector<PlayerInventory> inv;
-};

@@ -76,3 +76,18 @@ void writeAns::checkIndicator(const sf::Vector2i& msCord, vector<Button*>& btns,
 	}
 }
 
+string writeAns::outInfo()
+{
+	string of = "1\n";
+	for (auto& it : btns)
+	{
+		string str = it->getStr();
+		for (auto& it : str)
+		{
+			if (it == '\n') it = '~';
+		}
+		of += str + '\n';
+	}
+	return of;
+}
+

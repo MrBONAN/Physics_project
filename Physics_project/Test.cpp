@@ -68,6 +68,22 @@ void Test::checkIndicator(const sf::Vector2i& msCord, vector<Button*>& btns,  in
 	}
 }
 
+string Test::outInfo()
+{
+	string of = "0\n";
+	for (auto& it : btns)
+	{
+		string str = it->getStr();
+		for (auto& it : str)
+		{
+			if (it == '\n') it = '~';
+		}
+		of += str + '\n';
+	}
+	of += to_string(selNumber) + '\n';
+	return of;
+}
+
 void Test::checkAllEvents(const sf::Vector2i& msCord)
 {
 	for (int i = 0; i < btns.size() - 1; ++i)

@@ -7,11 +7,6 @@
 #include <string>
 #include <vector>
 
-#include <boost/archive/text_oarchive.hpp>
-#include <boost/archive/text_iarchive.hpp>
-#include <boost/serialization/vector.hpp>
-#include <iomanip>
-
 #include "OBJ.h"
 #include "Button.h"
 #include "Test.h"
