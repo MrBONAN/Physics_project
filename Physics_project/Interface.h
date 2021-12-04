@@ -11,6 +11,9 @@ public:
     void checkAllInteractions(const sf::Event& event);
     void show() override;
 
+    bool saveInfo(string pathSave);
+    bool readInfo(string pathRead);
+
     ~Interface() { for (auto& it : scenes) delete it; }
 private:
     void checkAllActive(const sf::Vector2i& msCord) override;

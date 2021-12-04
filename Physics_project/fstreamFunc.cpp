@@ -31,6 +31,7 @@ istream& operator>>(istream& is, Interface& obj)
 	getline(is, temp);
 	int len = atoi(temp.c_str());
 	obj.scenes.clear();
+
 	for (int i = 0; i < len; i++)
 	{
 		getline(is, temp);

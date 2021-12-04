@@ -160,6 +160,9 @@
     <ClCompile Include="makeTexture.cpp">
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MultiThreaded</RuntimeLibrary>
     </ClCompile>
+    <ClCompile Include="Menu.cpp">
+      <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MultiThreaded</RuntimeLibrary>
+    </ClCompile>
     <ClCompile Include="OBJ.cpp">
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MultiThreaded</RuntimeLibrary>
     </ClCompile>
@@ -182,6 +185,7 @@
     <ClInclude Include="Headers.h" />
     <ClInclude Include="Indicator.h" />
     <ClInclude Include="Interface.h" />
+    <ClInclude Include="Menu.h" />
     <ClInclude Include="OBJ.h" />
     <ClInclude Include="fstreamFunc.h" />
     <ClInclude Include="Scene.h" />

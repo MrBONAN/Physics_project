@@ -1,5 +1,5 @@
 #include "Headers.h"
-//#define SAVE
+#define SAVE
 
 int main ()
 {
@@ -10,19 +10,14 @@ int main ()
 
     string path = "Icons_2.png";
 
-    string pathSave("work.txt");
-    fstream finout;
+    string pathSave("work.mfp");
 
     OBJ::Init(path);
 
     Interface intface(window);
 
 #ifndef SAVE
-    finout.open(pathSave, fstream::in);
-    if (finout.is_open())
-        finout >> intface;
-    else { cout << "ERROR" << endl; }
-    finout.close();
+    intface.readInfo(pathSave);
 #endif
 
     while (window.isOpen())
@@ -42,11 +37,7 @@ int main ()
     }
 
 #ifdef SAVE
-    finout.open(pathSave, fstream::out);
-    if(finout.is_open())
-        finout << intface;
-    else { cout << "ERROR" << endl; }
-    finout.close();
+    intface.saveInfo(pathSave);
 #endif
     return 0;
 }

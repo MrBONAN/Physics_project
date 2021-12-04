@@ -30,6 +30,37 @@ void Interface::show()
 	//if (teacherMode) close.show();
 }
 
+bool Interface::saveInfo(string pathSave) 
+{
+	fstream fout;
+	fout.open(pathSave, fstream::out);
+	if (fout.is_open())
+		fout << *this;
+	else {
+		cout << "ERROR" << endl;
+		fout.close();
+		return false;
+	}
+	fout.close();
+	return true;
+}
+
+bool Interface::readInfo(string pathRead)
+{
+	fstream fin;
+	fin.open(pathRead, fstream::in);
+	if (fin.is_open())
+		fin >> *this;
+	else {
+		cout << "ERROR" << endl;
+		fin.close();
+		return false;
+	}
+	fin.close();
+	return true;
+	
+}
+
 
 void Interface::checkAllActive(const sf::Vector2i& msCord)
 {
