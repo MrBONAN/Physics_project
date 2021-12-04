@@ -24,6 +24,8 @@ protected:
 	virtual void setAllText(const sf::Event& event) = 0;
 	
 	virtual string outInfo() = 0;
+	virtual void inpInfo(istream& is) = 0;
+	string answer;
 
 	sf::RenderWindow& window;
 	Button exerciseRect;
@@ -44,5 +46,6 @@ protected:
 				   const map<int, int>& langSymbKey);
 
 	friend ostream& operator<<(ostream& os, Scene& obj);
+	friend istream& operator>>(istream& is, Scene& obj);
 };
 #endif

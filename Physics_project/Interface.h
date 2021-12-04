@@ -17,13 +17,16 @@ private:
     void checkAllFocus(const sf::Vector2i& msCord, bool first = false)  override;
     void checkAllEvents(const sf::Vector2i& msCord) override;
     void setAllText(const sf::Event& event) override {}
+
     string outInfo() override { return string(); }
+    void inpInfo(istream& is) override {}
 
     Button left, right, close;
 
     vector<Scene*> scenes;
-    int id;
+    int id = 0;
 
     friend ostream& operator<<(ostream& os, Interface& obj);
+    friend istream& operator>>(istream& is, Interface& obj);
 };
 #endif

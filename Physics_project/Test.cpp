@@ -1,5 +1,37 @@
 #include "Test.h"
 
+string Test::outInfo()
+{
+	string of = "0\n";
+	for (auto& it : btns)
+	{
+		string str = it->getStr();
+		for (auto& it : str)
+		{
+			if (it == '\n') it = '~';
+		}
+		of += str + '\n';
+	}
+	of += to_string(selNumber) + '\n';
+	return of;
+}
+
+
+void Test::inpInfo(istream& is)
+{
+	for (auto& it : btns)
+	{
+		string str;
+		getline(is, str);
+		for (auto& it : str)
+		{
+			if (it == '~') it = '\n';
+		}
+		it->setStr(str);
+	}
+	getline(is, answer);
+}
+
 Test::Test(sf::RenderWindow& window) : Scene(window)
 {
 	for(int i = 0; i < 4; ++i)
@@ -66,22 +98,6 @@ void Test::checkIndicator(const sf::Vector2i& msCord, vector<Button*>& btns,  in
 			}
 		}
 	}
-}
-
-string Test::outInfo()
-{
-	string of = "0\n";
-	for (auto& it : btns)
-	{
-		string str = it->getStr();
-		for (auto& it : str)
-		{
-			if (it == '\n') it = '~';
-		}
-		of += str + '\n';
-	}
-	of += to_string(selNumber) + '\n';
-	return of;
 }
 
 void Test::checkAllEvents(const sf::Vector2i& msCord)

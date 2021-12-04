@@ -1,4 +1,5 @@
 #include "Headers.h"
+//#define SAVE
 
 int main ()
 {
@@ -8,9 +9,21 @@ int main ()
     window.setFramerateLimit(60);
 
     string path = "Icons_2.png";
+
+    string pathSave("work.txt");
+    fstream finout;
+
     OBJ::Init(path);
 
     Interface intface(window);
+
+#ifndef SAVE
+    finout.open(pathSave, fstream::in);
+    if (finout.is_open())
+        finout >> intface;
+    else { cout << "ERROR" << endl; }
+    finout.close();
+#endif
 
     while (window.isOpen())
     {
@@ -28,13 +41,12 @@ int main ()
         window.display();
     }
 
-    fstream fout;
-    string pathSave("work.txt");
-    fout.open(pathSave, fstream::out);
-    if(fout.is_open())
-        fout << intface;
+#ifdef SAVE
+    finout.open(pathSave, fstream::out);
+    if(finout.is_open())
+        finout << intface;
     else { cout << "ERROR" << endl; }
-    fout.close();
-
+    finout.close();
+#endif
     return 0;
 }

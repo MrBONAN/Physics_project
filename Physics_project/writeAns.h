@@ -16,7 +16,9 @@ private:
     void checkAllEvents(const sf::Vector2i& msCord) override;
     void setAllText(const sf::Event& event) override;
     void checkIndicator(const sf::Vector2i& msCord, vector<Button*>& btns, int i);
+    
     string outInfo() override;
+    void inpInfo(istream& is) override;
 
     Button answerBox;
 };

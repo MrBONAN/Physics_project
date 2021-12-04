@@ -18,5 +18,6 @@ private:
     void checkIndicator(const sf::Vector2i& msCord, vector<Button*>& btns, int i);
 
     string outInfo() override;
+    void inpInfo(istream& is) override;
 };
 #endif

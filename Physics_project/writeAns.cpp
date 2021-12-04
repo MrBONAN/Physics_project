@@ -1,5 +1,36 @@
 #include "writeAns.h"
 
+string writeAns::outInfo()
+{
+	string of = "1\n";
+	for (auto& it : btns)
+	{
+		string str = it->getStr();
+		for (auto& it : str)
+		{
+			if (it == '\n') it = '~';
+		}
+		of += str + '\n';
+	}
+	return of;
+}
+
+void writeAns::inpInfo(istream& is)
+{
+	for (auto& it : btns)
+	{
+		string str;
+		getline(is, str);
+		for (auto& it : str)
+		{
+			if (it == '~') it = '\n';
+		}
+		it->setStr(str);
+	}
+	//answer = btns[0]->getStr();
+	//btns[0]->setStr("");
+}
+
 writeAns::writeAns(sf::RenderWindow& window) :Scene(window),
 answerBox(window, { 49, 1, 17, 1, 512, 50, 5, 5, 5 })
 {
@@ -75,19 +106,3 @@ void writeAns::checkIndicator(const sf::Vector2i& msCord, vector<Button*>& btns,
 		}
 	}
 }
-
-string writeAns::outInfo()
-{
-	string of = "1\n";
-	for (auto& it : btns)
-	{
-		string str = it->getStr();
-		for (auto& it : str)
-		{
-			if (it == '\n') it = '~';
-		}
-		of += str + '\n';
-	}
-	return of;
-}
-
