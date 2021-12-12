@@ -1,6 +1,13 @@
 #include "Scene.h"
 bool Scene::teacherMode = true;
 
+string pad(std::string s, int len = 26)
+{
+	if (s.length() < len)
+		s.insert(s.begin(), len - s.length(), ' ');
+	return s;
+}
+
 Scene::Scene(sf::RenderWindow& window):
 	window(window),
 	exerciseRect(window, {145, 1, 145, 17, 512, 190, 5, 5, 5 })

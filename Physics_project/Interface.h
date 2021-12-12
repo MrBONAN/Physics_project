@@ -1,6 +1,7 @@
 #ifndef _INTERFACE_H_
 #define _INTERFACE_H_
 #include "Scene.h"
+#include "Menu.h"
 
 class Interface :
     public Scene
@@ -26,6 +27,7 @@ private:
 
     Button left, right, close;
 
+    Menu menu;
     vector<Scene*> scenes;
     int id = 0;
 

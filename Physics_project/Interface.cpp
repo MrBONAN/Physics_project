@@ -1,11 +1,13 @@
 #include "Interface.h"
 #include "AddScene.h"
+#include "Menu.h"
 
 Interface::Interface(sf::RenderWindow& window) : Scene(window),
 left(window, { 81, 33, 113,33, 31, 31, 0, 31, 31 }),
 right(window, { 81, 1, 113, 1, 31, 31, 0, 31, 31 }),
 close(window, { 81, 1, 113, 1, 31, 31, 0, 31, 31 }),
-id(0)
+id(0),
+menu(window, scenes)
 {
 	left.setPosition(10, 630);
 	right.setPosition(973, 630);
@@ -13,7 +15,7 @@ id(0)
 	btns.push_back(&right);
 	btns.push_back(&close);
 
-	scenes.push_back(new AddScene(window, scenes));
+	scenes.push_back(&menu);
 }
 
 void Interface::checkAllInteractions(const sf::Event& event)

@@ -1,5 +1,7 @@
 #include "AddScene.h"
 
+string pad(std::string s, int len = 26);
+
 AddScene::AddScene(sf::RenderWindow& window, vector<Scene*>& allScene)
 	: Scene(window), allScene(allScene),
 info(window, { 145, 1, 145, 17, 145, 20, 5, 5, 5 })
@@ -10,9 +12,9 @@ info(window, { 145, 1, 145, 17, 145, 20, 5, 5, 5 })
 		btns.push_back(new Button(window, { 49, 1, 65, 1, 190, 20, 5, 5, 5 }));
 		btns[i]->setPosition(335, 150 + i * 60);
 	}
-	btns[0]->setStr("       с вариантами ответа");
-	btns[1]->setStr("            с полем ввода ");
-	btns[2]->setStr("с сопоставлением вариантов");
+	btns[0]->setStr(pad("с вариантами ответа"));
+	btns[1]->setStr(pad("с полем ввода"));
+	btns[2]->setStr(pad("с сопоставлением вариантов"));
 }
 
 void AddScene::show()
