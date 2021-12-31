@@ -1,5 +1,4 @@
-#ifndef _TEST_H_
-#define _TEST_H_
+#pragma once
 #include "Scene.h"
 class Test :
     public Scene
@@ -10,6 +9,9 @@ public:
     void show() override;
     int selNumber = -1;
     ~Test();
+
+    bool saveInfo(string path) override {}
+    bool readInfo(string path) override {}
 private:
     void checkAllActive(const sf::Vector2i& msCord) override;
     void checkAllFocus(const sf::Vector2i& msCord, bool first = false)  override;
@@ -20,4 +22,3 @@ private:
     string outInfo() override;
     void inpInfo(istream& is) override;
 };
-#endif

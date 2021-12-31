@@ -1,13 +1,11 @@
 #include "Interface.h"
-#include "AddScene.h"
-#include "Menu.h"
 
 Interface::Interface(sf::RenderWindow& window) : Scene(window),
 left(window, { 81, 33, 113,33, 31, 31, 0, 31, 31 }),
 right(window, { 81, 1, 113, 1, 31, 31, 0, 31, 31 }),
 close(window, { 81, 1, 113, 1, 31, 31, 0, 31, 31 }),
 id(0),
-menu(window, scenes)
+menu(window, *this, scenes)
 {
 	left.setPosition(10, 630);
 	right.setPosition(973, 630);
@@ -16,6 +14,8 @@ menu(window, scenes)
 	btns.push_back(&close);
 
 	scenes.push_back(&menu);
+
+	//menu.intface = this;
 }
 
 void Interface::checkAllInteractions(const sf::Event& event)
@@ -27,9 +27,10 @@ void Interface::checkAllInteractions(const sf::Event& event)
 void Interface::show()
 {
 	scenes[id]->show();
-	left.show();
-	right.show();
-	//if (teacherMode) close.show();
+	if (!menuIsActive) {
+		left.show();
+		right.show();
+	}//if (teacherMode) close.show();
 }
 
 bool Interface::saveInfo(string pathSave) 
@@ -66,8 +67,10 @@ bool Interface::readInfo(string pathRead)
 
 void Interface::checkAllActive(const sf::Vector2i& msCord)
 {
-	left.checkActive(msCord);
-	right.checkActive(msCord);
+	if (!menuIsActive) {
+		left.checkActive(msCord);
+		right.checkActive(msCord);
+	}
 	close.checkActive(msCord);
 }
 
@@ -76,14 +79,18 @@ void Interface::checkAllFocus(const sf::Vector2i& msCord, bool first)
 	if (msCord != pastMsCord || first)
 	{
 		pastMsCord = msCord;
-		left.checkFocus(msCord);
-		right.checkFocus(msCord);
+		if (!menuIsActive) {
+			left.checkFocus(msCord);
+			right.checkFocus(msCord);
+		}
 		if (teacherMode) close.checkFocus(msCord);
 	}
 }
 
 void Interface::checkAllEvents(const sf::Vector2i& msCord)
 {
-	if(left.Event(msCord)) id = max(0, id - 1);
-	else if(right.Event(msCord)) id = min(int(scenes.size()) - 1, id + 1);
+	if (!menuIsActive) {
+		if (left.Event(msCord)) id = max(0, id - 1);
+		else if (right.Event(msCord)) id = min(int(scenes.size()) - 1, id + 1);
+	}
 }

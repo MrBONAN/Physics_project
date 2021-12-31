@@ -1,5 +1,4 @@
-#ifndef _HEADERS_H_
-#define _HEADERS_H_
+#pragma once
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
@@ -17,5 +16,3 @@
 #include "Scene.h"
 
 using namespace std;
-
-#endif

@@ -1,7 +1,6 @@
-#ifndef _INTERFACE_H_
-#define _INTERFACE_H_
-#include "Scene.h"
+#pragma once
 #include "Menu.h"
+#include "Scene.h"
 
 class Interface :
     public Scene
@@ -12,8 +11,8 @@ public:
     void checkAllInteractions(const sf::Event& event);
     void show() override;
 
-    bool saveInfo(string pathSave);
-    bool readInfo(string pathRead);
+    bool saveInfo(string pathSave) override;
+    bool readInfo(string pathRead) override;
 
     ~Interface() { for (auto& it : scenes) delete it; }
 private:
@@ -28,10 +27,10 @@ private:
     Button left, right, close;
 
     Menu menu;
+    bool menuIsActive = true;
     vector<Scene*> scenes;
     int id = 0;
 
     friend ostream& operator<<(ostream& os, Interface& obj);
     friend istream& operator>>(istream& is, Interface& obj);
 };
-#endif

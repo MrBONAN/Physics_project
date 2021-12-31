@@ -1,5 +1,5 @@
-#ifndef _WRITE_ANS_H_
-#define _WRITE_ANS_H_
+#pragma once
+
 #include "Scene.h"
 class writeAns :
     public Scene
@@ -10,6 +10,8 @@ public:
     void show() override;
     int selNumber = -1;
 
+    bool saveInfo(string path) override {}
+    bool readInfo(string path) override {}
 private:
     void checkAllActive(const sf::Vector2i& msCord) override;
     void checkAllFocus(const sf::Vector2i& msCord, bool first = false)  override;
@@ -22,5 +24,3 @@ private:
 
     Button answerBox;
 };
-
-#endif

@@ -1,8 +1,12 @@
 #include "Menu.h"
+
 string pad(std::string s, int len = 26);
 
-Menu::Menu(sf::RenderWindow& window, vector<Scene*>& allScene)
-	: Scene(window), allScene(allScene),
+void HideConsole();
+void ShowConsole();
+
+Menu::Menu(sf::RenderWindow& window, Scene& intface, vector<Scene*>& allScene)
+	: Scene(window), intface(intface), allScene(allScene),
 	info(window, { 145, 1, 145, 17, 145, 20, 5, 5, 5 })
 {
 	info.setPosition(380, 100);
@@ -44,7 +48,45 @@ void Menu::checkAllEvents(const sf::Vector2i& msCord)
 {
 	auto it = allScene.begin();
 	advance(it, allScene.size() - 1);
-	if (btns[0]->Event(msCord)) allScene[0] = new AddScene(window, allScene);
-	if (btns[1]->Event(msCord)) allScene.insert(it, new writeAns(window));
-	if (btns[2]->Event(msCord));//allScene.insert(it, new Test(window));
+	if (btns[0]->Event(msCord)) openTest();
+	if (btns[1]->Event(msCord)) makeTest();
+	if (btns[2]->Event(msCord)) editTest();
+	
+}
+
+void Menu::openTest()
+{
+	string path;
+	ShowConsole();
+	cout << "Введите название файла без расширения файла(он должен находиться в папке с данной программой)" << endl;
+	cout << "Если вы хотите выйти из этого окна, введите \"-1\" (без кавычек): ";
+	while (1) {
+		cin >> path;
+		if (path == "-1") {
+			HideConsole();
+			system("cls");
+			return;
+		}
+		path += ".mfp";
+		cout << path << endl;
+		ifstream iff(path);
+		if (iff.bad()) {
+			cout << "Указанный файл не существует, или вы ввели его название не так. Попробуйте снова: ";
+		}
+		else {
+			intface.readInfo(path);
+			HideConsole();
+			system("cls");
+			return;
+		}
+	}
+}
+void Menu::makeTest()
+{
+	allScene[0] = new AddScene(window, allScene);
+}
+
+void Menu::editTest()
+{
+
 }

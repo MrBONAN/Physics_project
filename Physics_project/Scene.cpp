@@ -121,6 +121,7 @@ Scene::Scene(sf::RenderWindow& window):
 	specChar.emplace(72, -3);
 	
 }
+
 void Scene::setText(Button& btn, const sf::Event& event)
 {
 	if (event.type == sf::Event::KeyPressed) {

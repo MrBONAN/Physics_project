@@ -1,5 +1,4 @@
-#ifndef _BUTTON_H_
-#define _BUTTON_H_
+#pragma once
 #include "OBJ.h"
 #include "Indicator.h"
 //#include "Headers.h"
@@ -64,4 +63,3 @@ private:
 
 	sf::Sprite btn;
 };
-#endif

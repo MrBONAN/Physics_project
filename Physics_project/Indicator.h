@@ -1,5 +1,4 @@
-#ifndef _INDICATOR_H_
-#define _INDICATOR_H_
+#pragma once
 #include "OBJ.h"
 class Indicator :
     public OBJ
@@ -35,4 +34,3 @@ private:
 
 	sf::Sprite ind;
 };
-#endif

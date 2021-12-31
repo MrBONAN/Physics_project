@@ -1,6 +1,4 @@
-#ifndef _OBJ_H_
-#define _OBJ_H_
-
+#pragma once
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
@@ -40,4 +38,3 @@ public:
 	static sf::Texture defTexture; // текстура по умолчанию
 };
 
-#endif
