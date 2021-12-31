@@ -16,8 +16,11 @@ public:
 	
 	virtual void show() = 0;
 
+	// костыли
+	bool menuIsActive = true;
 	virtual bool saveInfo(string path) = 0;
 	virtual bool readInfo(string path) = 0;
+
 protected:
 	virtual void checkAllActive(const sf::Vector2i& msCord) = 0;
 	virtual void checkAllFocus(const sf::Vector2i& msCord, bool first = false)  = 0;

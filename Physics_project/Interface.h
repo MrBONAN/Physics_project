@@ -27,7 +27,7 @@ private:
     Button left, right, close;
 
     Menu menu;
-    bool menuIsActive = true;
+
     vector<Scene*> scenes;
     int id = 0;
 

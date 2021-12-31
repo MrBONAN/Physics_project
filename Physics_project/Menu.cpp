@@ -58,7 +58,7 @@ void Menu::openTest()
 {
 	string path;
 	ShowConsole();
-	cout << "Введите название файла без расширения файла(он должен находиться в папке с данной программой)" << endl;
+	cout << "Введите название файла без его расширения (он должен находиться в папке с данной программой)" << endl;
 	cout << "Если вы хотите выйти из этого окна, введите \"-1\" (без кавычек): ";
 	while (1) {
 		cin >> path;
@@ -69,14 +69,12 @@ void Menu::openTest()
 		}
 		path += ".mfp";
 		cout << path << endl;
-		ifstream iff(path);
-		if (iff.bad()) {
-			cout << "Указанный файл не существует, или вы ввели его название не так. Попробуйте снова: ";
+		if (!intface.readInfo(path)) {
+			cout << "Указанный файл не существует, или вы ввели его название не так. Попробуйте снова или введите \"-1\": ";
 		}
 		else {
-			intface.readInfo(path);
-			HideConsole();
-			system("cls");
+			HideConsole(); system("cls");
+			intface.menuIsActive = false;
 			return;
 		}
 	}
@@ -84,6 +82,7 @@ void Menu::openTest()
 void Menu::makeTest()
 {
 	allScene[0] = new AddScene(window, allScene);
+	intface.menuIsActive = false;
 }
 
 void Menu::editTest()
