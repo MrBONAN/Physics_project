@@ -1,5 +1,6 @@
 #include "Scene.h"
-bool Scene::teacherMode = true;
+bool Scene::teacherMode  = true;
+bool Scene::menuIsActive = true;
 
 string pad(std::string s, int len = 26)
 {

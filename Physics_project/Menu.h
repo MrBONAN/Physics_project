@@ -11,7 +11,6 @@ public:
     Menu(sf::RenderWindow& window, Scene& intface, vector<Scene*>& allScene);
 
     void show() override;
-    Scene& intface;
 
     bool saveInfo(string path) override {}
     bool readInfo(string path) override {}
@@ -30,5 +29,6 @@ private:
 
     Button info;
 
+    Scene& intface;
     vector<Scene*>& allScene;
 };

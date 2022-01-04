@@ -68,7 +68,7 @@ void Menu::openTest()
 			return;
 		}
 		path += ".mfp";
-		cout << path << endl;
+		cout << "Введённый путь: " << path << endl;
 		if (!intface.readInfo(path)) {
 			cout << "Указанный файл не существует, или вы ввели его название не так. Попробуйте снова или введите \"-1\": ";
 		}
@@ -81,8 +81,8 @@ void Menu::openTest()
 }
 void Menu::makeTest()
 {
-	allScene[0] = new AddScene(window, allScene);
-	intface.menuIsActive = false;
+	allScene[0] = new AddScene(window, intface, allScene);
+	menuIsActive = false;
 }
 
 void Menu::editTest()

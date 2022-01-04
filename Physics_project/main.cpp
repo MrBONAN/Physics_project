@@ -39,9 +39,9 @@ int main ()
 
     Interface intface(window);
 
-#ifndef SAVE
-    intface.readInfo(pathSave);
-#endif
+//#ifndef SAVE
+//    intface.readInfo(pathSave);
+//#endif
 
     while (window.isOpen())
     {
@@ -59,8 +59,8 @@ int main ()
         window.display();
     }
 
-#ifdef SAVE
-    intface.saveInfo(pathSave);
-#endif
+//#ifdef SAVE
+//    intface.saveInfo(pathSave);
+//#endif
     return 0;
 }

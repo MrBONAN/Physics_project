@@ -2,19 +2,23 @@
 
 string pad(std::string s, int len = 26);
 
-AddScene::AddScene(sf::RenderWindow& window, vector<Scene*>& allScene)
-	: Scene(window), allScene(allScene),
+void HideConsole();
+void ShowConsole();
+
+AddScene::AddScene(sf::RenderWindow& window, Scene& intface, vector<Scene*>& allScene)
+	: Scene(window), intface(intface), allScene(allScene),
 info(window, { 145, 1, 145, 17, 145, 20, 5, 5, 5 })
 {
 	info.setPosition(380, 100);
 	info.setStr("Выберите тип задания");
-	for (int i = 0; i < 3; i++) {
+	for (int i = 0; i < 4; i++) {
 		btns.push_back(new Button(window, { 49, 1, 65, 1, 190, 20, 5, 5, 5 }));
 		btns[i]->setPosition(335, 150 + i * 60);
 	}
 	btns[0]->setStr(pad("с вариантами ответа"));
 	btns[1]->setStr(pad("с полем ввода"));
 	btns[2]->setStr(pad("с сопоставлением вариантов"));
+	btns[3]->setStr(pad("сохранить файл"));
 }
 
 void AddScene::show()
@@ -47,5 +51,38 @@ void AddScene::checkAllEvents(const sf::Vector2i& msCord)
 	if (btns[0]->Event(msCord)) allScene.insert(it, new Test(window));
 	if (btns[1]->Event(msCord)) allScene.insert(it, new writeAns(window));
 	if (btns[2]->Event(msCord));//allScene.insert(it, new Test(window));
+	if (btns[3]->Event(msCord)) saveTest();
+}
 
+void AddScene::saveTest()
+{
+	string path;
+	ShowConsole();
+	while (1) {
+		cout << "Введите название нового файла без его расширения." << endl;
+		cout << "Если вы хотите выйти из этого окна, введите \"-1\" (без кавычек): ";
+		cin >> path;
+		if (path == "-1") {
+			HideConsole();
+			system("cls");
+			return;
+		}
+		path += ".mfp";
+		cout << "Введённое имя файла: " << path << endl;
+		if (std::experimental::filesystem::exists(path)) {
+			cout << "Файл с таким именем уже существует. Вы хотете перезаписать файл? Если да, то введите \"ДА\" (без кавычек), если хотите изменить имя, введите \"-1\" (или что-либо другое): ";
+			string temp;
+			cin >> temp;
+			// нормализовать ввод ("ДА" вводится странными буквами)
+			if (temp != "ДА\0") { cout << endl; continue; }
+		} 
+
+		if (!intface.saveInfo(path)) {
+			cout << "Что-то пошло не так. Закройте файл теста, если он открыт, и попробуйте снова." << endl;
+		} else {
+			HideConsole(); system("cls");
+			window.close();
+			return;
+		}
+	}
 }
