@@ -14,6 +14,8 @@ public:
 
     bool saveInfo(string path) override {}
     bool readInfo(string path) override {}
+
+    ~Menu() { delete addscene; cout << "Жопа" << endl; }
 private:
     void checkAllActive(const sf::Vector2i& msCord) override;
     void checkAllFocus(const sf::Vector2i& msCord, bool first = false)  override;
@@ -29,6 +31,7 @@ private:
 
     Button info;
 
+    AddScene* addscene;
     Scene& intface;
     vector<Scene*>& allScene;
 };

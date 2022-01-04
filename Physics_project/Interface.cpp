@@ -4,8 +4,8 @@ Interface::Interface(sf::RenderWindow& window) : Scene(window),
 left(window, { 81, 33, 113,33, 31, 31, 0, 31, 31 }),
 right(window, { 81, 1, 113, 1, 31, 31, 0, 31, 31 }),
 close(window, { 81, 1, 113, 1, 31, 31, 0, 31, 31 }),
-id(0),
-menu(window, *this, scenes)
+id(0)/*,
+menu(window, *this, scenes)*/
 {
 	left.setPosition(10, 630);
 	right.setPosition(973, 630);
@@ -13,7 +13,8 @@ menu(window, *this, scenes)
 	btns.push_back(&right);
 	btns.push_back(&close);
 
-	scenes.push_back(&menu);
+	menu = new Menu(window, *this, scenes);
+	scenes.push_back(menu);
 
 	//menu.intface = this;
 }
@@ -62,6 +63,16 @@ bool Interface::readInfo(string pathRead)
 	fin.close();
 	return true;
 	
+}
+
+Interface::~Interface()
+{
+	cout << menu << endl;
+	for (auto it : scenes) {
+		delete it; cout << it << endl; // проверить удаление (Сергей решил эту проблему в одном из видео)
+	}
+	cout << menu << endl;
+	//delete menu;
 }
 
 

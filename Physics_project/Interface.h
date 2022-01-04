@@ -14,7 +14,7 @@ public:
     bool saveInfo(string pathSave) override;
     bool readInfo(string pathRead) override;
 
-    ~Interface() { for (auto& it : scenes) delete it; }
+    ~Interface();
 private:
     void checkAllActive(const sf::Vector2i& msCord) override;
     void checkAllFocus(const sf::Vector2i& msCord, bool first = false)  override;
@@ -26,7 +26,7 @@ private:
 
     Button left, right, close;
 
-    Menu menu;
+    Menu* menu;
 
     vector<Scene*> scenes;
     int id = 0;

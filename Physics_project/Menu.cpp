@@ -18,6 +18,7 @@ Menu::Menu(sf::RenderWindow& window, Scene& intface, vector<Scene*>& allScene)
 	btns[0]->setStr(pad("открыть тест"));
 	btns[1]->setStr(pad("создать тест"));
 	btns[2]->setStr(pad("редактировать тест"));
+	addscene = new AddScene(window, intface, allScene);
 }
 
 void Menu::show()
@@ -81,7 +82,7 @@ void Menu::openTest()
 }
 void Menu::makeTest()
 {
-	allScene[0] = new AddScene(window, intface, allScene);
+	allScene[0] = addscene;
 	menuIsActive = false;
 }
 

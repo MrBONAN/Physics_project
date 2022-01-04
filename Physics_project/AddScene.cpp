@@ -72,7 +72,9 @@ void AddScene::saveTest()
 		if (std::experimental::filesystem::exists(path)) {
 			cout << "Файл с таким именем уже существует. Вы хотете перезаписать файл? Если да, то введите \"ДА\" (без кавычек), если хотите изменить имя, введите \"-1\" (или что-либо другое): ";
 			string temp;
+			SetConsoleCP(1251);
 			cin >> temp;
+			SetConsoleCP(866);
 			// нормализовать ввод ("ДА" вводится странными буквами)
 			if (temp != "ДА\0") { cout << endl; continue; }
 		} 

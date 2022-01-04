@@ -25,7 +25,7 @@ void ShowConsole() { ::ShowWindow(::GetConsoleWindow(), SW_SHOW); }
 
 int main ()
 {
-    HideConsole();
+    //HideConsole();
     setlocale(LC_ALL, "RUS");
 
     sf::RenderWindow window(sf::VideoMode(1050, 700), L"Проект");
@@ -62,5 +62,6 @@ int main ()
 //#ifdef SAVE
 //    intface.saveInfo(pathSave);
 //#endif
+    //ShowConsole();
     return 0;
 }
