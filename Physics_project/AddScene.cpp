@@ -1,6 +1,7 @@
 #include "AddScene.h"
 
 string pad(std::string s, int len = 26);
+bool FileIsExist(std::string filePath);
 
 void HideConsole();
 void ShowConsole();
@@ -77,12 +78,7 @@ void AddScene::saveTest()
 		CreateDirectory(L"tasks", NULL);
 
 		// проверка на наличие файла
-		WIN32_FIND_DATA file;
-		HANDLE h = FindFirstFile(LPCWSTR(path.c_str()), &file);
-		FindClose(h);
-		
-		// доделать нормальную проверку
-		if ((WCHAR *)fileName.c_str() == file.cFileName) {
+		if(FileIsExist(path)){ // способ не очень
 			cout << "Файл с таким именем уже существует. Вы хотете перезаписать файл? Если да, то введите \"ДА\" (без кавычек), если хотите изменить имя, введите \"-1\" (или что-либо другое): ";
 			string temp;
 			SetConsoleCP(1251);
@@ -101,4 +97,16 @@ void AddScene::saveTest()
 			return;
 		}
 	}
+}
+
+bool FileIsExist(std::string filePath)
+{
+	bool isExist = false;
+	std::ifstream fin(filePath.c_str());
+
+	if (fin.is_open())
+		isExist = true;
+
+	fin.close();
+	return isExist;
 }

@@ -68,7 +68,7 @@ void Menu::openTest()
 			system("cls");
 			return;
 		}
-		path += ".mfp";
+		path = "tasks\\" + path + ".mfp";
 		cout << "Введённый путь: " << path << endl;
 		if (!intface.readInfo(path)) {
 			cout << "Указанный файл не существует, или вы ввели его название не так. Попробуйте снова или введите \"-1\": ";
