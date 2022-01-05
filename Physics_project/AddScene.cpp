@@ -34,6 +34,7 @@ void AddScene::checkAllActive(const sf::Vector2i& msCord)
 	for (int i = 0; i < btns.size(); i++)
 		btns[i]->checkActive(msCord);
 }
+
 void AddScene::checkAllFocus(const sf::Vector2i& msCord, bool first)
 {
 	if (msCord != pastMsCord || first)
@@ -56,20 +57,32 @@ void AddScene::checkAllEvents(const sf::Vector2i& msCord)
 
 void AddScene::saveTest()
 {
-	string path;
+	string fileName;
 	ShowConsole();
-	while (1) {
+	while (true) {
 		cout << "Введите название нового файла без его расширения." << endl;
 		cout << "Если вы хотите выйти из этого окна, введите \"-1\" (без кавычек): ";
-		cin >> path;
-		if (path == "-1") {
+		cin >> fileName;
+		if (fileName == "-1") {
 			HideConsole();
 			system("cls");
 			return;
 		}
-		path += ".mfp";
-		cout << "Введённое имя файла: " << path << endl;
-		if (std::experimental::filesystem::exists(path)) {
+
+		fileName += ".mfp";
+		cout << "Введённое имя файла: " << fileName << endl;
+		
+		// создание (и по сути проверка) папки
+		string path = "tasks\\" + fileName;
+		CreateDirectory(L"tasks", NULL);
+
+		// проверка на наличие файла
+		WIN32_FIND_DATA file;
+		HANDLE h = FindFirstFile(LPCWSTR(path.c_str()), &file);
+		FindClose(h);
+		
+		// доделать нормальную проверку
+		if ((WCHAR *)fileName.c_str() == file.cFileName) {
 			cout << "Файл с таким именем уже существует. Вы хотете перезаписать файл? Если да, то введите \"ДА\" (без кавычек), если хотите изменить имя, введите \"-1\" (или что-либо другое): ";
 			string temp;
 			SetConsoleCP(1251);
@@ -78,7 +91,8 @@ void AddScene::saveTest()
 			// нормализовать ввод ("ДА" вводится странными буквами)
 			if (temp != "ДА\0") { cout << endl; continue; }
 		} 
-
+		
+		// сохранение в файл
 		if (!intface.saveInfo(path)) {
 			cout << "Что-то пошло не так. Закройте файл теста, если он открыт, и попробуйте снова." << endl;
 		} else {
