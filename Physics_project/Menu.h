@@ -12,22 +12,15 @@ public:
 
     void show() override;
 
-    bool saveInfo(string path) override {}
-    bool readInfo(string path) override {}
-
-    ~Menu() { delete addscene; cout << "Жопа" << endl; }
+    ~Menu() override { delete addscene; }
 private:
     void checkAllActive(const sf::Vector2i& msCord) override;
     void checkAllFocus(const sf::Vector2i& msCord, bool first = false)  override;
     void checkAllEvents(const sf::Vector2i& msCord) override;
-    void setAllText(const sf::Event& event) override {}
 
     void openTest();
     void makeTest();
     void editTest();
-
-    string outInfo() override { return string(); }
-    void inpInfo(istream& is) override {}
 
     Button info;
 

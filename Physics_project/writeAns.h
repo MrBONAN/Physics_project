@@ -10,8 +10,6 @@ public:
     void show() override;
     int selNumber = -1;
 
-    bool saveInfo(string path) override {}
-    bool readInfo(string path) override {}
 private:
     void checkAllActive(const sf::Vector2i& msCord) override;
     void checkAllFocus(const sf::Vector2i& msCord, bool first = false)  override;

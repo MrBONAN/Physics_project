@@ -14,15 +14,11 @@ public:
     bool saveInfo(string pathSave) override;
     bool readInfo(string pathRead) override;
 
-    ~Interface();
+    ~Interface() override;
 private:
     void checkAllActive(const sf::Vector2i& msCord) override;
     void checkAllFocus(const sf::Vector2i& msCord, bool first = false)  override;
     void checkAllEvents(const sf::Vector2i& msCord) override;
-    void setAllText(const sf::Event& event) override {}
-
-    string outInfo() override { return string(); }
-    void inpInfo(istream& is) override {}
 
     Button left, right, close;
 

@@ -17,17 +17,18 @@ public:
 	virtual void show() = 0;
 
 	// костыли
-	virtual bool saveInfo(string path) = 0;
-	virtual bool readInfo(string path) = 0;
+	virtual bool saveInfo(string path) { return false; }
+	virtual bool readInfo(string path) { return false; }
 
+	virtual ~Scene() {}
 protected:
 	virtual void checkAllActive(const sf::Vector2i& msCord) = 0;
 	virtual void checkAllFocus(const sf::Vector2i& msCord, bool first = false)  = 0;
 	virtual void checkAllEvents(const sf::Vector2i& msCord) = 0;
-	virtual void setAllText(const sf::Event& event) = 0;
+	virtual void setAllText(const sf::Event& event) {};
 	
-	virtual string outInfo() = 0;
-	virtual void inpInfo(istream& is) = 0;
+	virtual string outInfo() { return string(); }
+	virtual void inpInfo(istream& is) {}
 	string answer;
 
 	sf::RenderWindow& window;

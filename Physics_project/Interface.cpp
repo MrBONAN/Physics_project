@@ -67,12 +67,10 @@ bool Interface::readInfo(string pathRead)
 
 Interface::~Interface()
 {
-	cout << menu << endl;
 	for (auto it : scenes) {
-		delete it; cout << it << endl; // проверить удаление (Сергей решил эту проблему в одном из видео)
+		delete it; it == nullptr;
 	}
-	cout << menu << endl;
-	//delete menu;
+	delete menu; menu = nullptr;
 }
 
 
