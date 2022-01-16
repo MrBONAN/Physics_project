@@ -1,6 +1,7 @@
 #pragma once
 #include "Scene.h"
 #include "AddScene.h"
+#include "EndTest.h"
 //#include "Interface.h"
 
 
