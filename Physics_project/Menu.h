@@ -12,7 +12,8 @@ public:
 
     void show() override;
 
-    ~Menu() override { delete addscene; }
+    //~Menu() override {if (addscene != nullptr) { delete addscene; addscene = nullptr; }}
+    // тут, наверное, тоже может быть утечка памяти, поэтому просто коментирую этот момент
 private:
     void checkAllActive(const sf::Vector2i& msCord) override;
     void checkAllFocus(const sf::Vector2i& msCord, bool first = false)  override;

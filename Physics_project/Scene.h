@@ -16,9 +16,11 @@ public:
 	
 	virtual void show() = 0;
 
-	// костыли
+	// костыли для Interface
 	virtual bool saveInfo(string path) { return false; }
 	virtual bool readInfo(string path) { return false; }
+	virtual void SwitchStartTest() {}
+	Button exerciseRect;
 
 	virtual ~Scene() {}
 protected:
@@ -32,7 +34,6 @@ protected:
 	string answer;
 
 	sf::RenderWindow& window;
-	Button exerciseRect;
 
 	static bool teacherMode;
 	static bool menuIsActive;

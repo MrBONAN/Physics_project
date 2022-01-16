@@ -27,8 +27,8 @@ void writeAns::inpInfo(istream& is)
 		}
 		it->setStr(str);
 	}
-	//answer = btns[0]->getStr();
-	//btns[0]->setStr("");
+	answer = btns[0]->getStr();
+	btns[0]->setStr("");
 }
 
 writeAns::writeAns(sf::RenderWindow& window) :Scene(window),
@@ -80,9 +80,9 @@ void writeAns::setAllText(const sf::Event& event)
 		if (selNumber == 1) {
 			setText(exerciseRect, event);
 		}
-		else if (selNumber != -1) {
-			setText(*btns[0], event);
-		}
+	}
+	if (selNumber != -1) {
+		setText(*btns[0], event);
 	}
 }
 

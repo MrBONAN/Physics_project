@@ -14,6 +14,8 @@ public:
     bool saveInfo(string pathSave) override;
     bool readInfo(string pathRead) override;
 
+    void SwitchStartTest() override;
+
     ~Interface() override;
 private:
     void checkAllActive(const sf::Vector2i& msCord) override;
@@ -23,6 +25,9 @@ private:
     Button left, right, close;
 
     Menu* menu;
+
+    bool start = false;
+    Button startButton;
 
     vector<Scene*> scenes;
     int id = 0;

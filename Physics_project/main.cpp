@@ -25,6 +25,7 @@ void ShowConsole() { ::ShowWindow(::GetConsoleWindow(), SW_SHOW); }
 int main ()
 {
     //HideConsole();
+    ShowConsole();
     setlocale(LC_ALL, "RUS");
 
     sf::RenderWindow window(sf::VideoMode(1050, 700), L"Проект");

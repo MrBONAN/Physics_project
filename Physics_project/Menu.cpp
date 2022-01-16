@@ -76,6 +76,7 @@ void Menu::openTest()
 		else {
 			HideConsole(); system("cls");
 			intface.menuIsActive = false;
+			intface.SwitchStartTest();
 			return;
 		}
 	}
