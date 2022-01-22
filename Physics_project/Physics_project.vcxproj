@@ -185,6 +185,7 @@
   <ItemGroup>
     <ClInclude Include="AddScene.h" />
     <ClInclude Include="Button.h" />
+    <ClInclude Include="Classes.h" />
     <ClInclude Include="EndTest.h" />
     <ClInclude Include="Headers.h" />
     <ClInclude Include="Indicator.h" />

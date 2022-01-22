@@ -1,15 +1,15 @@
 #pragma once
+#include "Classes.h"
 #include "Scene.h"
 #include "AddScene.h"
 #include "EndTest.h"
-//#include "Interface.h"
-
+#include "Interface.h"
 
 class Menu :
     public Scene
 {
 public:
-    Menu(sf::RenderWindow& window, Scene& intface, vector<Scene*>& allScene);
+    Menu(sf::RenderWindow& window, Interface& intface, vector<Scene*>& allScene);
 
     void show() override;
 
@@ -27,6 +27,6 @@ private:
     Button info;
 
     AddScene* addscene;
-    Scene& intface;
+    Interface& intface;
     vector<Scene*>& allScene;
 };

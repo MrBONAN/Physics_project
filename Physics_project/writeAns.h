@@ -1,5 +1,5 @@
 #pragma once
-
+#include "Classes.h"
 #include "Scene.h"
 class writeAns :
     public Scene

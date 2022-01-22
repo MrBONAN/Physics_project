@@ -1,14 +1,16 @@
 #pragma once
+#include "Classes.h"
 #include "Scene.h"
 #include "Test.h"
 #include "writeAns.h"
 #include <sys\stat.h>
+#include "Interface.h"
 
 class AddScene :
     public Scene
 {
 public:
-    AddScene(sf::RenderWindow& window, Scene& intface, vector<Scene*>& allScene);
+    AddScene(sf::RenderWindow& window, Interface& intface, vector<Scene*>& allScene);
 
     void show() override;
 
@@ -21,6 +23,6 @@ private:
 
     Button info;
 
-    Scene& intface;
+    Interface& intface;
     vector<Scene*>& allScene;
 };

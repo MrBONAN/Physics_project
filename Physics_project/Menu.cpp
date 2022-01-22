@@ -5,7 +5,7 @@ string pad(std::string s, int len = 26);
 void HideConsole();
 void ShowConsole();
 
-Menu::Menu(sf::RenderWindow& window, Scene& intface, vector<Scene*>& allScene)
+Menu::Menu(sf::RenderWindow& window, Interface& intface, vector<Scene*>& allScene)
 	: Scene(window), intface(intface), allScene(allScene),
 	info(window, { 145, 1, 145, 17, 145, 20, 5, 5, 5 })
 {

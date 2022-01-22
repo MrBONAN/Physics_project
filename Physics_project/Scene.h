@@ -1,4 +1,5 @@
 #pragma once
+#include "Classes.h"
 #include "Button.h"
 #include "Indicator.h"
 #include <windows.h>
@@ -17,8 +18,8 @@ public:
 	virtual void show() = 0;
 
 	// костыли для Interface
-	virtual bool saveInfo(string path) { return false; }
-	virtual bool readInfo(string path) { return false; }
+	/*virtual bool saveInfo(string path) { return false; }
+	virtual bool readInfo(string path) { return false; }*/
 	virtual void SwitchStartTest() {}
 	Button exerciseRect;
 

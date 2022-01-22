@@ -1,6 +1,9 @@
 #pragma once
+#include "Classes.h"
 #include "Menu.h"
 #include "Scene.h"
+
+
 
 class Interface :
     public Scene
@@ -11,8 +14,8 @@ public:
     void checkAllInteractions(const sf::Event& event);
     void show() override;
 
-    bool saveInfo(string pathSave) override;
-    bool readInfo(string pathRead) override;
+    bool saveInfo(string pathSave);
+    bool readInfo(string pathRead);
 
     void SwitchStartTest() override;
 

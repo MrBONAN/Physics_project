@@ -1,10 +1,11 @@
 #pragma once
+#include "Classes.h"
 #include "Scene.h"
 class EndTest :
     public Scene
 {
 public:
-    EndTest(sf::RenderWindow& window, Scene& intface, vector<Scene*>& allScene);
+    EndTest(sf::RenderWindow& window, Interface& intface, vector<Scene*>& allScene);
 
     void show() override;
 
@@ -15,7 +16,7 @@ private:
 
     Button info, endTest;
 
-    Scene& intface;
+    Interface& intface;
     vector<Scene*>& allScene;
 };
 

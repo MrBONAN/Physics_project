@@ -6,7 +6,7 @@ bool FileIsExist(std::string filePath);
 void HideConsole();
 void ShowConsole();
 
-AddScene::AddScene(sf::RenderWindow& window, Scene& intface, vector<Scene*>& allScene)
+AddScene::AddScene(sf::RenderWindow& window, Interface& intface, vector<Scene*>& allScene)
 	: Scene(window), intface(intface), allScene(allScene),
 info(window, { 145, 1, 145, 17, 145, 20, 5, 5, 5 })
 {
