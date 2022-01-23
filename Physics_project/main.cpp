@@ -1,31 +1,12 @@
-//#include "Headers.h"
-#include <SFML/Graphics.hpp>
-#include <iostream>
-#include <windows.h>
-#include <string>
-#include <vector>
-
-#include "OBJ.h"
-#include "Button.h"
-#include "Test.h"
-#include "writeAns.h"
 #include "Interface.h"
-#include "Indicator.h"
-#include "AddScene.h"
-#include "Scene.h"
-#include "Menu.h"
-
-using namespace std;
-
-#define SAVE
 
 void HideConsole() { ::ShowWindow(::GetConsoleWindow(), SW_HIDE); }
 void ShowConsole() { ::ShowWindow(::GetConsoleWindow(), SW_SHOW); }
 
 int main ()
 {
-    //HideConsole();
-    ShowConsole();
+    HideConsole();
+    //ShowConsole();
     setlocale(LC_ALL, "RUS");
 
     sf::RenderWindow window(sf::VideoMode(1050, 700), L"Проект");

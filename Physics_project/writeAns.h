@@ -7,6 +7,9 @@ class writeAns :
 public:
     writeAns(sf::RenderWindow& window);
 
+    void showAnswer() override;
+    bool checkAnswer() override;
+
     void show() override;
     int selNumber = -1;
 

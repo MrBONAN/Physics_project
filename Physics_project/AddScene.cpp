@@ -93,7 +93,11 @@ void AddScene::saveTest()
 			cout << "Что-то пошло не так. Закройте файл теста, если он открыт, и попробуйте снова." << endl;
 		} else {
 			HideConsole(); system("cls");
-			window.close();
+			for (int i = 0; i < allScene.size() - 1; i++)
+				delete allScene[i];
+			allScene.clear();
+			allScene.push_back(intface.menu);
+			intface.id = 0;
 			return;
 		}
 	}

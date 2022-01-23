@@ -44,6 +44,18 @@ Test::Test(sf::RenderWindow& window) : Scene(window)
 	btns[3]->setPosition(535, 525);
 }
 
+void Test::showAnswer()
+{
+	selNumber = atoi(answer.c_str());
+	btns[selNumber]->ind.on();
+}
+
+bool Test::checkAnswer()
+{
+	cout << "\t " + to_string(selNumber) + " " + answer << endl;
+	return to_string(selNumber) == answer;
+}
+
 void Test::show()
 {
 	for (auto& it : btns)

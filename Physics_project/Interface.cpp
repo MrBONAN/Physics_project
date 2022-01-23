@@ -74,11 +74,6 @@ bool Interface::readInfo(string pathRead)
 	
 }
 
-void Interface::SwitchStartTest()
-{
-	start = !start;
-}
-
 Interface::~Interface()
 {
 	for (auto& it : scenes) {

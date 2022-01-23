@@ -85,6 +85,7 @@ bool Button::Event(const sf::Vector2i& msCord)
 		// добавить useFunc
 		return true;
 	}
+	active = false;
 	return false;
 }
 

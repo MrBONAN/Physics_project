@@ -40,6 +40,17 @@ answerBox(window, { 49, 1, 17, 1, 512, 50, 5, 5, 5 })
 	btns.push_back(&exerciseRect);
 }
 
+void writeAns::showAnswer()
+{
+	answerBox.setStr(answer);
+}
+
+bool writeAns::checkAnswer()
+{
+	cout << "\t " + answerBox.getStr() + " " + answer << endl;
+	return answerBox.getStr() == answer;
+}
+
 void writeAns::show()
 {
 	exerciseRect.show();
@@ -79,6 +90,7 @@ void writeAns::setAllText(const sf::Event& event)
 	if (teacherMode) {
 		if (selNumber == 1) {
 			setText(exerciseRect, event);
+			return;
 		}
 	}
 	if (selNumber != -1) {

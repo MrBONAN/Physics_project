@@ -7,8 +7,12 @@ class Test :
 public:
     Test(sf::RenderWindow& window);
     
-    void show() override;
+    void showAnswer() override;
+    bool checkAnswer() override;
     int selNumber = -1;
+
+    void show() override;
+
     ~Test() override;
 
 private:

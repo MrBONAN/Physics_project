@@ -17,7 +17,7 @@ public:
     bool saveInfo(string pathSave);
     bool readInfo(string pathRead);
 
-    void SwitchStartTest() override;
+    void setStartTest(bool on) { start = on; }
 
     ~Interface() override;
 private:
@@ -37,4 +37,6 @@ private:
 
     friend ostream& operator<<(ostream& os, Interface& obj);
     friend istream& operator>>(istream& is, Interface& obj);
+    friend AddScene;
+    friend EndTest;
 };

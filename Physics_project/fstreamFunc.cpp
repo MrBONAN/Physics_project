@@ -7,6 +7,13 @@ ostream& operator<<(ostream& os, Scene& obj)
 	return os;
 }
 
+istream& operator>>(istream& is, Scene& obj)
+{
+	obj.inpInfo(is);
+	return is;
+}
+
+
 ostream& operator<<(ostream& os, Interface& obj)
 {
 	SetConsoleCP(1251);
@@ -17,12 +24,6 @@ ostream& operator<<(ostream& os, Interface& obj)
 	}
 	SetConsoleCP(866);
 	return os;
-}
-
-istream& operator>>(istream& is, Scene& obj)
-{
-	obj.inpInfo(is);
-	return is;
 }
 
 istream& operator>>(istream& is, Interface& obj)

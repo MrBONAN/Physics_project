@@ -49,24 +49,24 @@ void Menu::checkAllEvents(const sf::Vector2i& msCord)
 {
 	auto it = allScene.begin();
 	advance(it, allScene.size() - 1);
-	if (btns[0]->Event(msCord)) openTest();
+	if (btns[0]->Event(msCord)) solveTest();
 	if (btns[1]->Event(msCord)) makeTest();
 	if (btns[2]->Event(msCord)) editTest();
 	
 }
 
-void Menu::openTest()
+bool Menu::openTest()
 {
 	string path;
 	ShowConsole();
-	cout << "Введите название файла без его расширения (он должен находиться в папке с данной программой)" << endl;
+	cout << "Введите название файла без его расширения (он должен находиться в папке tasks рядом с вашей программой)" << endl;
 	cout << "Если вы хотите выйти из этого окна, введите \"-1\" (без кавычек): ";
 	while (1) {
 		cin >> path;
 		if (path == "-1") {
 			HideConsole();
 			system("cls");
-			return;
+			return false;
 		}
 		path = "tasks\\" + path + ".mfp";
 		cout << "Введённый путь: " << path << endl;
@@ -75,11 +75,16 @@ void Menu::openTest()
 		}
 		else {
 			HideConsole(); system("cls");
-			intface.menuIsActive = false;
-			allScene.push_back(new EndTest(window, intface, allScene));
-			intface.SwitchStartTest();
-			return;
+			return true;
 		}
+	}
+}
+void Menu::solveTest()
+{
+	if (openTest()) {
+		menuIsActive = false;
+		allScene.push_back(new EndTest(window, intface, allScene));
+		intface.setStartTest(true);
 	}
 }
 void Menu::makeTest()
@@ -90,5 +95,10 @@ void Menu::makeTest()
 
 void Menu::editTest()
 {
-
+	if (openTest()) {
+		menuIsActive = false;
+		allScene.push_back(new AddScene(window, intface, allScene));
+		for (auto it : allScene)
+			it->showAnswer();
+	}
 }

@@ -10,6 +10,8 @@ public:
 	Scene(sf::RenderWindow& window);
 
 	void setTeacherMod(bool tf) { teacherMode = tf;}
+	virtual void showAnswer() { return; };
+	virtual bool checkAnswer() { return false; }
 
 	void setText(Button& btn, const sf::Event& event);
 
@@ -19,8 +21,8 @@ public:
 
 	// костыли для Interface
 	/*virtual bool saveInfo(string path) { return false; }
-	virtual bool readInfo(string path) { return false; }*/
-	virtual void SwitchStartTest() {}
+	virtual bool readInfo(string path) { return false; }
+	virtual void SwitchStartTest() {}*/
 	Button exerciseRect;
 
 	virtual ~Scene() {}
