@@ -52,7 +52,6 @@ void Test::showAnswer()
 
 bool Test::checkAnswer()
 {
-	cout << "\t " + to_string(selNumber) + " " + answer << endl;
 	return to_string(selNumber) == answer;
 }
 

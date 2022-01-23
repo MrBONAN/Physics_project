@@ -18,6 +18,7 @@ public:
     bool readInfo(string pathRead);
 
     void setStartTest(bool on) { start = on; }
+    void setEndTest(bool on) { end = on; }
 
     ~Interface() override;
 private:
@@ -26,10 +27,12 @@ private:
     void checkAllEvents(const sf::Vector2i& msCord) override;
 
     Button left, right, close;
+    Button levelNumber;
 
     Menu* menu;
 
     bool start = false;
+    bool end = false;
     Button startButton;
 
     vector<Scene*> scenes;

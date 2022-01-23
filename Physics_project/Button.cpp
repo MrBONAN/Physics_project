@@ -1,25 +1,25 @@
 #include "Button.h"
 Button::Button(sf::RenderWindow& window, vector<float> sizes) : OBJ(window),
-ind(window, { 129, 65, sizes[2], sizes[3], sizes[4]+5, sizes[5]+5, 
-	sizes[6], sizes[7], sizes[8], })
+ind(window, { 129, 65, sizes[2], sizes[3], sizes[7]+5, sizes[8]+5, 
+	sizes[4], sizes[5], sizes[6], })
 {
 	x1 = sizes[0], y1 = sizes[1];
 	x2 = sizes[2], y2 = sizes[3];
-	dx = sizes[4], dy = sizes[5];
+	dx = sizes[7], dy = sizes[8];
 	renderTex.clear(sf::Color(0, 0, 0, 0));
-	makeTexture(0, dx, dy, renderTex, defTexture, { x1, y1, sizes[6], sizes[7], sizes[8] });
-	makeTexture(dy, dx, dy, renderTex, defTexture, { x2, y2, sizes[6], sizes[7], sizes[8] });
+	makeTexture(0, dx, dy, renderTex, defTexture, { x1, y1, sizes[4], sizes[5], sizes[6] });
+	makeTexture(dy, dx, dy, renderTex, defTexture, { x2, y2, sizes[4], sizes[5], sizes[6] });
 	texture = renderTex.getTexture();
 	btn.setTexture(texture);
 	setSprite1();
 	setScale(2);
 
-	setIndentText(sizes[6] / 2);
+	setIndentText(sizes[4] / 2);
 	setTextSettings();
 }
 
 Button::Button(sf::RenderWindow& window) : Button(window,
-	{49, 1, 17, 1, 250, 50, 5, 5, 5}) // настройка кнопки по умолчанию
+	{BUTTONsize, 250, 50}) // настройка кнопки по умолчанию
 {
 }
 

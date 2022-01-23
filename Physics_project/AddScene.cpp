@@ -8,12 +8,12 @@ void ShowConsole();
 
 AddScene::AddScene(sf::RenderWindow& window, Interface& intface, vector<Scene*>& allScene)
 	: Scene(window), intface(intface), allScene(allScene),
-info(window, { 145, 1, 145, 17, 145, 20, 5, 5, 5 })
+info(window, { INFOsize, 145, 20 })
 {
 	info.setPosition(380, 100);
 	info.setStr("¬ыберите тип задани€");
 	for (int i = 0; i < 4; i++) {
-		btns.push_back(new Button(window, { 49, 1, 65, 1, 190, 20, 5, 5, 5 }));
+		btns.push_back(new Button(window, { BUTTONsize, 190, 20 }));
 		btns[i]->setPosition(335, 150 + i * 60);
 	}
 	btns[0]->setStr(pad("с вариантами ответа"));

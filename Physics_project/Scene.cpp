@@ -11,7 +11,7 @@ string pad(std::string s, int len = 26)
 
 Scene::Scene(sf::RenderWindow& window):
 	window(window),
-	exerciseRect(window, {145, 1, 145, 17, 512, 190, 5, 5, 5 })
+	exerciseRect(window, { INFOsize, 512, 190 })
 {
 	for (int i = 0; i < 26; i++)
 	{

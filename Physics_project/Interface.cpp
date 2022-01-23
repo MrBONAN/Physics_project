@@ -2,18 +2,23 @@
 string pad(std::string s, int len = 26);
 
 Interface::Interface(sf::RenderWindow& window) : Scene(window),
-left(window, { 81, 33, 113,33, 31, 31, 0, 31, 31 }),
-right(window, { 81, 1, 113, 1, 31, 31, 0, 31, 31 }),
-close(window, { 81, 1, 113, 1, 31, 31, 0, 31, 31 }),
+left(window, { 81, 33, 113, 33, 0, 31, 31, 31, 31 }),
+right(window, { 81, 1, 113, 1, 0, 31, 31, 31, 31 }),
+levelNumber(window, {INFOsize, 145, 20}),
+close(window, { 81, 1, 113, 1, 0, 31, 31, 31, 31 }),
 id(0),
-startButton(window, { 49, 1, 65, 1, 145, 20, 5, 5, 5 })/*,
+startButton(window, { BUTTONsize, 145, 20 })/*,
 menu(window, *this, scenes)*/
 {
 	startButton.setPosition(380, 300);
 	startButton.setStr(pad("Начать тест" , 20));
 
 	left.setPosition(10, 630);
+	//left.setPosition(72, 692);
+	//left.setScale(-2);
 	right.setPosition(973, 630);
+	levelNumber.setPosition(390, 630);
+
 	btns.push_back(&left);
 	btns.push_back(&right);
 	btns.push_back(&close);
@@ -32,14 +37,15 @@ void Interface::checkAllInteractions(const sf::Event& event)
 
 void Interface::show()
 {
-	if (start) {
+	if (start && !end) {
 		startButton.show();
 		return;
 	}
 	scenes[id]->show();
-	if (!menuIsActive) {
+	if (!menuIsActive && !end) {
 		left.show();
 		right.show();
+		if (id != scenes.size() - 1) levelNumber.show();
 	}//if (teacherMode) close.show();
 }
 
@@ -132,11 +138,13 @@ void Interface::checkAllEvents(const sf::Vector2i& msCord)
 				start = false;
 				setTeacherMod(false);
 				scenes[0]->exerciseRect.setSprite1();
+				levelNumber.setStr(pad("Задание: 1 из: " + to_string(scenes.size() - 1), 21));
 			}
 			return;
 		}
 
 		if (left.Event(msCord)) id = max(0, id - 1);
 		else if (right.Event(msCord)) id = min(int(scenes.size()) - 1, id + 1);
+		levelNumber.setStr(pad("Задание: " + to_string(id + 1) + " из: " + to_string(scenes.size() - 1), 21));
 	}
 }

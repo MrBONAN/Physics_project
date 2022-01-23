@@ -32,7 +32,7 @@ void writeAns::inpInfo(istream& is)
 }
 
 writeAns::writeAns(sf::RenderWindow& window) :Scene(window),
-answerBox(window, { 49, 1, 17, 1, 512, 50, 5, 5, 5 })
+answerBox(window, { BUTTONsize, 512, 50 })
 {
 	exerciseRect.setPosition(10, 10);
 	answerBox.setPosition(10, 400);
@@ -47,7 +47,6 @@ void writeAns::showAnswer()
 
 bool writeAns::checkAnswer()
 {
-	cout << "\t " + answerBox.getStr() + " " + answer << endl;
 	return answerBox.getStr() == answer;
 }
 

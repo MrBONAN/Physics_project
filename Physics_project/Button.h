@@ -3,6 +3,9 @@
 #include "Indicator.h"
 //#include "Headers.h"
 
+#define BUTTONsize 49, 1, 65, 1, 5, 5, 5
+#define INFOsize   145, 1, 145, 17, 5, 5, 5
+
 void makeTexture(float Y, float dx, float dy, sf::RenderTexture& renderTexture, sf::Texture texture, vector<float> sizes);
 
 class Button : public OBJ
