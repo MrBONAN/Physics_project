@@ -3,8 +3,10 @@
 #include "Indicator.h"
 //#include "Headers.h"
 
-#define BUTTONsize 49, 1, 65, 1, 5, 5, 5
-#define INFOsize   145, 1, 145, 17, 5, 5, 5
+//#define BUTTONsize 49, 1, 65, 1, 5, 5, 5
+//#define INFOsize   145, 1, 145, 17, 5, 5, 5
+#define BUTTONsize 17, 1, 17, 17, 5, 5, 5
+#define INFOsize   1, 1, 1, 17, 5, 5, 5
 
 void makeTexture(float Y, float dx, float dy, sf::RenderTexture& renderTexture, sf::Texture texture, vector<float> sizes);
 
@@ -21,6 +23,7 @@ public:
 
 	void setPosition(float x, float y) override;
 	void setScale(float d) override { btn.setScale(d, d); }
+	void setScale(float dx, float dy) { btn.setScale(dx, dy); }
 	void setSprite1() override {btn.setTextureRect(sf::IntRect(0, 0, dx, dy));}
 	void setSprite2() override {btn.setTextureRect(sf::IntRect(0, dy, dx, dy));}
 

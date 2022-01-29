@@ -2,10 +2,10 @@
 string pad(std::string s, int len = 26);
 
 Interface::Interface(sf::RenderWindow& window) : Scene(window),
-left(window, { 81, 33, 113, 33, 0, 31, 31, 31, 31 }),
-right(window, { 81, 1, 113, 1, 0, 31, 31, 31, 31 }),
+left(window, { 65, 1, 97, 1, 0, 31, 31, 31, 31 }),
+right(window, { 65, 1, 97, 1, 0, 31, 31, 31, 31 }),
 levelNumber(window, {INFOsize, 145, 20}),
-close(window, { 81, 1, 113, 1, 0, 31, 31, 31, 31 }),
+close(window, { 65, 33, 97, 33, 0, 31, 31, 31, 31 }),
 id(0),
 startButton(window, { BUTTONsize, 145, 20 })/*,
 menu(window, *this, scenes)*/
@@ -13,11 +13,13 @@ menu(window, *this, scenes)*/
 	startButton.setPosition(380, 300);
 	startButton.setStr(pad("Начать тест" , 20));
 
-	left.setPosition(10, 630);
-	//left.setPosition(72, 692);
-	//left.setScale(-2);
+	left.setPosition(72, 630);
+	left.setScale(-2, 2);
 	right.setPosition(973, 630);
 	levelNumber.setPosition(390, 630);
+
+	close.setPosition(350, 635);
+	close.setScale(1);
 
 	btns.push_back(&left);
 	btns.push_back(&right);
@@ -45,8 +47,10 @@ void Interface::show()
 	if (!menuIsActive && !end) {
 		left.show();
 		right.show();
+		if (teacherMode && id != scenes.size() - 1) close.show();
 		if (id != scenes.size() - 1) levelNumber.show();
-	}//if (teacherMode) close.show();
+	}
+	
 }
 
 bool Interface::saveInfo(string pathSave) 
@@ -109,7 +113,7 @@ void Interface::checkAllActive(const sf::Vector2i& msCord)
 		left.checkActive(msCord);
 		right.checkActive(msCord);
 	}
-	close.checkActive(msCord);
+	if (teacherMode) close.checkActive(msCord);
 }
 
 void Interface::checkAllFocus(const sf::Vector2i& msCord, bool first)
@@ -145,6 +149,13 @@ void Interface::checkAllEvents(const sf::Vector2i& msCord)
 
 		if (left.Event(msCord)) id = max(0, id - 1);
 		else if (right.Event(msCord)) id = min(int(scenes.size()) - 1, id + 1);
+		levelNumber.setStr(pad("Задание: " + to_string(id + 1) + " из: " + to_string(scenes.size() - 1), 21));
+	}
+	if (teacherMode && close.Event(msCord) && id != scenes.size() - 1) {
+		auto it = scenes.begin();
+		advance(it, id);
+		delete *it;
+		scenes.erase(it);
 		levelNumber.setStr(pad("Задание: " + to_string(id + 1) + " из: " + to_string(scenes.size() - 1), 21));
 	}
 }

@@ -12,7 +12,7 @@ int main ()
     sf::RenderWindow window(sf::VideoMode(1050, 700), L"Проект");
     window.setFramerateLimit(60);
 
-    string path = "Icons_2.png";
+    string path = "Icons_3.png";
 
     string pathSave("work.mfp");
 

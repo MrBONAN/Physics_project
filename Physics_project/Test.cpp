@@ -12,7 +12,7 @@ string Test::outInfo()
 		}
 		of += str + '\n';
 	}
-	of += to_string(selNumber) + '\n';
+	of += to_string(selAnsNumber) + '\n';
 	return of;
 }
 
@@ -42,12 +42,19 @@ Test::Test(sf::RenderWindow& window) : Scene(window)
 	btns[1]->setPosition(535, 400);
 	btns[2]->setPosition(10, 525);
 	btns[3]->setPosition(535, 525);
+
+	for (int i = 0; i < 4; ++i)
+		btnAnswer.push_back(new Button(window, {49, 1, 49, 17, 5, 5, 5, 15, 15}));
+	btnAnswer[0]->setPosition(480, 470);
+	btnAnswer[1]->setPosition(1005, 470);
+	btnAnswer[2]->setPosition(480, 595);
+	btnAnswer[3]->setPosition(1005, 595);
 }
 
 void Test::showAnswer()
 {
-	selNumber = atoi(answer.c_str());
-	btns[selNumber]->ind.on();
+	selAnsNumber = atoi(answer.c_str());
+	btnAnswer[selAnsNumber]->ind.on();
 }
 
 bool Test::checkAnswer()
@@ -59,38 +66,49 @@ void Test::show()
 {
 	for (auto& it : btns)
 		it->show();
+	
+	if (teacherMode)
+		for (auto& it : btnAnswer)
+			it->show();
 }
 
 Test::~Test()
 {
 	for (int i = 0; i < btns.size()-1; i++)
 		delete btns[i];
+	for (auto& it : btnAnswer)
+		delete it;
 }
 
 void Test::checkAllActive(const sf::Vector2i& msCord)
 {
 	for (int i = 0; i < btns.size() - 1; i++)
 		btns[i]->checkActive(msCord);
-	if(teacherMode)
+	if (teacherMode) {
+		for (auto& it : btnAnswer)
+			it->checkActive(msCord);
 		exerciseRect.checkActive(msCord);
+	}
 }
 
 void Test::checkAllFocus(const sf::Vector2i& msCord, bool first)
 {
 	if (msCord != pastMsCord || first)
 	{
-		//cout << "CHECKFOCUS" << endl;
 		pastMsCord = msCord;
 		for (int i = 0; i < btns.size() - 1; i++)
 		{
 			btns[i]->checkFocus(msCord);
 		}
-		if(teacherMode)
+		if (teacherMode) {
+			for (auto& it : btnAnswer)
+				it->checkFocus(msCord);
 			exerciseRect.checkFocus(msCord);
+		}
 	}
 }
 
-void Test::checkIndicator(const sf::Vector2i& msCord, vector<Button*>& btns,  int i)
+void Test::checkIndicator(const sf::Vector2i& msCord, vector<Button*>& btns,  int i, int& selNumber)
 {
 	if (btns[i]->Event(msCord)) {
 		if (i == selNumber) { // нажали на ту же кнопку
@@ -115,11 +133,14 @@ void Test::checkAllEvents(const sf::Vector2i& msCord)
 {
 	for (int i = 0; i < btns.size() - 1; ++i)
 	{
-		checkIndicator(msCord, btns, i);
+		checkIndicator(msCord, btns, i, selNumber);
 	}
 	if (teacherMode)
 	{
-		checkIndicator(msCord, btns, 4);
+		for (int i = 0; i < btnAnswer.size(); ++i) {
+			checkIndicator(msCord, btnAnswer, i, selAnsNumber);
+		}
+		checkIndicator(msCord, btns, 4, selNumber);
 	}
 }
 

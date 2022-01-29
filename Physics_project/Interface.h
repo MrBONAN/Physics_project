@@ -42,4 +42,5 @@ private:
     friend istream& operator>>(istream& is, Interface& obj);
     friend AddScene;
     friend EndTest;
+    friend Menu;
 };

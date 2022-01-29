@@ -97,6 +97,7 @@ void Menu::editTest()
 {
 	if (openTest()) {
 		setTeacherMod(true);
+		intface.levelNumber.setStr(pad("Задание: 1 из: " + to_string(intface.scenes.size()), 21));
 		intface.setTeacherMod(true);
 		menuIsActive = false;
 		allScene.push_back(new AddScene(window, intface, allScene));
