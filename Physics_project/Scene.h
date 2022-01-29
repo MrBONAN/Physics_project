@@ -23,6 +23,8 @@ public:
 	/*virtual bool saveInfo(string path) { return false; }
 	virtual bool readInfo(string path) { return false; }
 	virtual void SwitchStartTest() {}*/
+	virtual bool haveAnswer() { return true; }
+	virtual bool haveTeacherAnswer() { return true; }
 	Button exerciseRect;
 
 	virtual ~Scene() {}
@@ -56,4 +58,5 @@ protected:
 
 	friend ostream& operator<<(ostream& os, Scene& obj);
 	friend istream& operator>>(istream& is, Scene& obj);
+	friend EndTest;
 };

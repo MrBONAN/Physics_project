@@ -89,6 +89,7 @@ void Menu::solveTest()
 }
 void Menu::makeTest()
 {
+	intface.setTeacherMod(true);
 	allScene[0] = addscene;
 	menuIsActive = false;
 }

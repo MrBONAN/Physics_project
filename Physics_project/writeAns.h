@@ -22,6 +22,8 @@ private:
     
     string outInfo() override;
     void inpInfo(istream& is) override;
+    bool haveAnswer() override { return answerBox.getStr() != ""; }
+    bool haveTeacherAnswer() override { return haveAnswer(); }
 
     Button answerBox;
 };

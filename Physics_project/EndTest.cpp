@@ -49,8 +49,16 @@ void EndTest::checkAllEvents(const sf::Vector2i& msCord)
 		int score = 0;
 		testIsEnd = true;
 		intface.setEndTest(true);
-		for (int i = 0; i < allScene.size() - 1; i++)
+		for (int i = 0; i < allScene.size() - 1; i++) {
+			if (!allScene[i]->haveAnswer()) {
+				intface.id = i;
+				intface.levelNumber.setStr(pad("Задание: " + to_string(i + 1) + " из: " + to_string(intface.scenes.size() - 1), 21));;
+				testIsEnd = false;
+				intface.setEndTest(false);
+				return;
+			}
 			score += allScene[i]->checkAnswer();
+		}
 		result.setStr(pad("Ваш результат: " + to_string(score) + " из: " + to_string(allScene.size() - 1)));
 		return;
 	}

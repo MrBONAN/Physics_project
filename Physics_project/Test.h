@@ -25,6 +25,8 @@ private:
 
     string outInfo() override;
     void inpInfo(istream& is) override;
+    bool haveAnswer() override { return selNumber != -1; }
+    bool haveTeacherAnswer() override { return selAnsNumber != -1; }
 
     vector<Button*> btnAnswer;
 };
