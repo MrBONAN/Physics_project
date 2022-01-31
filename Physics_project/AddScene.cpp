@@ -105,6 +105,7 @@ void AddScene::saveTest()
 			allScene.clear();
 			allScene.push_back(intface.menu);
 			intface.id = 0;
+			intface.menuIsActive = true;
 			return;
 		}
 	}

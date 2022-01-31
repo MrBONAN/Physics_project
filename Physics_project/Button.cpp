@@ -15,7 +15,9 @@ ind(window, { 129, 65, sizes[2], sizes[3], sizes[7]+5, sizes[8]+5,
 	setScale(2);
 
 	setIndentText(sizes[4] / 2);
-	setTextSettings();
+	setTextSettings(text);
+	setTextSettings(supportingChar);
+	supportingChar.setString("|");
 }
 
 Button::Button(sf::RenderWindow& window) : Button(window,
@@ -28,6 +30,9 @@ void Button::setPosition(float x, float y) {
 	ind.setPosition(x-5, y-5);
 	text.setPosition(btn.getPosition() +
 	sf::Vector2f(indent, indent / 1.3));
+
+	sf::Vector2f temp = text.getPosition();
+	supportingChar.setPosition({temp.x - 5, temp.y});
 }
 
 void Button::addChar(char c, int id)
@@ -37,6 +42,7 @@ void Button::addChar(char c, int id)
 	advance(it, id);
 	str.insert(it, c);
 	updateText();
+	updateSupportingChar();
 }
 
 void Button::deleteChar(int id)
@@ -45,6 +51,14 @@ void Button::deleteChar(int id)
 	str.erase(id - 1, 1);
 	updateText();
 	curLeft();
+}
+
+void Button::setStr(string str)
+{
+	this->str = str;
+	updateText();
+	posCur = str.size();
+	updateSupportingChar();
 }
 
 void Button::setIndentText(int ind)
@@ -93,16 +107,28 @@ void Button::show()
 {
 	ind.show();
 	window.draw(btn);
+	if (ind.getActive() && showCursor) {
+		SYSTEMTIME st;
+		GetLocalTime(&st);
+		if (st.wMilliseconds > 500)
+			window.draw(supportingChar);
+	}
 	window.draw(text);
 }
 
-void Button::setTextSettings()
+void Button::setTextSettings(sf::Text& text)
 {
 	font.loadFromFile("pragmatica.ttf");
 	text.setFont(font);
 	text.setCharacterSize(24);
-	text.setFillColor(sf::Color::Black);
+	text.setFillColor(color);
 	text.setPosition(btn.getPosition() +
 		sf::Vector2f(indent, indent));
 	text.setString(str);
+}
+
+void Button::updateSupportingChar()
+{
+	sf::Vector2f temp = text.findCharacterPos(posCur);
+	supportingChar.setPosition({temp.x - 5,  temp.y});
 }

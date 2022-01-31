@@ -21,6 +21,7 @@ void Test::inpInfo(istream& is)
 {
 	for (auto& it : btns)
 	{
+		it->showCursor = false;
 		string str;
 		getline(is, str);
 		for (auto& it : str)
@@ -34,8 +35,12 @@ void Test::inpInfo(istream& is)
 
 Test::Test(sf::RenderWindow& window) : Scene(window)
 {
-	for(int i = 0; i < 4; ++i)
+	for (int i = 0; i < 4; ++i) {
 		btns.push_back(new Button(window));
+		btns[i]->showCursor = true;
+	}
+	exerciseRect.showCursor = true;
+
 	btns.push_back(&exerciseRect);
 	exerciseRect.setPosition(10, 10);
 	btns[0]->setPosition(10, 400);

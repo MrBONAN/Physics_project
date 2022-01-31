@@ -10,7 +10,7 @@ int main ()
     setlocale(LC_ALL, "RUS");
 
     sf::RenderWindow window(sf::VideoMode(1050, 700), L"Проект");
-    window.setFramerateLimit(60);
+    window.setFramerateLimit(30);
 
     string path = "Icons_3.png";
 

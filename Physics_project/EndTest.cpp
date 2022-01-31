@@ -69,6 +69,7 @@ void EndTest::checkAllEvents(const sf::Vector2i& msCord)
 		allScene.push_back(intface.menu);
 		intface.id = 0;
 		intface.setEndTest(false);
+		intface.menuIsActive = true;
 		return;
 	}
 

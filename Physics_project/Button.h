@@ -1,6 +1,7 @@
 #pragma once
 #include "OBJ.h"
 #include "Indicator.h"
+#include <Windows.h>
 //#include "Headers.h"
 
 //#define BUTTONsize 49, 1, 65, 1, 5, 5, 5
@@ -27,13 +28,15 @@ public:
 	void setSprite1() override {btn.setTextureRect(sf::IntRect(0, 0, dx, dy));}
 	void setSprite2() override {btn.setTextureRect(sf::IntRect(0, dy, dx, dy));}
 
+	bool showCursor = false;
 	int getCurPos() { return posCur; }
-	void curLeft() { posCur = max(0, posCur - 1); }
-	void curRight() { posCur = min(getStrSize(), posCur + 1); }
+	void curLeft() { posCur = max(0, posCur - 1); updateSupportingChar();  }
+	void curRight() { posCur = min(getStrSize(), posCur + 1); updateSupportingChar();
+	}
 
 	void addChar(char c, int id);
 	void deleteChar(int id);
-	void setStr(string str) { this->str = str; updateText(); }
+	void setStr(string str);
 	string getStr() { return str; }
 	int  getStrSize() { return str.size(); }
 	void setIndentText(int ind);
@@ -48,13 +51,16 @@ public:
 private:
 	// текст и его настройки
 	void updateText() { text.setString(str); }
-	void setTextSettings();
+	void updateSupportingChar();
+	void setTextSettings(sf::Text& text);
 
 	int posCur = 0;
+	sf::Text supportingChar;
 	
 	string str = "";// хранение строки
 	sf::Font font;	// хранение шрифта
 	sf::Text text;	// объект типа Text
+	sf::Color color = sf::Color::Black;
 
 	int indent = 0;	// размеры отступа по краям
 

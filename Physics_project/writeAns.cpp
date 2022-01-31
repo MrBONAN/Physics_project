@@ -38,6 +38,9 @@ answerBox(window, { BUTTONsize, 512, 50 })
 	answerBox.setPosition(10, 400);
 	btns.push_back(&answerBox);
 	btns.push_back(&exerciseRect);
+
+	exerciseRect.showCursor = true;
+	answerBox.showCursor = true;
 }
 
 void writeAns::showAnswer()
