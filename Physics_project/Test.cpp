@@ -154,10 +154,10 @@ void Test::setAllText(const sf::Event& event)
 {
 	if (teacherMode) {
 		if (selNumber == 4) {
-			setText(exerciseRect, event);
+			exerciseRect.setText(event);
 		}
 		else if (selNumber != -1) {
-			setText(*btns[selNumber], event);
+			btns[selNumber]->setText(event);
 		}
 	}
 }

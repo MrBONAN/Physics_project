@@ -15,6 +15,7 @@ int main ()
     string path = "Icons_3.png";
 
     OBJ::Init(path);
+    Button::init(path);
 
     Interface intface(window);
 

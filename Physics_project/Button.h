@@ -2,6 +2,13 @@
 #include "OBJ.h"
 #include "Indicator.h"
 #include <Windows.h>
+#include <SFML/Graphics.hpp>
+#include <iostream>
+#include <string>
+#include <vector>
+#include <map>
+
+using namespace std;
 //#include "Headers.h"
 
 //#define BUTTONsize 49, 1, 65, 1, 5, 5, 5
@@ -11,7 +18,7 @@
 
 void makeTexture(float Y, float dx, float dy, sf::RenderTexture& renderTexture, sf::Texture texture, vector<float> sizes);
 
-class Button : public OBJ
+class Button
 {
 public:
 	/*friend class boost::serialization::access;
@@ -22,11 +29,14 @@ public:
 	Button(sf::RenderWindow& window, vector<float> sizes);
 	Button(sf::RenderWindow& window);
 
-	void setPosition(float x, float y) override;
-	void setScale(float d) override { btn.setScale(d, d); }
+	void setPosition(float x, float y);
+	void setScale(float d) { btn.setScale(d, d); }
 	void setScale(float dx, float dy) { btn.setScale(dx, dy); }
-	void setSprite1() override {btn.setTextureRect(sf::IntRect(0, 0, dx, dy));}
-	void setSprite2() override {btn.setTextureRect(sf::IntRect(0, dy, dx, dy));}
+	void setSprite1() {btn.setTextureRect(sf::IntRect(0, 0, dx, dy));}
+	void setSprite2() {btn.setTextureRect(sf::IntRect(0, dy, dx, dy));}
+
+
+	void setText(const sf::Event& event);
 
 	bool showCursor = false;
 	int getCurPos() { return posCur; }
@@ -43,16 +53,32 @@ public:
 
 	Indicator ind;	// индикатор кнопки
 
-	void checkActive(const sf::Vector2i& msCord) override;
-	void checkFocus(const sf::Vector2i& msCord) override;
-	bool Event(const sf::Vector2i& msCord) override;
+	void checkActive(const sf::Vector2i& msCord);
+	void checkFocus(const sf::Vector2i& msCord);
+	bool Event(const sf::Vector2i& msCord);
 
 	void show();
+
+	static void init(string TexturePath);
 private:
 	// текст и его настройки
 	void updateText() { text.setString(str); }
 	void updateSupportingChar();
 	void setTextSettings(sf::Text& text);
+
+	// ввод текста
+	//static void initInput();
+
+	static int enCode;
+	static int ruCode;
+	static map<int, int> enKey;
+	static map<int, int> ruKey;
+	static map<int, int> enSymbKey;
+	static map<int, int> ruSymbKey;
+	static map<int, int> specChar;
+	static int selSymbol(int key, const map<int, int>& langKey,
+		const map<int, int>& langSymbKey);
+
 
 	int posCur = 0;
 	sf::Text supportingChar;
@@ -74,4 +100,9 @@ private:
 	int dx = 0, dy = 0;
 
 	sf::Sprite btn;
+
+	sf::RenderWindow& window; // окно, которое настраивается только при создании объекта
+	sf::Texture texture; // текстура объекта
+	static sf::RenderTexture renderTex; // вспомогательная текстура
+	static sf::Texture defTexture; // текстура по умолчанию
 };

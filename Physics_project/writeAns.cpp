@@ -91,12 +91,12 @@ void writeAns::setAllText(const sf::Event& event)
 {
 	if (teacherMode) {
 		if (selNumber == 1) {
-			setText(exerciseRect, event);
+			exerciseRect.setText(event);
 			return;
 		}
 	}
 	if (selNumber != -1) {
-		setText(*btns[0], event);
+		btns[0]->setText(event);
 	}
 }
 

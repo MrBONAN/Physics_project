@@ -13,8 +13,6 @@ public:
 	virtual void showAnswer() { return; };
 	virtual bool checkAnswer() { return false; }
 
-	void setText(Button& btn, const sf::Event& event);
-
 	void checkAllInteraction(const sf::Event& event);
 	
 	virtual void show() = 0;
@@ -45,16 +43,6 @@ protected:
 
 	sf::Vector2i pastMsCord;
 	vector<Button*> btns;
-
-	int enCode = 67699721;
-	int ruCode = 68748313;
-	map<int, int> enKey;
-	map<int, int> ruKey;
-	map<int, int> enSymbKey;
-	map<int, int> ruSymbKey;
-	map<int, int> specChar;
-	int selSymbol( int key, const map<int, int>& langKey,
-				   const map<int, int>& langSymbKey);
 
 	friend ostream& operator<<(ostream& os, Scene& obj);
 	friend istream& operator>>(istream& is, Scene& obj);
