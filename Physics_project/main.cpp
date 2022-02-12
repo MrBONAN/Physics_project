@@ -14,8 +14,6 @@ int main ()
 
     string path = "Icons_3.png";
 
-    string pathSave("work.mfp");
-
     OBJ::Init(path);
 
     Interface intface(window);

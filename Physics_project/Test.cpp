@@ -60,6 +60,7 @@ void Test::showAnswer()
 {
 	selAnsNumber = atoi(answer.c_str());
 	btnAnswer[selAnsNumber]->ind.on();
+	for (auto& it : btns) it->showCursor = true;
 }
 
 bool Test::checkAnswer()
