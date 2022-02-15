@@ -148,13 +148,13 @@
     <ClCompile Include="Button.cpp">
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MultiThreaded</RuntimeLibrary>
     </ClCompile>
-    <ClCompile Include="DialogWindow.cpp">
-      <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MultiThreaded</RuntimeLibrary>
-    </ClCompile>
     <ClCompile Include="EndTest.cpp">
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <ClCompile Include="Indicator.cpp">
+      <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MultiThreaded</RuntimeLibrary>
+    </ClCompile>
+    <ClCompile Include="InputWindow.cpp">
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <ClCompile Include="Interface.cpp">
@@ -189,10 +189,10 @@
     <ClInclude Include="AddScene.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="Classes.h" />
-    <ClInclude Include="DialogWindow.h" />
     <ClInclude Include="EndTest.h" />
     <ClInclude Include="Headers.h" />
     <ClInclude Include="Indicator.h" />
+    <ClInclude Include="InputWindow.h" />
     <ClInclude Include="Interface.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="OBJ.h" />

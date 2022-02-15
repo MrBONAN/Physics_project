@@ -57,7 +57,7 @@
     <ClCompile Include="EndTest.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="DialogWindow.cpp">
+    <ClCompile Include="InputWindow.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
@@ -101,7 +101,7 @@
     <ClInclude Include="Classes.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="DialogWindow.h">
+    <ClInclude Include="InputWindow.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

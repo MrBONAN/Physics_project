@@ -1,5 +1,5 @@
 #include "Interface.h"
-
+#include "InputWindow.h"
 void HideConsole() { ::ShowWindow(::GetConsoleWindow(), SW_HIDE); }
 void ShowConsole() { ::ShowWindow(::GetConsoleWindow(), SW_SHOW); }
 
@@ -9,6 +9,9 @@ int main ()
     //ShowConsole();
     setlocale(LC_ALL, "RUS");
 
+    InputWindow t("test");
+    t.loop();
+    return 0;
     sf::RenderWindow window(sf::VideoMode(1050, 700), L"Проект");
     window.setFramerateLimit(30);
 
