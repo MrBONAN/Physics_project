@@ -1,8 +1,10 @@
 #include "InputWindow.h"
 
+string pad(std::string s, int len = 26);
+
 InputWindow::InputWindow(string text) : 
-	window(sf::VideoMode(530, 405), L"Проект"),
-	info	(window, { INFOsize, 260, 150 }),
+	window(sf::VideoMode(530, 205), L"Проект"),
+	info	(window, { INFOsize, 260, 50 }),
 	input	(window, { BUTTONsize, 260, 20 }),
 	ok		(window, { BUTTONsize, 40, 20})
 {
@@ -11,13 +13,14 @@ InputWindow::InputWindow(string text) :
 	info.setScale(2);
 	info.setPosition(5, 5);
 	info.setStr(text);
-	info.showCursor = false;
 
 	input.setScale(2);
-	input.setPosition(5, 315);
+	input.setPosition(5, 115);
+	input.showCursor = true;
 
 	ok.setScale(2);
-	ok.setPosition(5, 225);
+	ok.setPosition(225, 160);
+	ok.setStr(pad("ок", 5));
 }
 
 string InputWindow::loop()
@@ -66,8 +69,8 @@ void InputWindow::checkAllActive(const sf::Vector2i& msCord)
 
 void InputWindow::checkAllFocus(const sf::Vector2i& msCord, bool first)
 {
-	input.checkActive(msCord);
-	ok.checkActive(msCord);
+	input.checkFocus(msCord);
+	ok.checkFocus(msCord);
 }
 
 void InputWindow::checkAllEvents(const sf::Vector2i& msCord)
