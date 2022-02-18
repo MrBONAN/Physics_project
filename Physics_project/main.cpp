@@ -9,16 +9,15 @@ int main ()
     //ShowConsole();
     setlocale(LC_ALL, "RUS");
 
-    InputWindow t("test");
-    t.loop();
-    return 0;
     sf::RenderWindow window(sf::VideoMode(1050, 700), L"Проект");
     window.setFramerateLimit(30);
 
     string path = "Icons_3.png";
-
     OBJ::Init(path);
-    Button::init(path);
+
+    InputWindow t("test");
+    t.loop();
+    return 0;
 
     Interface intface(window);
 

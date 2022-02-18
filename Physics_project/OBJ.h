@@ -18,7 +18,7 @@ class OBJ
 {
 public:
 
-	static void Init(string TexPath = "Icons.png");
+	static void Init(string TexPath);
 	OBJ(sf::RenderWindow& window);
 
 	virtual void setPosition(float x, float y) = 0;
@@ -31,10 +31,19 @@ public:
 	virtual bool Event(const sf::Vector2i& msCord) = 0;
 
 	virtual void show() = 0;
-
+protected:
 	sf::RenderWindow& window; // окно, которое настраивается только при создании объекта
 	sf::Texture texture; // текстура объекта
 	static sf::RenderTexture renderTex; // вспомогательная текстура
 	static sf::Texture defTexture; // текстура по умолчанию
+
+	static int enCode;
+	static int ruCode;
+	static map<int, int> enKey;
+	static map<int, int> ruKey;
+	static map<int, int> enSymbKey;
+	static map<int, int> ruSymbKey;
+	static map<int, int> specChar;
+	
 };
 

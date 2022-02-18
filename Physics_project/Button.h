@@ -16,24 +16,19 @@ using namespace std;
 #define BUTTONsize 17, 1, 17, 17, 5, 5, 5
 #define INFOsize   1, 1, 1, 17, 5, 5, 5
 
-void makeTexture(float Y, float dx, float dy, sf::RenderTexture& renderTexture, sf::Texture texture, vector<float> sizes);
-
-class Button
+class Button :
+	public OBJ
 {
 public:
-	/*friend class boost::serialization::access;
-	template <class Archive> void serialize(Archive& ar, unsigned) {
-		ar& itemID& itemCount;
-	}*/
 
 	Button(sf::RenderWindow& window, vector<float> sizes);
 	Button(sf::RenderWindow& window);
 
-	void setPosition(float x, float y);
-	void setScale(float d) { btn.setScale(d, d); }
+	void setPosition(float x, float y) override;
+	void setScale(float d) override { btn.setScale(d, d); }
 	void setScale(float dx, float dy) { btn.setScale(dx, dy); }
-	void setSprite1() {btn.setTextureRect(sf::IntRect(0, 0, dx, dy));}
-	void setSprite2() {btn.setTextureRect(sf::IntRect(0, dy, dx, dy));}
+	void setSprite1() override {btn.setTextureRect(sf::IntRect(0, 0, dx, dy));}
+	void setSprite2() override {btn.setTextureRect(sf::IntRect(0, dy, dx, dy));}
 
 
 	void setText(const sf::Event& event);
@@ -53,13 +48,11 @@ public:
 
 	Indicator ind;	// индикатор кнопки
 
-	void checkActive(const sf::Vector2i& msCord);
-	void checkFocus(const sf::Vector2i& msCord);
-	bool Event(const sf::Vector2i& msCord);
+	void checkActive(const sf::Vector2i& msCord) override;
+	void checkFocus(const sf::Vector2i& msCord) override;
+	bool Event(const sf::Vector2i& msCord) override;
 
-	void show();
-
-	static void init(string TexturePath);
+	void show() override;
 private:
 	// текст и его настройки
 	void updateText() { text.setString(str); }
@@ -68,17 +61,6 @@ private:
 
 	// ввод текста
 	//static void initInput();
-
-	static int enCode;
-	static int ruCode;
-	static map<int, int> enKey;
-	static map<int, int> ruKey;
-	static map<int, int> enSymbKey;
-	static map<int, int> ruSymbKey;
-	static map<int, int> specChar;
-	static int selSymbol(int key, const map<int, int>& langKey,
-		const map<int, int>& langSymbKey);
-
 
 	int posCur = 0;
 	sf::Text supportingChar;
@@ -101,8 +83,6 @@ private:
 
 	sf::Sprite btn;
 
-	sf::RenderWindow& window; // окно, которое настраивается только при создании объекта
-	sf::Texture texture; // текстура объекта
-	static sf::RenderTexture renderTex; // вспомогательная текстура
-	static sf::Texture defTexture; // текстура по умолчанию
+	static int selSymbol(int key, const map<int, int>& langKey,
+		const map<int, int>& langSymbKey);
 };
