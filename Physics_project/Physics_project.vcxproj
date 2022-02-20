@@ -157,6 +157,9 @@
     <ClCompile Include="Indicator.cpp">
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MultiThreaded</RuntimeLibrary>
     </ClCompile>
+    <ClCompile Include="InfoWindow.cpp">
+      <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MultiThreaded</RuntimeLibrary>
+    </ClCompile>
     <ClCompile Include="InputWindow.cpp">
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MultiThreaded</RuntimeLibrary>
     </ClCompile>
@@ -196,6 +199,7 @@
     <ClInclude Include="EndTest.h" />
     <ClInclude Include="Headers.h" />
     <ClInclude Include="Indicator.h" />
+    <ClInclude Include="InfoWindow.h" />
     <ClInclude Include="InputWindow.h" />
     <ClInclude Include="Interface.h" />
     <ClInclude Include="Menu.h" />
