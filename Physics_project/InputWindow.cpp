@@ -23,8 +23,9 @@ InputWindow::InputWindow(string text) :
 	ok.setStr(pad("ок", 5));
 }
 
-string InputWindow::loop()
+string InputWindow::loop(typeInput type)
 {
+	this->type = type;
 	while (window.isOpen() && result == "NONE")
 	{
 		sf::Event event;
@@ -87,6 +88,17 @@ void InputWindow::checkAllEvents(const sf::Vector2i& msCord)
 	if (ok.Event(msCord)) {
 		inputActive = false;
 		input.ind.off();
+		switch (type)
+		{
+		case OPENfile:
+			openFile();
+			break;
+		case CREATEfile:
+			createFile();
+			break;
+		default:
+			break;
+		}
 	}
 }
 
@@ -102,4 +114,30 @@ void InputWindow::show()
 	input.show();
 	ok.show();
 	window.display();
+}
+
+void InputWindow::openFile()
+{
+	string path = "tasks\\" + input.getStr() + ".mfp";
+	fstream fin;
+	fin.open(path, fstream::in);
+	bool res;
+	if (fin.is_open())
+		result = path;
+	//else указанный файл не существует. ƒбавить окно "ок"
+	fin.close();
+}
+
+void InputWindow::createFile()
+{
+	string path = "tasks\\" + input.getStr() + ".mfp";
+	fstream fin;
+	fin.open(path, fstream::in);
+	bool res;
+	if (fin.is_open()) {
+		// файл уже существует. перезаписать его?
+		//result = path;
+	}
+	else result = path;
+	fin.close();
 }

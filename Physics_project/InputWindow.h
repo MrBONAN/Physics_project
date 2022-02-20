@@ -1,11 +1,19 @@
 #pragma once
 #include "Button.h"
+#include <fstream>
+using std::fstream;
+
+enum typeInput {
+	OPENfile,
+	CREATEfile
+};
+
 class InputWindow
 {
 public:
 	InputWindow(string text);
 
-	string loop();
+	string loop(typeInput type);
 
 private:
 	void checkAllInteractions(const sf::Event&);
@@ -21,5 +29,8 @@ private:
 	bool inputActive = false;
 
 	string result = "NONE";
+	typeInput type;
+	void openFile();
+	void createFile();
 };
 
