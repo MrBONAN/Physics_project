@@ -135,8 +135,8 @@ void InputWindow::createFile()
 	fin.open(path, fstream::in);
 	bool res;
 	if (fin.is_open()) {
-		// файл уже существует. перезаписать его?
-		//result = path;
+		ConfirmWindow confwindow("Файл уже существует.\nПерезаписать его?");
+		if(confwindow.loop() == "YES") result = path;
 	}
 	else result = path;
 	fin.close();
