@@ -57,27 +57,13 @@ void Menu::checkAllEvents(const sf::Vector2i& msCord)
 
 bool Menu::openTest()
 {
-	string path;
-	ShowConsole();
-	cout << "Введите название файла без его расширения (он должен находиться в папке tasks рядом с вашей программой)" << endl;
-	cout << "Если вы хотите выйти из этого окна, введите \"-1\" (без кавычек): ";
-	while (1) {
-		cin >> path;
-		if (path == "-1") {
-			HideConsole();
-			system("cls");
-			return false;
-		}
-		path = "tasks\\" + path + ".mfp";
-		cout << "Введённый путь: " << path << endl;
-		if (!intface.readInfo(path)) {
-			cout << "Указанный файл не существует, или вы ввели его название не так. Попробуйте снова или введите \"-1\": ";
-		}
-		else {
-			HideConsole(); system("cls");
-			return true;
-		}
+	InputWindow inputwindow("Введите название файла без его\nрасширения (он должен находиться в\nпапке tasks рядом с этой программой)");
+	string path = inputwindow.loop(typeInput::OPENfile);
+	if (path != "CLOSE") {
+		intface.readInfo(path);
+		return true;
 	}
+	return false;
 }
 void Menu::solveTest()
 {

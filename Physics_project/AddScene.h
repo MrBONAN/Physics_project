@@ -5,6 +5,7 @@
 #include "writeAns.h"
 #include <sys\stat.h>
 #include "Interface.h"
+#include "InputWindow.h"
 
 class AddScene :
     public Scene
