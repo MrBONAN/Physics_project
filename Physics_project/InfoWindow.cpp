@@ -5,7 +5,7 @@ string pad(std::string s, int len = 26);
 InfoWindow::InfoWindow(string text) :
 	window(sf::VideoMode(530, 155), L"Проект"),
 	info(window, { INFOsize, 260, 50 }),
-	ok(window, { BUTTONsize, 32, 20 }) // 40 20
+	ok(window, { BUTTONsize, 40, 20 }) // 40 20
 {
 	window.setFramerateLimit(30);
 
@@ -14,8 +14,8 @@ InfoWindow::InfoWindow(string text) :
 	info.setStr(text);
 
 	ok.setScale(2);
-	ok.setPosition(241, 110);
-	ok.setStr(pad("ОК", 4));
+	ok.setPosition(225, 110);
+	ok.setStr(pad("ок", 5));
 }
 
 string InfoWindow::loop()

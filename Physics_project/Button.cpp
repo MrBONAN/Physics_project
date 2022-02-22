@@ -50,19 +50,15 @@ void Button::setPosition(float x, float y) {
 void Button::setText(const sf::Event& event)
 {
 	if (event.type == sf::Event::KeyPressed) {
-		//cout << event.key.code << endl;
-		int code = int(GetKeyboardLayout(GetWindowThreadProcessId(GetForegroundWindow(), NULL)));
-		int key = event.key.code;
-		int comand;
-		if (code == enCode)
-		{
-			comand = selSymbol(key, enKey, enSymbKey);
-		}
-		else {
-			comand = selSymbol(key, ruKey, ruSymbKey);
-		}
+		setText(event, getKey(event));
+	}
+}
+
+void Button::setText(const sf::Event& event, int comand)
+{
+	if (event.type == sf::Event::KeyPressed) {
 		if (comand == char(0)) return;
-		
+
 		switch (comand)
 		{
 		case -1:
@@ -79,6 +75,22 @@ void Button::setText(const sf::Event& event)
 			break;
 		}
 	}
+}
+
+int Button::getKey(const sf::Event& event)
+{
+	int code = int(GetKeyboardLayout(GetWindowThreadProcessId(GetForegroundWindow(), NULL)));
+	int key = event.key.code;
+	int comand;
+	if (code == enCode)
+	{
+		comand = selSymbol(key, enKey, enSymbKey);
+	}
+	else {
+		comand = selSymbol(key, ruKey, ruSymbKey);
+	}
+	lastSymbol = comand;
+	return comand;
 }
 
 void Button::addChar(char c, int id)

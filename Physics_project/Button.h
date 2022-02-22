@@ -32,6 +32,9 @@ public:
 
 
 	void setText(const sf::Event& event);
+	void setText(const sf::Event& event, int comand);
+	int getKey(const sf::Event& event);
+	int lastSymbol = 0;
 
 	bool showCursor = false;
 	int getCurPos() { return posCur; }
