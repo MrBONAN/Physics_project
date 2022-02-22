@@ -1,6 +1,7 @@
 #pragma once
 #include "Button.h"
 #include "ConfirmWindow.h"
+#include "InfoWindow.h"
 #include <fstream>
 using std::fstream;
 

@@ -1,10 +1,10 @@
 #pragma once
 #include "Button.h"
 
-class ConfirmWindow
+class InfoWindow
 {
 public:
-	ConfirmWindow(string text);
+	InfoWindow(string text);
 
 	string loop();
 

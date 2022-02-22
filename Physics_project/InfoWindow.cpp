@@ -2,7 +2,7 @@
 
 string pad(std::string s, int len = 26);
 
-ConfirmWindow::ConfirmWindow(string text) :
+InfoWindow::InfoWindow(string text) :
 	window(sf::VideoMode(530, 155), L"Проект"),
 	info(window, { INFOsize, 260, 50 }),
 	ok(window, { BUTTONsize, 32, 20 }) // 40 20
@@ -18,7 +18,7 @@ ConfirmWindow::ConfirmWindow(string text) :
 	ok.setStr(pad("ОК", 4));
 }
 
-string ConfirmWindow::loop()
+string InfoWindow::loop()
 {
 	while (window.isOpen() && result == "NONE")
 	{
@@ -37,7 +37,7 @@ string ConfirmWindow::loop()
 	return result;
 }
 
-void ConfirmWindow::checkAllInteractions(const sf::Event& event)
+void InfoWindow::checkAllInteractions(const sf::Event& event)
 {
 	//кнопка только что нажата
 	if (event.type == sf::Event::MouseButtonPressed) {
@@ -54,22 +54,22 @@ void ConfirmWindow::checkAllInteractions(const sf::Event& event)
 	}
 }
 
-void ConfirmWindow::checkAllActive(const sf::Vector2i& msCord)
+void InfoWindow::checkAllActive(const sf::Vector2i& msCord)
 {
 	ok.checkActive(msCord);
 }
 
-void ConfirmWindow::checkAllFocus(const sf::Vector2i& msCord, bool first)
+void InfoWindow::checkAllFocus(const sf::Vector2i& msCord, bool first)
 {
 	ok.checkFocus(msCord);
 }
 
-void ConfirmWindow::checkAllEvents(const sf::Vector2i& msCord)
+void InfoWindow::checkAllEvents(const sf::Vector2i& msCord)
 {
 	if (ok.Event(msCord)) result = "OK";
 }
 
-void ConfirmWindow::show()
+void InfoWindow::show()
 {
 	window.clear(sf::Color(200, 200, 200, 255));
 	info.show();

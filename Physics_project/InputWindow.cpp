@@ -124,7 +124,10 @@ void InputWindow::openFile()
 	bool res;
 	if (fin.is_open())
 		result = path;
-	//else указанный файл не существует. Дбавить окно "ок"
+	else {
+		InfoWindow infowindow("Данный файл не существует.");
+		infowindow.loop();
+	}
 	fin.close();
 }
 

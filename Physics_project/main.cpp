@@ -13,7 +13,7 @@ int main ()
     OBJ::Init(path);
 
     InputWindow t("test");
-    cout << t.loop(typeInput::CREATEfile) << endl;
+    cout << t.loop(typeInput::OPENfile) << endl;
     return 0;
     sf::RenderWindow window(sf::VideoMode(1050, 700), L"Проект");
     window.setFramerateLimit(30);
