@@ -2,17 +2,12 @@
 
 string pad(std::string s, int len = 26);
 
-InputWindow::InputWindow(string text) : 
-	window(sf::VideoMode(530, 205), L"Проект"),
-	info	(window, { INFOsize, 260, 50 }),
+InputWindow::InputWindow(string text) : MyWindows({ 530, 205 }, {260, 50}, text),
 	input	(window, { BUTTONsize, 260, 20 }),
 	ok		(window, { BUTTONsize, 40, 20})
 {
-	window.setFramerateLimit(30);
-
 	info.setScale(2);
 	info.setPosition(5, 5);
-	info.setStr(text);
 
 	input.setScale(2);
 	input.setPosition(5, 115);
@@ -21,57 +16,20 @@ InputWindow::InputWindow(string text) :
 	ok.setScale(2);
 	ok.setPosition(225, 160);
 	ok.setStr(pad("ок", 5));
+
+
+	showBtns.push_back(&info);
+	showBtns.push_back(&input);
+	showBtns.push_back(&ok);
+
+	btns.push_back(&input);
+	btns.push_back(&ok);
 }
 
 string InputWindow::loop(typeInput type)
 {
 	this->type = type;
-	while (window.isOpen() && result == "NONE")
-	{
-		sf::Event event;
-		while (window.pollEvent(event))
-		{
-			if (event.type == sf::Event::Closed) {
-				result = "CLOSE";
-				window.close();
-				continue;
-			}
-			checkAllInteractions(event);
-		}
-		show();
-	}
-	return result;
-}
-
-void InputWindow::checkAllInteractions(const sf::Event& event)
-{
-	//кнопка только что нажата
-	if (event.type == sf::Event::MouseButtonPressed) {
-		checkAllActive(sf::Mouse::getPosition(window));
-		checkAllFocus(sf::Mouse::getPosition(window), true);
-	}
-	//кнока нажата в данный момент
-	if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)) {
-		checkAllFocus(sf::Mouse::getPosition(window));
-	}
-	//кнопка была отпущена
-	if (event.type == sf::Event::MouseButtonReleased) {
-		checkAllEvents(sf::Mouse::getPosition(window));
-	}
-	// включен режим учител
-	setAllText(event);
-}
-
-void InputWindow::checkAllActive(const sf::Vector2i& msCord)
-{
-	input.checkActive(msCord);
-	ok.checkActive(msCord);
-}
-
-void InputWindow::checkAllFocus(const sf::Vector2i& msCord, bool first)
-{
-	input.checkFocus(msCord);
-	ok.checkFocus(msCord);
+	return MyWindows::loop();
 }
 
 void InputWindow::checkAllEvents(const sf::Vector2i& msCord)
@@ -110,15 +68,6 @@ void InputWindow::setAllText(const sf::Event& event)
 			input.setText(event, comand);
 	}
 	
-}
-
-void InputWindow::show()
-{
-	window.clear(sf::Color(200, 200, 200, 255));
-	info.show();
-	input.show();
-	ok.show();
-	window.display();
 }
 
 void InputWindow::openFile()

@@ -1,5 +1,6 @@
 #pragma once
 #include "Button.h"
+#include "MyWindows.h"
 #include "ConfirmWindow.h"
 #include "InfoWindow.h"
 #include <fstream>
@@ -11,6 +12,7 @@ enum typeInput {
 };
 
 class InputWindow
+	: public MyWindows
 {
 public:
 	InputWindow(string text);
@@ -18,19 +20,12 @@ public:
 	string loop(typeInput type);
 
 private:
-	void checkAllInteractions(const sf::Event&);
-	void checkAllActive(const sf::Vector2i& msCord);
-	void checkAllFocus(const sf::Vector2i& msCord, bool first = false);
-	void checkAllEvents(const sf::Vector2i& msCord);
-	void setAllText(const sf::Event& event);
+	void checkAllEvents(const sf::Vector2i& msCord) override;
+	void setAllText(const sf::Event& event) override;
 
-	void show();
-
-	sf::RenderWindow window;
-	Button info, input, ok;
+	Button input, ok;
 	bool inputActive = false;
 
-	string result = "NONE";
 	typeInput type;
 	void openFile();
 	void createFile();

@@ -175,6 +175,9 @@
     <ClCompile Include="Menu.cpp">
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MultiThreaded</RuntimeLibrary>
     </ClCompile>
+    <ClCompile Include="MyWindows.cpp">
+      <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MultiThreaded</RuntimeLibrary>
+    </ClCompile>
     <ClCompile Include="OBJ.cpp">
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MultiThreaded</RuntimeLibrary>
     </ClCompile>
@@ -182,6 +185,9 @@
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <ClCompile Include="Scene.cpp">
+      <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MultiThreaded</RuntimeLibrary>
+    </ClCompile>
+    <ClCompile Include="SelectWindow.cpp">
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <ClCompile Include="Test.cpp">
@@ -203,9 +209,11 @@
     <ClInclude Include="InputWindow.h" />
     <ClInclude Include="Interface.h" />
     <ClInclude Include="Menu.h" />
+    <ClInclude Include="MyWindows.h" />
     <ClInclude Include="OBJ.h" />
     <ClInclude Include="fstreamFunc.h" />
     <ClInclude Include="Scene.h" />
+    <ClInclude Include="SelectWindow.h" />
     <ClInclude Include="Test.h" />
     <ClInclude Include="writeAns.h" />
   </ItemGroup>
