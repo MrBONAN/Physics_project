@@ -15,6 +15,7 @@ using namespace std;
 //#define INFOsize   145, 1, 145, 17, 5, 5, 5
 #define BUTTONsize 17, 1, 17, 17, 5, 5, 5
 #define INFOsize   1, 1, 1, 17, 5, 5, 5
+#define SWITCHsize 65, 1, 97, 1, 0, 31, 31
 
 class Button :
 	public OBJ

@@ -1,19 +1,27 @@
 #include "Interface.h"
+#include "SelectWindow.h"
 
 void HideConsole() { ::ShowWindow(::GetConsoleWindow(), SW_HIDE); }
 void ShowConsole() { ::ShowWindow(::GetConsoleWindow(), SW_SHOW); }
 
 int main ()
 {
-    HideConsole();
-    //ShowConsole();
+    //HideConsole();
+    ShowConsole();
     setlocale(LC_ALL, "RUS");
-
-    sf::RenderWindow window(sf::VideoMode(1050, 700), L"Проект");
-    window.setFramerateLimit(30);
 
     string path = "Icons_3.png";
     OBJ::Init(path);
+
+    SelectWindow selectwindow;
+
+    selectwindow.loop(typeInput::OPENfile);
+
+    return 0;
+    sf::RenderWindow window(sf::VideoMode(1050, 700), L"Проект");
+    window.setFramerateLimit(30);
+
+    
 
     Interface intface(window);
 

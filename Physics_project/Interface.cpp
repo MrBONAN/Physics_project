@@ -2,8 +2,8 @@
 string pad(std::string s, int len = 26);
 
 Interface::Interface(sf::RenderWindow& window) : Scene(window),
-left(window, { 65, 1, 97, 1, 0, 31, 31, 31, 31 }),
-right(window, { 65, 1, 97, 1, 0, 31, 31, 31, 31 }),
+left(window, { SWITCHsize, 31, 31 }),
+right(window, { SWITCHsize, 31, 31 }),
 levelNumber(window, {INFOsize, 145, 20}),
 close(window, { 65, 33, 97, 33, 0, 31, 31, 31, 31 }),
 id(0),
