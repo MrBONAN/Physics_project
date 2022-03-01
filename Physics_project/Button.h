@@ -38,6 +38,7 @@ public:
 	int lastSymbol = 0;
 
 	bool showCursor = false;
+	bool showButton = true;
 	int getCurPos() { return posCur; }
 	void curLeft() { posCur = max(0, posCur - 1); updateSupportingChar();  }
 	void curRight() { posCur = min(getStrSize(), posCur + 1); updateSupportingChar();

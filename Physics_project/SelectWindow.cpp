@@ -37,6 +37,14 @@ SelectWindow::SelectWindow() :
     btns.push_back(&right);
     btns.push_back(&input);
     for (auto it : tests) btns.push_back(it);
+    
+    // поиск файлов
+    // копирование данных в vector
+    list<string> temp = FindFiles();
+    filenames.assign(temp.begin(), temp.end());
+
+    pageNum = 0;
+    updatePage();
 }
 
 string SelectWindow::loop(typeInput type)
@@ -52,7 +60,20 @@ SelectWindow::~SelectWindow()
 
 void SelectWindow::checkAllEvents(const sf::Vector2i& msCord)
 {
-
+    int cntButtons = sizeof(tests) / sizeof(Button*);
+    if (left.Event(msCord)) {
+        pageNum = max(0, pageNum - 1);
+        updatePage();
+    }
+    if (right.Event(msCord)) {
+        if ((pageNum + 1) * cntButtons < filenames.size()) pageNum++;
+        updatePage();
+    }
+    for (int i = 0; i < cntButtons; i++)
+    {
+        if (tests[i]->Event(msCord))
+            result = filenames[pageNum * cntButtons + i];
+    }
 }
 
 
@@ -60,6 +81,7 @@ list<string> SelectWindow::FindFiles()
 {
     list<string> files;
     fs::path dir = ".\\tasks";
+    
     for (fs::directory_iterator it(dir), end; it != end; ++it)
     {
         if (it->path().extension() == ".mfp")
@@ -69,4 +91,21 @@ list<string> SelectWindow::FindFiles()
         }
     }
     return files;
+}
+
+void SelectWindow::updatePage()
+{
+    int cntButtons = sizeof(tests) / sizeof(Button*);
+    for (int i = 0; i < cntButtons; i++)
+    {
+        int serialNum = pageNum * cntButtons + i;
+        if (serialNum < filenames.size())
+        {
+            tests[i]->showButton = true;
+            tests[i]->setStr(to_string(serialNum + 1) + ". " + filenames[serialNum]);
+        }
+        else {
+            tests[i]->showButton = false;
+        }
+    }
 }

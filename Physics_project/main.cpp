@@ -15,7 +15,7 @@ int main ()
 
     SelectWindow selectwindow;
 
-    selectwindow.loop(typeInput::OPENfile);
+    cout << selectwindow.loop(typeInput::OPENfile);
 
     return 0;
     sf::RenderWindow window(sf::VideoMode(1050, 700), L"Проект");

@@ -49,6 +49,7 @@ void Button::setPosition(float x, float y) {
 
 void Button::setText(const sf::Event& event)
 {
+	if (!showButton) return;
 	if (event.type == sf::Event::KeyPressed) {
 		setText(event, getKey(event));
 	}
@@ -56,6 +57,7 @@ void Button::setText(const sf::Event& event)
 
 void Button::setText(const sf::Event& event, int comand)
 {
+	if (!showButton) return;
 	if (event.type == sf::Event::KeyPressed) {
 		if (comand == char(0)) return;
 
@@ -126,12 +128,14 @@ void Button::setIndentText(int ind)
 
 void Button::checkActive(const sf::Vector2i& msCord)
 {
+	if (!showButton) return;
 	if (btn.getGlobalBounds().contains(msCord.x, msCord.y))
 		active = true;
 }
 
 void Button::checkFocus(const sf::Vector2i& msCord)
 {
+	if (!showButton) return;
 	if (active && btn.getGlobalBounds().contains(msCord.x, msCord.y)) {
 		if (isAlreadyUpdate) return;
 		isAlreadyUpdate = true;
@@ -149,6 +153,7 @@ void Button::checkFocus(const sf::Vector2i& msCord)
 
 bool Button::Event(const sf::Vector2i& msCord)
 {
+	if (!showButton) return false;
 	if (active && btn.getGlobalBounds().contains(msCord.x, msCord.y))
 	{
 		isAlreadyUpdate = false;
@@ -163,6 +168,7 @@ bool Button::Event(const sf::Vector2i& msCord)
 
 void Button::show()
 {
+	if (!showButton) return;
 	ind.show();
 	window.draw(btn);
 	if (ind.getActive() && showCursor) {

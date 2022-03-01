@@ -4,6 +4,12 @@
 #include <experimental/filesystem>
 #include <list>
 
+#include <iostream>
+#include <string>
+#include <codecvt>
+#include <cassert>
+#include <locale>
+
 string pad(std::string s, int len = 26);
 
 namespace fs = std::experimental::filesystem;
@@ -22,5 +28,8 @@ private:
 	typeInput type;
 	Button* tests[6];
 	list<string> FindFiles();
+	vector<string> filenames;
+	int pageNum;
+	void updatePage();
 };
 
