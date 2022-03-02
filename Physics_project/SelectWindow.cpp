@@ -1,9 +1,6 @@
 #include "SelectWindow.h"
 
-#include <experimental/filesystem>
-#include <iostream>
-#include <vector>
-#include <string>
+string pad(std::string s, int len = 26);
 
 SelectWindow::SelectWindow() :
     MyWindows({ 390, 487 }, { 190, 30 }, // 260 50
@@ -47,12 +44,6 @@ SelectWindow::SelectWindow() :
     updatePage();
 }
 
-string SelectWindow::loop(typeInput type)
-{
-    this->type = type;
-    return MyWindows::loop();
-}
-
 SelectWindow::~SelectWindow()
 {
     for (auto it : tests) delete it;
@@ -72,7 +63,12 @@ void SelectWindow::checkAllEvents(const sf::Vector2i& msCord)
     for (int i = 0; i < cntButtons; i++)
     {
         if (tests[i]->Event(msCord))
-            result = filenames[pageNum * cntButtons + i];
+            result = "tasks\\" + filenames[pageNum * cntButtons + i];
+    }
+    if (input.Event(msCord)) {
+        InputWindow inputwindow("Введите название файла без его\nрасширения (он должен находиться в\nпапке tasks рядом с этой программой)");
+        string path = inputwindow.loop(typeInput::OPENfile);
+        if (path != "CLOSE") result = path;
     }
 }
 

@@ -13,11 +13,11 @@ int main ()
     string path = "Icons_3.png";
     OBJ::Init(path);
 
-    SelectWindow selectwindow;
+    /*SelectWindow selectwindow;
 
     cout << selectwindow.loop(typeInput::OPENfile);
 
-    return 0;
+    return 0;*/
     sf::RenderWindow window(sf::VideoMode(1050, 700), L"Проект");
     window.setFramerateLimit(30);
 

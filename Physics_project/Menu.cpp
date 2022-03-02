@@ -57,8 +57,11 @@ void Menu::checkAllEvents(const sf::Vector2i& msCord)
 
 bool Menu::openTest()
 {
-	InputWindow inputwindow("Введите название файла без его\nрасширения (он должен находиться в\nпапке tasks рядом с этой программой)");
-	string path = inputwindow.loop(typeInput::OPENfile);
+	//InputWindow inputwindow("Введите название файла без его\nрасширения (он должен находиться в\nпапке tasks рядом с этой программой)");
+	//string path = inputwindow.loop(typeInput::OPENfile);
+	SelectWindow selectwindow;
+	string path = selectwindow.loop();
+	//cout << path << endl;
 	if (path != "CLOSE") {
 		intface.readInfo(path);
 		return true;

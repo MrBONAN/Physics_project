@@ -5,6 +5,7 @@
 #include "EndTest.h"
 #include "Interface.h"
 #include "InputWindow.h"
+#include "SelectWindow.h"
 
 class Menu :
     public Scene
