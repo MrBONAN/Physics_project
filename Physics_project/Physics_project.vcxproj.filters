@@ -27,7 +27,7 @@
     <ClCompile Include="Button.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="makeTexture.cpp">
+    <ClCompile Include="secondaryFunctions.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="Scene.cpp">

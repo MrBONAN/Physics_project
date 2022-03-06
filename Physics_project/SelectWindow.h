@@ -4,6 +4,8 @@
 #include <experimental/filesystem>
 #include <list>
 
+#include <locale>
+
 namespace fs = std::experimental::filesystem;
 using std::list;
 

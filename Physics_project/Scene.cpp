@@ -2,12 +2,6 @@
 bool Scene::teacherMode  = true;
 bool Scene::menuIsActive = true;
 
-string pad(std::string s, int len = 26)
-{
-	if (s.length() < len)
-		s.insert(s.begin(), len - s.length(), ' ');
-	return s;
-}
 
 Scene::Scene(sf::RenderWindow& window):
 	window(window),

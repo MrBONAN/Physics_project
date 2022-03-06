@@ -4,6 +4,7 @@
 void HideConsole() { ::ShowWindow(::GetConsoleWindow(), SW_HIDE); }
 void ShowConsole() { ::ShowWindow(::GetConsoleWindow(), SW_SHOW); }
 
+
 int main ()
 {
     //HideConsole();

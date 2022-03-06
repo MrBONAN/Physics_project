@@ -2,7 +2,7 @@
 #include "Classes.h"
 #include "Menu.h"
 #include "Scene.h"
-
+#include "ConfirmWindow.h"
 
 
 class Interface :

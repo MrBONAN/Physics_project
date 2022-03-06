@@ -169,7 +169,7 @@
     <ClCompile Include="main.cpp">
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MultiThreaded</RuntimeLibrary>
     </ClCompile>
-    <ClCompile Include="makeTexture.cpp">
+    <ClCompile Include="secondaryFunctions.cpp">
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <ClCompile Include="Menu.cpp">

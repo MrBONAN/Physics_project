@@ -152,10 +152,13 @@ void Interface::checkAllEvents(const sf::Vector2i& msCord)
 		levelNumber.setStr(pad("Задание: " + to_string(id + 1) + " из: " + to_string(scenes.size() - 1), 21));
 	}
 	if (teacherMode && close.Event(msCord) && id != scenes.size() - 1) {
-		auto it = scenes.begin();
-		advance(it, id);
-		delete *it;
-		scenes.erase(it);
-		levelNumber.setStr(pad("Задание: " + to_string(id + 1) + " из: " + to_string(scenes.size() - 1), 21));
+		ConfirmWindow confirmwindow("Вы уверены, что хотите удалить это\nзадание? (действие нельзя отменить)");
+		if (confirmwindow.loop() == "YES") {
+			auto it = scenes.begin();
+			advance(it, id);
+			delete* it;
+			scenes.erase(it);
+			levelNumber.setStr(pad("Задание: " + to_string(id + 1) + " из: " + to_string(scenes.size() - 1), 21));
+		}
 	}
 }

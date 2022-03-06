@@ -1,6 +1,7 @@
 #include "SelectWindow.h"
 
 string pad(std::string s, int len = 26);
+string from16to8string(u16string inp);
 
 SelectWindow::SelectWindow() :
     MyWindows({ 390, 487 }, { 190, 30 }, // 260 50
@@ -82,7 +83,9 @@ list<string> SelectWindow::FindFiles()
     {
         if (it->path().extension() == ".mfp")
         {
-            string filename = it->path().generic_u8string();
+            /*u16string t = u"ÒÅñò";
+            string k = t.c_str();*/
+            string filename = from16to8string(it->path().generic_u16string());
             files.push_back(filename.substr(8));
         }
     }
