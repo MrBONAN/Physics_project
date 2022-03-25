@@ -56,6 +56,7 @@ void Interface::show()
 bool Interface::saveInfo(string pathSave) 
 {
 	fstream fout;
+	fs::create_directory(".\\tasks");
 	fout.open(pathSave, fstream::out);
 	if (fout.is_open())
 		fout << *this;
@@ -71,6 +72,7 @@ bool Interface::saveInfo(string pathSave)
 bool Interface::readInfo(string pathRead)
 {
 	fstream fin;
+	fs::create_directory(".\\tasks");
 	fin.open(pathRead, fstream::in);
 	if (fin.is_open())
 		fin >> *this;

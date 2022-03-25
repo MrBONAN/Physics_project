@@ -3,7 +3,9 @@
 #include "Menu.h"
 #include "Scene.h"
 #include "ConfirmWindow.h"
+#include <experimental/filesystem>
 
+namespace fs = std::experimental::filesystem;
 
 class Interface :
     public Scene

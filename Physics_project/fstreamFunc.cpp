@@ -1,5 +1,9 @@
 #include "fstreamFunc.h"
 #include <cstdlib>
+#include <sstream>
+#include <random>
+using std::stringstream;
+using std::rand;
 
 ostream& operator<<(ostream& os, Scene& obj)
 {
@@ -17,25 +21,38 @@ istream& operator>>(istream& is, Scene& obj)
 ostream& operator<<(ostream& os, Interface& obj)
 {
 	SetConsoleCP(1251);
-	os << obj.scenes.size() - 1 << endl;
+	stringstream oString;
+	oString << obj.scenes.size() - 1 << endl;
 	for (int i = 0; i < obj.scenes.size() - 1; i++)
 	{
-		os << *(obj.scenes[i]);
+		oString << *(obj.scenes[i]);
 	}
-	SetConsoleCP(866);
+
+	srand(123456);
+	for (auto it : oString.str())
+	{
+		os << char((it + rand() % 256) % 256);
+	}
 	return os;
 }
 
 istream& operator>>(istream& is, Interface& obj)
 {
+	SetConsoleCP(1251);
+
+	srand(123456);
+	stringstream iString;
+	while (!is.eof())
+		iString << char((is.get() - rand() % 256 + 256) % 256);
+
 	string temp;
-	getline(is, temp);
+	getline(iString, temp);
 	int len = atoi(temp.c_str());
 	obj.scenes.clear();
 
 	for (int i = 0; i < len; i++)
 	{
-		getline(is, temp);
+		getline(iString, temp);
 		int type = atoi(temp.c_str());
 		switch (type)
 		{
@@ -46,7 +63,7 @@ istream& operator>>(istream& is, Interface& obj)
 			obj.scenes.push_back(new writeAns(obj.window));
 			break;
 		}
-		is >> **obj.scenes.rbegin();
+		iString >> **obj.scenes.rbegin();
 	}
 	obj.id = 0;
 	return is;
