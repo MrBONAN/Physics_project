@@ -18,7 +18,7 @@ Menu::Menu(sf::RenderWindow& window, Interface& intface, vector<Scene*>& allScen
 	btns[0]->setStr(pad("открыть тест"));
 	btns[1]->setStr(pad("создать тест"));
 	btns[2]->setStr(pad("редактировать тест"));
-	addscene = new AddScene(window, intface, allScene);
+	savescene = new SaveScene(window, intface, allScene);
 }
 
 void Menu::show()
@@ -79,7 +79,7 @@ void Menu::solveTest()
 void Menu::makeTest()
 {
 	intface.setTeacherMod(true);
-	allScene[0] = addscene;
+	allScene[0] = savescene;
 	menuIsActive = false;
 }
 
@@ -90,7 +90,7 @@ void Menu::editTest()
 		intface.levelNumber.setStr(pad("Задание: 1 из: " + to_string(intface.scenes.size()), 21));
 		intface.setTeacherMod(true);
 		menuIsActive = false;
-		allScene.push_back(new AddScene(window, intface, allScene));
+		allScene.push_back(savescene);
 		for (auto it : allScene)
 			it->showAnswer();
 	}

@@ -11,7 +11,6 @@ public:
     bool checkAnswer() override;
 
     void show() override;
-    int selNumber = -1;
 
 private:
     void checkAllActive(const sf::Vector2i& msCord) override;

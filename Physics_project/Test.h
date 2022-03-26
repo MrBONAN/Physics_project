@@ -9,7 +9,6 @@ public:
     
     void showAnswer() override;
     bool checkAnswer() override;
-    int selNumber = -1;
     int selAnsNumber = -1;
 
     void show() override;

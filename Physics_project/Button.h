@@ -13,9 +13,11 @@ using namespace std;
 
 //#define BUTTONsize 49, 1, 65, 1, 5, 5, 5
 //#define INFOsize   145, 1, 145, 17, 5, 5, 5
-#define BUTTONsize 17, 1, 17, 17, 5, 5, 5
-#define INFOsize   1, 1, 1, 17, 5, 5, 5
-#define SWITCHsize 65, 1, 97, 1, 0, 31, 31
+#define BUTTONsize	17, 1, 17, 17, 5, 5, 5
+#define INFOsize	1, 1, 1, 17, 5, 5, 5
+#define SWITCHsize	65, 1, 97, 1, 0, 31, 31
+#define CLOSEsize	65, 33, 97, 33, 0, 31, 31
+#define PLUSsize	65, 65, 97, 65, 0, 31, 31
 
 class Button :
 	public OBJ

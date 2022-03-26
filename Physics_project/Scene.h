@@ -25,6 +25,8 @@ public:
 	virtual bool haveTeacherAnswer() { return true; }
 	Button exerciseRect;
 
+	int selNumber = -1;
+
 	virtual ~Scene() {}
 protected:
 	virtual void checkAllActive(const sf::Vector2i& msCord) = 0;
@@ -47,4 +49,5 @@ protected:
 	friend ostream& operator<<(ostream& os, Scene& obj);
 	friend istream& operator>>(istream& is, Scene& obj);
 	friend EndTest;
+	friend Interface;
 };

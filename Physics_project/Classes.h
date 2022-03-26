@@ -6,3 +6,4 @@ class Interface;
 class Menu;
 class Test;
 class writeAns;
+class SaveScene;

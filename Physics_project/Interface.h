@@ -3,6 +3,9 @@
 #include "Menu.h"
 #include "Scene.h"
 #include "ConfirmWindow.h"
+#include "Test.h"
+#include "writeAns.h"
+#include "AddScene.h"
 #include <experimental/filesystem>
 
 namespace fs = std::experimental::filesystem;
@@ -28,7 +31,7 @@ private:
     void checkAllFocus(const sf::Vector2i& msCord, bool first = false)  override;
     void checkAllEvents(const sf::Vector2i& msCord) override;
 
-    Button left, right, close;
+    Button left, right, close, add;
     Button levelNumber;
 
     Menu* menu;
@@ -45,4 +48,5 @@ private:
     friend AddScene;
     friend EndTest;
     friend Menu;
+    friend SaveScene;
 };

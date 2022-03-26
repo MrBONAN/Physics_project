@@ -169,6 +169,9 @@
     <ClCompile Include="main.cpp">
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MultiThreaded</RuntimeLibrary>
     </ClCompile>
+    <ClCompile Include="SaveScene.cpp">
+      <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MultiThreaded</RuntimeLibrary>
+    </ClCompile>
     <ClCompile Include="secondaryFunctions.cpp">
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MultiThreaded</RuntimeLibrary>
     </ClCompile>
@@ -212,6 +215,7 @@
     <ClInclude Include="MyWindows.h" />
     <ClInclude Include="OBJ.h" />
     <ClInclude Include="fstreamFunc.h" />
+    <ClInclude Include="SaveScene.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SelectWindow.h" />
     <ClInclude Include="Test.h" />

@@ -4,8 +4,9 @@ string pad(std::string s, int len = 26);
 Interface::Interface(sf::RenderWindow& window) : Scene(window),
 left(window, { SWITCHsize, 31, 31 }),
 right(window, { SWITCHsize, 31, 31 }),
-levelNumber(window, {INFOsize, 145, 20}),
-close(window, { 65, 33, 97, 33, 0, 31, 31, 31, 31 }),
+levelNumber(window, { INFOsize, 145, 20 }),
+close(window, { CLOSEsize, 31, 31 }),
+add(window, { PLUSsize, 31, 31 }),
 id(0),
 startButton(window, { BUTTONsize, 145, 20 })/*,
 menu(window, *this, scenes)*/
@@ -18,12 +19,14 @@ menu(window, *this, scenes)*/
 	right.setPosition(973, 630);
 	levelNumber.setPosition(390, 630);
 
-	close.setPosition(350, 635);
-	close.setScale(1);
+	close.setPosition(308, 630);
+	
+	add.setPosition(700, 630);
 
 	btns.push_back(&left);
 	btns.push_back(&right);
 	btns.push_back(&close);
+	btns.push_back(&add);
 
 	menu = new Menu(window, *this, scenes);
 	scenes.push_back(menu);
@@ -45,12 +48,14 @@ void Interface::show()
 	}
 	scenes[id]->show();
 	if (!menuIsActive && !end) {
-		left.show();
-		right.show();
+		if (id != scenes.size() - 1) {
+			levelNumber.show();
+			right.show();
+		}
+		if (id != 0) left.show();				
 		if (teacherMode && id != scenes.size() - 1) close.show();
-		if (id != scenes.size() - 1) levelNumber.show();
+		if (teacherMode) add.show();
 	}
-	
 }
 
 bool Interface::saveInfo(string pathSave) 
@@ -115,7 +120,10 @@ void Interface::checkAllActive(const sf::Vector2i& msCord)
 		left.checkActive(msCord);
 		right.checkActive(msCord);
 	}
-	if (teacherMode) close.checkActive(msCord);
+	if (teacherMode) {
+		close.checkActive(msCord);
+		add.checkActive(msCord);
+	}
 }
 
 void Interface::checkAllFocus(const sf::Vector2i& msCord, bool first)
@@ -129,10 +137,13 @@ void Interface::checkAllFocus(const sf::Vector2i& msCord, bool first)
 
 		pastMsCord = msCord;
 		if (!menuIsActive) {
-			left.checkFocus(msCord);
-			right.checkFocus(msCord);
+			if (id != scenes.size() - 1) right.checkFocus(msCord);
+			if (id != 0)				 left.checkFocus(msCord);
 		}
-		if (teacherMode) close.checkFocus(msCord);
+		if (teacherMode) {
+			close.checkFocus(msCord);
+			add.checkFocus(msCord);
+		}
 	}
 }
 
@@ -162,5 +173,17 @@ void Interface::checkAllEvents(const sf::Vector2i& msCord)
 			scenes.erase(it);
 			levelNumber.setStr(pad("Задание: " + to_string(id + 1) + " из: " + to_string(scenes.size() - 1), 21));
 		}
+	}
+	if (teacherMode && add.Event(msCord)) {
+		AddScene addscene;
+		string result = addscene.loop();
+		auto it = scenes.begin();
+		advance(it, id);
+
+		if(result == to_string(typeTest::TEST))
+			scenes.insert(it, new Test(window));
+		else if (result == to_string(typeTest::WRITEANS))
+			scenes.insert(it, new writeAns(window));
+		levelNumber.setStr(pad("Задание: " + to_string(id + 1) + " из: " + to_string(scenes.size() - 1), 21));
 	}
 }

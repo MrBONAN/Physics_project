@@ -1,11 +1,11 @@
 #pragma once
 #include "Classes.h"
 #include "Scene.h"
-#include "AddScene.h"
 #include "EndTest.h"
 #include "Interface.h"
 #include "InputWindow.h"
 #include "SelectWindow.h"
+#include "SaveScene.h"
 
 class Menu :
     public Scene
@@ -30,7 +30,7 @@ private:
 
     Button info;
 
-    AddScene* addscene;
+    SaveScene* savescene;
     Interface& intface;
     vector<Scene*>& allScene;
 };

@@ -22,30 +22,32 @@ EndTest::EndTest(sf::RenderWindow& window, Interface& intface, vector<Scene*>& a
 
 void EndTest::show()
 {
+	exit.show();
 	if (!testIsEnd) {
 		//info.show();
 		endTest.show();
 		return;
 	}
 	result.show();
-	exit.show();
 }
 
 void EndTest::checkAllActive(const sf::Vector2i& msCord)
 {
-	if (!testIsEnd) { endTest.checkActive(msCord); return; }
+	if (!testIsEnd) endTest.checkActive(msCord);
 	exit.checkActive(msCord);
 }
 
 void EndTest::checkAllFocus(const sf::Vector2i& msCord, bool first)
 {
-	if (!testIsEnd) { endTest.checkFocus(msCord); return; }
+	if (!testIsEnd) endTest.checkFocus(msCord);
 	exit.checkFocus(msCord);
 }
 
 void EndTest::checkAllEvents(const sf::Vector2i& msCord)
 {
 	if (!testIsEnd && endTest.Event(msCord)) {
+		ConfirmWindow confirmwindow("Вы уверены, что хотите закончить тест?");
+		if (confirmwindow.loop() != "YES") return;
 		int score = 0;
 		testIsEnd = true;
 		intface.setEndTest(true);
@@ -60,16 +62,18 @@ void EndTest::checkAllEvents(const sf::Vector2i& msCord)
 			score += allScene[i]->checkAnswer();
 		}
 		result.setStr(pad("Ваш результат: " + to_string(score) + " из: " + to_string(allScene.size() - 1)));
-		return;
 	}
 	if (exit.Event(msCord)) {
-		for (int i = 0; i < allScene.size() - 1; i++)
-			delete allScene[i];
-		allScene.clear();
-		allScene.push_back(intface.menu);
-		intface.id = 0;
-		intface.setEndTest(false);
-		intface.menuIsActive = true;
+		ConfirmWindow confirmwindow("Вы уверены, что хотите выйти в меню?");
+		if (confirmwindow.loop() == "YES") {
+			for (int i = 0; i < allScene.size() - 1; i++)
+				delete allScene[i];
+			allScene.clear();
+			allScene.push_back(intface.menu);
+			intface.id = 0;
+			intface.setEndTest(false);
+			intface.menuIsActive = true;
+		}
 		return;
 	}
 
