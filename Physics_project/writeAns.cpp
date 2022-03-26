@@ -22,13 +22,12 @@ void writeAns::inpInfo(istream& is)
 		string str;
 		getline(is, str);
 		for (auto& it : str)
-		{
 			if (it == '~') it = '\n';
-		}
-		it->setStr(str);
+ 		it->setStr(str);
 	}
 	answer = btns[0]->getStr();
 	btns[0]->setStr("");
+	selNumber = -1;
 }
 
 writeAns::writeAns(sf::RenderWindow& window) :Scene(window),

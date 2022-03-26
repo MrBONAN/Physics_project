@@ -27,12 +27,19 @@ ostream& operator<<(ostream& os, Interface& obj)
 	{
 		oString << *(obj.scenes[i]);
 	}
-
 	srand(123456);
-	for (auto it : oString.str())
-	{
-		os << char((it + rand() % 256) % 256);
-	}
+	while (!oString.eof())
+		//os << char((oString.get() + 500) % 256);
+		os << char((oString.get() + rand() % 256) % 256);
+		//os << oString.get();
+
+	//srand(123456);*/
+	//os << oString.str();
+	/*cout << bfr.str() << endl;
+	while (!bfr.eof())
+		cout << char((bfr.get() - rand() % 256 + 256) % 256);*/
+
+
 	return os;
 }
 
@@ -43,7 +50,9 @@ istream& operator>>(istream& is, Interface& obj)
 	srand(123456);
 	stringstream iString;
 	while (!is.eof())
+		//iString << char((is.get() + 256 - 500) % 256);
 		iString << char((is.get() - rand() % 256 + 256) % 256);
+		//iString << char(is.get());
 
 	string temp;
 	getline(iString, temp);

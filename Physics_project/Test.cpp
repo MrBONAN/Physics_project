@@ -31,6 +31,7 @@ void Test::inpInfo(istream& is)
 		it->setStr(str);
 	}
 	getline(is, answer);
+	selNumber = -1;
 }
 
 Test::Test(sf::RenderWindow& window) : Scene(window)
