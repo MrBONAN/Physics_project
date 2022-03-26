@@ -50,7 +50,7 @@ istream& operator>>(istream& is, Interface& obj)
 	srand(123456);
 	stringstream iString;
 	while (!is.eof())
-		//iString << char((is.get() + 256 - 500) % 256);
+		//iString << char((is.get() + 512 - 500) % 256);
 		iString << char((is.get() - rand() % 256 + 256) % 256);
 		//iString << char(is.get());
 
