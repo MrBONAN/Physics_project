@@ -7,8 +7,8 @@ void ShowConsole() { ::ShowWindow(::GetConsoleWindow(), SW_SHOW); }
 
 int main ()
 {
-    //HideConsole();
-    ShowConsole();
+    HideConsole();
+    //ShowConsole();
     setlocale(LC_ALL, "RUS");
 
     string path = "Icons_3.png";
