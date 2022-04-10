@@ -4,20 +4,26 @@ string pad(std::string s, int len = 26);
 EndTest::EndTest(sf::RenderWindow& window, Interface& intface, vector<Scene*>& allScene)
 	: Scene(window), intface(intface), allScene(allScene),
 	//info   (window, { 145, 1, 145, 17, 145, 20, 5, 5, 5 }),
-	endTest(window, { BUTTONsize, 145, 20}),
-	result (window, { INFOsize,   175, 20}),
-	exit   (window, { BUTTONsize, 145, 20})
+	endTest(window, { BUTTONsize, 155, 22}),
+	result (window, { INFOsize,   230, 22}), // 175 20
+	exit   (window, { BUTTONsize, 210, 22})
 {
 	//info.setPosition(380, 200);
 	//info.setStr("");
 
-	endTest.setPosition(380, 250);
-	endTest.setStr(pad("Закончить тест", 20));
+	endTest.setPosition(370, 250);
+	endTest.setCharacterSize(33);
+	endTest.setIndentText(0);
+	endTest.setStr(pad("Закончить тест", 16));
 
-	result.setPosition(350, 250);
+	result.setPosition(295, 250);
+	result.setCharacterSize(33);
+	result.setIndentText(0);
 
-	exit.setPosition(380, 300);
-	exit.setStr(pad("Выход в главное меню", 20));
+	exit.setPosition(315, 300);
+	exit.setCharacterSize(33);
+	exit.setIndentText(0);
+	exit.setStr(pad("Выход в главное меню", 21));
 }
 
 void EndTest::show()
@@ -61,7 +67,7 @@ void EndTest::checkAllEvents(const sf::Vector2i& msCord)
 			}
 			score += allScene[i]->checkAnswer();
 		}
-		result.setStr(pad("Ваш результат: " + to_string(score) + " из: " + to_string(allScene.size() - 1)));
+		result.setStr(pad("Ваш результат: " + to_string(score) + " из: " + to_string(allScene.size() - 1), 25));
 	}
 	if (exit.Event(msCord)) {
 		ConfirmWindow confirmwindow("Вы уверены, что хотите выйти в меню?");

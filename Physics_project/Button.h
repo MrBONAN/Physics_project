@@ -36,6 +36,7 @@ public:
 
 	void setText(const sf::Event& event);
 	void setText(const sf::Event& event, int comand);
+	void setCharacterSize(int size);
 	int getKey(const sf::Event& event);
 	int lastSymbol = 0;
 
@@ -78,6 +79,7 @@ private:
 	sf::Color color = sf::Color::Black;
 
 	int indent = 0;	// размеры отступа по краям
+	int characterSize = 24;
 
 	// визуальные эффекты нажатия
 	bool active = false;

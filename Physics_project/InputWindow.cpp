@@ -2,6 +2,8 @@
 
 string pad(std::string s, int len = 26);
 
+extern string dirPath;
+
 InputWindow::InputWindow(string text) : MyWindows({ 530, 205 }, {260, 50}, text),
 	input	(window, { BUTTONsize, 260, 20 }),
 	ok		(window, { BUTTONsize, 40, 20})
@@ -72,7 +74,7 @@ void InputWindow::setAllText(const sf::Event& event)
 
 void InputWindow::openFile()
 {
-	string path = "tasks\\" + input.getStr() + ".mfp";
+	string path = dirPath + input.getStr() + ".mfp";
 	fstream fin;
 	fin.open(path, fstream::in);
 	bool res;
@@ -87,7 +89,7 @@ void InputWindow::openFile()
 
 void InputWindow::createFile()
 {
-	string path = "tasks\\" + input.getStr() + ".mfp";
+	string path = dirPath + input.getStr() + ".mfp";
 	fstream fin;
 	fin.open(path, fstream::in);
 	bool res;

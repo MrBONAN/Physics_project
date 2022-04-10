@@ -3,6 +3,8 @@
 string pad(std::string s, int len = 26);
 string from16to8string(u16string inp);
 
+extern string dirPath;
+
 SelectWindow::SelectWindow() :
     MyWindows({ 390, 487 }, { 190, 30 }, // 260 50
         "Выберите файл, который\nнужно открыть"),
@@ -64,10 +66,10 @@ void SelectWindow::checkAllEvents(const sf::Vector2i& msCord)
     for (int i = 0; i < cntButtons; i++)
     {
         if (tests[i]->Event(msCord))
-            result = "tasks\\" + filenames[pageNum * cntButtons + i];
+            result = dirPath + filenames[pageNum * cntButtons + i];
     }
     if (input.Event(msCord)) {
-        InputWindow inputwindow("Введите название файла без его\nрасширения (он должен находиться в\nпапке tasks рядом с этой программой)");
+        InputWindow inputwindow("Введите название файла без его\nрасширения (он должен находиться в\nпапке tests рядом с этой программой)");
         string path = inputwindow.loop(typeInput::OPENfile);
         if (path != "CLOSE") result = path;
     }
@@ -77,7 +79,7 @@ void SelectWindow::checkAllEvents(const sf::Vector2i& msCord)
 list<string> SelectWindow::FindFiles()
 {
     list<string> files;
-    fs::path dir = ".\\tasks";
+    fs::path dir = dirPath;
     
     for (fs::directory_iterator it(dir), end; it != end; ++it)
     {
@@ -86,7 +88,7 @@ list<string> SelectWindow::FindFiles()
             /*u16string t = u"ТЕст";
             string k = t.c_str();*/
             string filename = from16to8string(it->path().generic_u16string());
-            files.push_back(filename.substr(8));
+            files.push_back(filename.substr(6));
         }
     }
     return files;

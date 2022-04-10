@@ -79,6 +79,12 @@ void Button::setText(const sf::Event& event, int comand)
 	}
 }
 
+void Button::setCharacterSize(int size)
+{
+	text.setCharacterSize(size);
+	characterSize = size;
+}
+
 int Button::getKey(const sf::Event& event)
 {
 	int code = int(GetKeyboardLayout(GetWindowThreadProcessId(GetForegroundWindow(), NULL)));
@@ -124,6 +130,7 @@ void Button::setStr(string str)
 void Button::setIndentText(int ind)
 {
 	indent = ind * btn.getScale().x;
+	setTextSettings(text);
 }
 
 void Button::checkActive(const sf::Vector2i& msCord)
@@ -184,7 +191,7 @@ void Button::setTextSettings(sf::Text& text)
 {
 	font.loadFromFile("pragmatica.ttf");
 	text.setFont(font);
-	text.setCharacterSize(24);
+	text.setCharacterSize(characterSize);
 	text.setFillColor(color);
 	text.setPosition(btn.getPosition() +
 		sf::Vector2f(indent, indent));

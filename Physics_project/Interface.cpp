@@ -1,6 +1,8 @@
 #include "Interface.h"
 string pad(std::string s, int len = 26);
 
+extern string dirPath;
+
 Interface::Interface(sf::RenderWindow& window) : Scene(window),
 left(window, { SWITCHsize, 31, 31 }),
 right(window, { SWITCHsize, 31, 31 }),
@@ -8,11 +10,13 @@ levelNumber(window, { INFOsize, 145, 20 }),
 close(window, { CLOSEsize, 31, 31 }),
 add(window, { PLUSsize, 31, 31 }),
 id(0),
-startButton(window, { BUTTONsize, 145, 20 })/*,
+startButton(window, { BUTTONsize, 160, 22 })/*, 145 20
 menu(window, *this, scenes)*/
 {
 	startButton.setPosition(380, 300);
-	startButton.setStr(pad("Начать тест" , 20));
+	startButton.setCharacterSize(33);
+	startButton.setIndentText(0);
+	startButton.setStr(pad("Начать тест" , 16));
 
 	left.setPosition(72, 630);
 	left.setScale(-2, 2);
@@ -61,7 +65,7 @@ void Interface::show()
 bool Interface::saveInfo(string pathSave) 
 {
 	fstream fout;
-	fs::create_directory(".\\tasks");
+	fs::create_directory(".\\" + dirPath);
 	fout.open(pathSave, fstream::out);
 	if (fout.is_open())
 		fout << *this;

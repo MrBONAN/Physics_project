@@ -5,21 +5,43 @@ string pad(std::string s, int len = 26);
 void HideConsole();
 void ShowConsole();
 
+//Menu::Menu(sf::RenderWindow& window, Interface& intface, vector<Scene*>& allScene)
+//	: Scene(window), intface(intface), allScene(allScene),
+//	info(window, { INFOsize, 145, 20 })
+//{
+//	info.setPosition(380, 100);
+//	info.setStr("  Выберите действие");
+//	for (int i = 0; i < 3; i++) {
+//		btns.push_back(new Button(window, { BUTTONsize, 190, 20}));
+//		btns[i]->setPosition(335, 150 + i * 60);
+//		//btns[i]->setCharacterSize(38);
+//	}
+//	btns[0]->setStr(pad("открыть тест"));
+//	btns[1]->setStr(pad("создать тест"));
+//	btns[2]->setStr(pad("редактировать тест"));
+//	savescene = new SaveScene(window, intface, allScene);
+//}
+
 Menu::Menu(sf::RenderWindow& window, Interface& intface, vector<Scene*>& allScene)
 	: Scene(window), intface(intface), allScene(allScene),
-	info(window, { INFOsize, 145, 20 })
+	info(window, { INFOsize, 185, 22 })
 {
-	info.setPosition(380, 100);
-	info.setStr("  Выберите действие");
+	info.setPosition(340, 186);
+	info.setStr(" Выберите действие");
+	info.setCharacterSize(33);
+	info.setIndentText(0);
 	for (int i = 0; i < 3; i++) {
-		btns.push_back(new Button(window, { BUTTONsize, 190, 20}));
-		btns[i]->setPosition(335, 150 + i * 60);
+		btns.push_back(new Button(window, { BUTTONsize, 190, 22 }));
+		btns[i]->setPosition(335, 240 + i * 60);
+		btns[i]->setCharacterSize(33);
+		btns[i]->setIndentText(-2);
 	}
-	btns[0]->setStr(pad("открыть тест"));
-	btns[1]->setStr(pad("создать тест"));
-	btns[2]->setStr(pad("редактировать тест"));
+	btns[0]->setStr(pad("открыть тест", 20));
+	btns[1]->setStr(pad("создать тест", 20));
+	btns[2]->setStr(pad("редактировать тест", 20));
 	savescene = new SaveScene(window, intface, allScene);
 }
+
 
 void Menu::show()
 {
