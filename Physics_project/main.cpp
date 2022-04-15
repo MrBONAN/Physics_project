@@ -4,8 +4,8 @@
 void HideConsole() { ::ShowWindow(::GetConsoleWindow(), SW_HIDE); }
 void ShowConsole() { ::ShowWindow(::GetConsoleWindow(), SW_SHOW); }
 
-//string dirPath = "tests\\";
-string dirPath = "buf2\\";
+string dirPath = "tests\\";
+//string dirPath = "buf2\\";
 
 int main ()
 {

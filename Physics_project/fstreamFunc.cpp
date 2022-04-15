@@ -28,10 +28,12 @@ ostream& operator<<(ostream& os, Interface& obj)
 		oString << *(obj.scenes[i]);
 	}
 	srand(123456);
+	int cnt = 100;
 	while (!oString.eof())
 		//os << char((oString.get() + 500) % 256);
 		//os << char((oString.get() + rand() % 256) % 256);
-		os << char(oString.get());
+		//os << char(oString.get());
+		os << char((oString.get() + cnt % 256) % 256);
 
 	//srand(123456);*/
 	//os << oString.str();
@@ -48,11 +50,13 @@ istream& operator>>(istream& is, Interface& obj)
 	SetConsoleCP(1251);
 
 	srand(123456);
+	int cnt = 100;
 	stringstream iString;
 	while (!is.eof())
 		//iString << char((is.get() + 512 - 500) % 256);
 		//iString << char((is.get() - rand() % 256 + 256) % 256);
-		iString << char(is.get());
+		//iString << char(is.get());
+		iString << char((is.get() - cnt % 256 + 256) % 256);
 
 	string temp;
 	getline(iString, temp);
