@@ -6,24 +6,24 @@ string from16to8string(u16string inp);
 extern string dirPath;
 
 SelectWindow::SelectWindow() :
-    MyWindows({ 390, 487 }, { 190, 30 }, // 260 50
-        "Выберите файл, который\nнужно открыть"),
+    MyWindows({ 500, 487 }, { 245, 30 }, // 260 50
+        pad("Выберите файл для открытия", 33)),
     left(window, { SWITCHsize, 31, 31 }),
     right(window, { SWITCHsize, 31, 31 }),
-    input(window, { BUTTONsize, 190, 20 })
+    input(window, { BUTTONsize, 245, 20 })
 {
     info.setScale(2);
     info.setPosition(5, 5);
 
     input.setPosition(5, 80);
-    input.setStr(pad("Поиск по названию теста"));
+    input.setStr(pad("Поиск по названию теста", 34));
 
     left.setPosition(67, 420);
     left.setScale(-2, 2);
-    right.setPosition(323, 420);
+    right.setPosition(433, 420);
 
     for (int i = 0; i < sizeof(tests) / sizeof(Button*); i++) {
-        tests[i] = new Button(window, { BUTTONsize, 190, 20 });
+        tests[i] = new Button(window, { BUTTONsize, 245, 20 });
         tests[i]->setPosition(5, 150 + i * 45);
     }
 
@@ -88,7 +88,8 @@ list<string> SelectWindow::FindFiles()
             /*u16string t = u"ТЕст";
             string k = t.c_str();*/
             string filename = from16to8string(it->path().generic_u16string());
-            files.push_back(filename.substr(6));
+            filename = filename.substr(dirPath.length());
+            files.push_back(filename);
         }
     }
     return files;
@@ -103,7 +104,13 @@ void SelectWindow::updatePage()
         if (serialNum < filenames.size())
         {
             tests[i]->showButton = true;
-            tests[i]->setStr(to_string(serialNum + 1) + ". " + filenames[serialNum]);
+            string filename = filenames[serialNum];
+            int maxlen = 32;
+            if (filename.length() > maxlen - 1) {
+                filename.resize(maxlen - 6);
+                filename += "...mfp";
+            }
+            tests[i]->setStr(to_string(serialNum + 1) + ". " + filename);
         }
         else {
             tests[i]->showButton = false;

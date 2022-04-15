@@ -66,7 +66,10 @@ void InputWindow::setAllText(const sf::Event& event)
 {
 	if (inputActive) {
 		int comand = input.getKey(event);
-		if (comand != int('\n') && (input.getStr().size() < 22 || comand < 0))
+		int maxsize = 27;
+		if (type == typeInput::CREATEfile)
+			maxsize = 40;
+		if (comand != int('\n') && (input.getStr().size() < maxsize || comand < 0))
 			input.setText(event, comand);
 	}
 	

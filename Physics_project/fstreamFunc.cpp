@@ -30,8 +30,8 @@ ostream& operator<<(ostream& os, Interface& obj)
 	srand(123456);
 	while (!oString.eof())
 		//os << char((oString.get() + 500) % 256);
-		os << char((oString.get() + rand() % 256) % 256);
-		//os << oString.get();
+		//os << char((oString.get() + rand() % 256) % 256);
+		os << char(oString.get());
 
 	//srand(123456);*/
 	//os << oString.str();
@@ -51,8 +51,8 @@ istream& operator>>(istream& is, Interface& obj)
 	stringstream iString;
 	while (!is.eof())
 		//iString << char((is.get() + 512 - 500) % 256);
-		iString << char((is.get() - rand() % 256 + 256) % 256);
-		//iString << char(is.get());
+		//iString << char((is.get() - rand() % 256 + 256) % 256);
+		iString << char(is.get());
 
 	string temp;
 	getline(iString, temp);
